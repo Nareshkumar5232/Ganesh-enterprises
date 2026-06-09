@@ -15,16 +15,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!product) {
     return {
-      title: "Product Not Found | AL HIKMATH ENTERPRISES",
+      title: "Product Not Found | Sri Ganesh Enterprises ENTERPRISES",
       description: "The requested product could not be loaded from the backend.",
     };
   }
 
   return {
-    title: `${product.name} | AL HIKMATH ENTERPRISES`,
+    title: `${product.name} | Sri Ganesh Enterprises ENTERPRISES`,
     description: product.shortDescription || product.description,
     openGraph: {
-      title: `${product.name} | AL HIKMATH ENTERPRISES`,
+      title: `${product.name} | Sri Ganesh Enterprises ENTERPRISES`,
       description: product.shortDescription || product.description,
       images: product.images?.[0] ? [{ url: product.images[0] }] : [],
     },

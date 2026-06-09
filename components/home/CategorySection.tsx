@@ -1,118 +1,131 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { useCategoryStore } from "@/store/categoryStore";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  Monitor,
-  Smartphone,
-  Laptop,
-  BatteryCharging,
-  Headphones,
-  Cpu,
+  Laptop, Wifi, Camera, Smartphone, Tv, Zap, Cpu, ArrowRight
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface Category {
   name: string;
   slug: string;
+  description: string;
+  examples: string;
   icon: LucideIcon;
 }
 
-const categories: Category[] = [
-  { name: "Technology Solutions", slug: "electrical-appliances", icon: Cpu },
-  { name: "Electronics", slug: "electronics", icon: Monitor },
-  { name: "Mobile Accessories", slug: "mobile-accessories", icon: Smartphone },
-  { name: "Computer Accessories", slug: "computer-accessories", icon: Laptop },
-  { name: "Chargers", slug: "chargers", icon: BatteryCharging },
-  { name: "Earphones", slug: "earphones", icon: Headphones },
-  { name: "Smart Devices", slug: "smart-devices", icon: Cpu },
+const CATEGORIES: Category[] = [
+  {
+    name: "Computers & IT",
+    slug: "computer-accessories",
+    description: "Business computing solutions for every scale",
+    examples: "Laptops, desktops, monitors, keyboards, mice",
+    icon: Laptop,
+  },
+  {
+    name: "Networking",
+    slug: "electronics",
+    description: "Enterprise networking and connectivity products",
+    examples: "Routers, switches, access points, LAN cables",
+    icon: Wifi,
+  },
+  {
+    name: "Security Systems",
+    slug: "smart-devices",
+    description: "Comprehensive surveillance and access control",
+    examples: "CCTV cameras, DVRs, biometric devices",
+    icon: Camera,
+  },
+  {
+    name: "Mobile Devices",
+    slug: "mobile-accessories",
+    description: "Smartphones, tablets and accessories",
+    examples: "Cases, chargers, earphones, power banks",
+    icon: Smartphone,
+  },
+  {
+    name: "Home Appliances",
+    slug: "electrical-appliances",
+    description: "Quality home and office appliances",
+    examples: "LED TVs, fans, extension boards, bulbs",
+    icon: Tv,
+  },
+  {
+    name: "Electrical Products",
+    slug: "electrical-appliances",
+    description: "Switchgear and electrical accessories",
+    examples: "Wiring, MCBs, sockets, extension boards",
+    icon: Zap,
+  },
+  {
+    name: "Smart Devices",
+    slug: "smart-devices",
+    description: "IoT and intelligent home products",
+    examples: "Smart plugs, bulbs, watches, speakers",
+    icon: Cpu,
+  },
+  {
+    name: "Chargers & Cables",
+    slug: "chargers",
+    description: "Universal charging and connectivity accessories",
+    examples: "GaN chargers, USB-C cables, wireless pads",
+    icon: Zap,
+  },
 ];
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
-
 export default function CategorySection() {
-  const { selectedCategory, setSelectedCategory } = useCategoryStore();
-
-  const handleCategoryClick = (slug: string) => {
-    setSelectedCategory(selectedCategory === slug ? null : slug);
-    // Smooth scroll to Dynamic Products Section
-    setTimeout(() => {
-      const dynamicSection = document.getElementById("dynamic-products");
-      if (dynamicSection) {
-        dynamicSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
   return (
-    <section className="py-20 px-4 bg-gray-50 dark:bg-[#0F0F0F] transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
-        {/* Section heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-            Shop by{" "}
-            <span className="text-[#9EFF00] underline decoration-[#9EFF00]/40 underline-offset-4">
-              Category
-            </span>
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            Browse our wide range of electronics, computers, IT accessories,
-            networking products, and technology solutions across all
-            categories.
-          </p>
+    <section className="section-white">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <p className="text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-2">Product Divisions</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] dark:text-white">
+              Complete Technology Portfolio
+            </h2>
+          </div>
+          <Link href="/products"
+            className="flex items-center gap-1.5 text-sm font-semibold text-[#2563EB] hover:text-[#1D4ED8] transition-colors shrink-0">
+            View All Products <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
-        {/* Category grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
-          {categories.map((cat) => {
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {CATEGORIES.map((cat, i) => {
             const Icon = cat.icon;
-            const isActive = selectedCategory === cat.slug;
             return (
-              <motion.div key={cat.slug} variants={cardVariants}>
-                <button
-                  onClick={() => handleCategoryClick(cat.slug)}
-                  className={`glass-card flex flex-col items-center gap-4 p-6 text-center transition-all duration-300 group block w-full outline-none
-                    ${
-                      isActive
-                        ? "shadow-neon-green border-[#9EFF00] bg-white/10"
-                        : "neon-hover bg-white/5"
-                    }
-                  `}
+              <motion.div
+                key={cat.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.06 }}
+              >
+                <Link
+                  href={`/products?category=${cat.slug}`}
+                  className="enterprise-card group flex flex-col gap-3 p-5 h-full block"
                 >
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors duration-300
-                    ${isActive ? "bg-[#9EFF00]/30" : "bg-[#9EFF00]/10 group-hover:bg-[#9EFF00]/20"}
-                  `}>
-                    <Icon
-                      className="w-7 h-7 text-[#9EFF00]"
-                      aria-hidden="true"
-                    />
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 rounded-md bg-blue-50 dark:bg-blue-950 flex items-center justify-center group-hover:bg-[#2563EB] transition-colors duration-200">
+                      <Icon className="w-5 h-5 text-[#2563EB] group-hover:text-white transition-colors duration-200" />
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-[#CBD5E1] group-hover:text-[#2563EB] transition-colors duration-200" />
                   </div>
-                  <span className={`text-sm font-medium leading-snug transition-colors
-                    ${isActive ? "text-[#9EFF00]" : "text-gray-900 dark:text-white"}
-                  `}>
-                    {cat.name}
-                  </span>
-                </button>
+                  <div>
+                    <h3 className="font-semibold text-[#0F172A] dark:text-white text-sm mb-1">{cat.name}</h3>
+                    <p className="text-[#64748B] text-xs leading-relaxed">{cat.description}</p>
+                  </div>
+                  <p className="text-[#94A3B8] text-xs mt-auto pt-2 border-t border-[#F1F5F9] dark:border-slate-700">
+                    {cat.examples}
+                  </p>
+                </Link>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

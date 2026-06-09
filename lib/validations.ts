@@ -1,4 +1,4 @@
-// AL HIKMATH ENTERPRISES PVT LTD — Zod Validation Schemas
+// Sri Ganesh Enterprises ENTERPRISES PVT LTD — Zod Validation Schemas
 // Validates: Requirements 4.13, 8.5, 10.3, 10.4, 10.5, 10.6
 
 import { z } from 'zod';

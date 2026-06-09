@@ -1,118 +1,155 @@
 "use client";
 
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  CheckCircle2, ArrowRight, Laptop, Tv, Smartphone,
+  Router, Camera, Printer
+} from "lucide-react";
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+const TRUST = [
+  "Genuine Products",
+  "Bulk Orders Welcome",
+  "Competitive Pricing",
+  "Fast Delivery",
+];
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+/* Floating product badges */
+const PRODUCT_BADGES = [
+  { icon: Laptop,     label: "Laptops & PCs",      color: "bg-blue-50   border-blue-100", iconColor: "text-[#2563EB]", top: "top-4",   left: "left-4"   },
+  { icon: Tv,         label: "Smart Televisions",   color: "bg-slate-50  border-slate-200", iconColor: "text-[#0F172A]", top: "top-4",   right: "right-4" },
+  { icon: Smartphone, label: "Mobile Devices",      color: "bg-amber-50  border-amber-100", iconColor: "text-[#F59E0B]", bottom: "bottom-24", left: "left-2" },
+  { icon: Router,     label: "Networking",          color: "bg-green-50  border-green-100", iconColor: "text-green-600", bottom: "bottom-24", right: "right-2" },
+  { icon: Camera,     label: "Security Systems",    color: "bg-rose-50   border-rose-100",  iconColor: "text-rose-600",  top: "top-1/2",  left: "-left-2"  },
+  { icon: Printer,    label: "Printers & Scanners", color: "bg-purple-50 border-purple-100",iconColor: "text-purple-600",top: "top-1/2",  right: "-right-2" },
+];
+
+const fadeUp = {
+  hidden:  { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
+  }),
 };
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-[#0F0F0F] dark:via-[#1A1A1A] dark:to-[#0F0F0F] transition-colors duration-300">
-      {/* Animated background glow blobs */}
-      <div
-        className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full blur-3xl dark:opacity-30 opacity-10 animate-pulse"
-        style={{ background: "#9EFF00" }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full blur-3xl dark:opacity-20 opacity-8 animate-pulse"
-        style={{ background: "#00BFFF", animationDelay: "1s" }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full blur-3xl dark:opacity-10 opacity-4 animate-pulse"
-        style={{ background: "#9EFF00", animationDelay: "2s" }}
-        aria-hidden="true"
-      />
+    <section className="section-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center gap-6"
-        >
-          {/* Badge */}
-          <motion.div variants={itemVariants}>
-            <span className="inline-block px-4 py-1.5 rounded-full border border-[#9EFF00]/40 text-[#9EFF00] text-sm font-medium tracking-wider uppercase">
-              Chennai&apos;s Trusted Tech Destination
-            </span>
-          </motion.div>
+          {/* ── LEFT ── */}
+          <div className="flex flex-col gap-6 max-w-[700px]">
 
-          {/* Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight"
-          >
-            <span className="block text-gray-900 dark:text-white">
-              Premium Electronics,
-            </span>
-            <span className="block text-[#9EFF00]">
-              Computers &amp; IT Products
-            </span>
-          </motion.h1>
+            {/* Badge */}
+            <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold text-[#2563EB] bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse inline-block" />
+                Trusted Electronics Wholesale Distributor
+              </span>
+            </motion.div>
 
-          {/* Subheadline */}
-          <motion.p
-            variants={itemVariants}
-            className="max-w-2xl text-gray-700 dark:text-gray-400 text-base sm:text-lg leading-relaxed"
-          >
-            Discover genuine computers, IT accessories, networking equipment,
-            electronics, peripherals, and technology solutions from AL
-            HIKMATH ENTERPRISES PVT LTD — Chennai&apos;s trusted technology
-            destination.
-          </motion.p>
+            {/* Headline */}
+            <motion.h1
+              custom={1} variants={fadeUp} initial="hidden" animate="visible"
+              className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-[#0F172A] dark:text-white leading-[1.12] tracking-tight"
+            >
+              Wholesale Electronics,<br />
+              <span className="text-[#2563EB]">Computers</span> &amp; IT Products
+            </motion.h1>
 
-          {/* CTA Buttons */}
+            {/* Subheadline */}
+            <motion.p
+              custom={2} variants={fadeUp} initial="hidden" animate="visible"
+              className="text-[#64748B] text-lg leading-relaxed"
+            >
+              Supplying genuine electronics, computers, networking equipment, security
+              systems, mobile devices and home appliances to retailers, businesses and
+              institutions across Chennai.
+            </motion.p>
+
+            {/* CTA buttons */}
+            <motion.div
+              custom={3} variants={fadeUp} initial="hidden" animate="visible"
+              className="flex flex-wrap gap-3"
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#2563EB] text-white font-semibold rounded-md hover:bg-[#1D4ED8] transition-colors shadow-sm text-sm"
+              >
+                Get a Quote <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#E2E8F0] text-[#0F172A] dark:text-white font-semibold rounded-md hover:border-[#2563EB] hover:text-[#2563EB] transition-colors text-sm"
+              >
+                Explore Products
+              </Link>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div
+              custom={4} variants={fadeUp} initial="hidden" animate="visible"
+              className="flex flex-wrap gap-4 pt-1"
+            >
+              {TRUST.map((t) => (
+                <span key={t} className="flex items-center gap-1.5 text-sm text-[#374151] dark:text-slate-300">
+                  <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0" />
+                  {t}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ── RIGHT: product showcase ── */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 mt-2"
+            initial={{ opacity: 0, x: 32 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="relative flex items-center justify-center"
           >
-            <Link
-              href="/products"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-black bg-[#9EFF00] hover:bg-[#9EFF00]/90 transition-colors duration-200 shadow-neon-green"
-            >
-              Shop Now
-            </Link>
-            <Link
-              href="/products"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold border border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF]/10 transition-colors duration-200"
-            >
-              Explore Products
-            </Link>
-          </motion.div>
-        </motion.div>
-      </div>
+            {/* Center card */}
+            <div className="relative w-full max-w-sm aspect-square bg-gradient-to-br from-[#F0F4FF] via-white to-[#F8FAFC] dark:from-[#1E293B] dark:to-[#0F172A] rounded-2xl border border-[#E2E8F0] dark:border-slate-700 shadow-lg flex flex-col items-center justify-center gap-4 p-8">
+              <div className="grid grid-cols-3 gap-4">
+                {[Laptop, Tv, Smartphone, Router, Camera, Printer].map((Icon, i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ y: [0, i % 2 === 0 ? -6 : 6, 0] }}
+                    transition={{ repeat: Infinity, duration: 3 + i * 0.4, ease: "easeInOut" }}
+                    className="w-16 h-16 flex items-center justify-center bg-white dark:bg-[#1E293B] rounded-xl border border-[#E2E8F0] dark:border-slate-700 shadow-sm"
+                  >
+                    <Icon className="w-7 h-7 text-[#2563EB]" />
+                  </motion.div>
+                ))}
+              </div>
+              <p className="text-center text-[#64748B] text-xs font-medium tracking-wide uppercase">
+                500+ Premium Products
+              </p>
+            </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-      >
-        <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5 text-[#9EFF00]" aria-hidden="true" />
-        </motion.div>
-      </motion.div>
+            {/* Floating labels */}
+            {PRODUCT_BADGES.map((b, i) => {
+              const Icon = b.icon;
+              return (
+                <motion.div
+                  key={b.label}
+                  animate={{ y: [0, i % 2 === 0 ? -4 : 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 4 + i * 0.5, ease: "easeInOut" }}
+                  style={Object.fromEntries(
+                    Object.entries({ top: b.top, left: b.left, right: b.right, bottom: b.bottom })
+                      .filter(([, v]) => v !== undefined)
+                  )}
+                  className={`absolute flex items-center gap-2 ${b.color} border rounded-lg px-2.5 py-1.5 shadow-sm text-xs font-medium text-[#0F172A] dark:text-white whitespace-nowrap`}
+                >
+                  <Icon className={`w-3.5 h-3.5 ${b.iconColor}`} />
+                  {b.label}
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+        </div>
+      </div>
     </section>
   );
 }

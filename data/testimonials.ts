@@ -6,7 +6,7 @@ export const mockTestimonials: Testimonial[] = [
     name: 'Ravi Kumar',
     role: 'Home Owner',
     rating: 5,
-    content: 'Great selection and fast delivery — highly recommend AL HIKMATH!',
+    content: 'Great selection and fast delivery — highly recommend Sri Ganesh Enterprises!',
   },
   {
     id: 't-002',

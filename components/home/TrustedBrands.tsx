@@ -1,89 +1,46 @@
-"use client";
-
-const brands = [
-  "Havells", "Syska", "Philips", "Wipro", "Bajaj", "Crompton",
-  "Anchor", "Finolex", "Legrand", "Schneider", "GM Modular",
-  "Orient Electric", "Panasonic", "Honeywell", "ABB", "Siemens",
-];
+import { mockBrands } from "@/lib/mock-data";
 
 export default function TrustedBrands() {
-  // Triple the list so the seamless loop always fills the screen
-  const repeated = [...brands, ...brands, ...brands];
-
   return (
-    <section className="py-16 px-4 bg-[#0F0F0F] overflow-hidden">
-      <div className="max-w-6xl mx-auto mb-10 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          Trusted{" "}
-          <span className="text-[#9EFF00] underline decoration-[#9EFF00]/40 underline-offset-4">
-            Brands
-          </span>
-        </h2>
-        <p className="text-gray-400 mt-2">
-          We carry products from the world&apos;s most trusted manufacturers.
-        </p>
-      </div>
+    <section className="section-white">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-14">
+        <div className="text-center mb-10">
+          <p className="text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-2">Our Brands</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] dark:text-white mb-2">
+            100+ Trusted Brands
+          </h2>
+          <p className="text-[#64748B] text-sm">
+            Authorised distributor for the world&apos;s leading technology manufacturers.
+          </p>
+        </div>
 
-      {/* Auto-scrolling strip */}
-      <div className="relative overflow-hidden">
-        {/* Fade edges */}
-        <div
-          className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, #0F0F0F, transparent)" }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to left, #0F0F0F, transparent)" }}
-          aria-hidden="true"
-        />
-
-        <div className="brands-marquee-track">
-          {repeated.map((name, i) => (
-            <div
-              key={i}
-              className="brands-marquee-item"
-              aria-hidden={i >= brands.length ? true : undefined}
-            >
-              {name}
-            </div>
-          ))}
+        {/* Scrolling strip */}
+        <div className="relative overflow-hidden border border-[#E2E8F0] dark:border-slate-700 rounded-xl bg-[#F8FAFC] dark:bg-[#1E293B] py-5">
+          <div
+            className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to right, #F8FAFC, transparent)" }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute right-0 top-0 h-full w-20 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to left, #F8FAFC, transparent)" }}
+            aria-hidden="true"
+          />
+          <div className="brands-scroll flex gap-8 items-center">
+            {[...mockBrands, ...mockBrands].map((b, i) => (
+              <div
+                key={`${b.name}-${i}`}
+                aria-hidden={i >= mockBrands.length}
+                className="flex-shrink-0 px-6 py-2.5 bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-slate-700 rounded-lg group cursor-default"
+              >
+                <span className="text-sm font-semibold text-[#94A3B8] group-hover:text-[#0F172A] dark:group-hover:text-white transition-colors duration-300">
+                  {b.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      <style>{`
-        .brands-marquee-track {
-          display: flex;
-          gap: 1.5rem;
-          width: max-content;
-          animation: brands-marquee 40s linear infinite;
-        }
-        .brands-marquee-track:hover {
-          animation-play-state: paused;
-        }
-        .brands-marquee-item {
-          flex-shrink: 0;
-          padding: 0.75rem 1.5rem;
-          border: 1px solid rgba(158, 255, 0, 0.25);
-          border-radius: 9999px;
-          color: white;
-          font-size: 0.875rem;
-          font-weight: 600;
-          white-space: nowrap;
-          background: rgba(158, 255, 0, 0.05);
-          letter-spacing: 0.025em;
-          transition: border-color 0.2s, background 0.2s, color 0.2s;
-        }
-        .brands-marquee-item:hover {
-          border-color: rgba(158, 255, 0, 0.7);
-          background: rgba(158, 255, 0, 0.1);
-          color: #9EFF00;
-        }
-        @keyframes brands-marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(calc(-100% / 3)); }
-        }
-      `}</style>
     </section>
   );
 }

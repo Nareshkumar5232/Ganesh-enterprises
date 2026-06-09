@@ -1,97 +1,63 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-interface Stat {
-  label: string;
-  value: number;
-  suffix: string;
-}
-
-const stats: Stat[] = [
-  { label: "Products", value: 500, suffix: "+" },
-  { label: "Brands", value: 50, suffix: "+" },
-  { label: "Happy Customers", value: 10000, suffix: "+" },
-  { label: "Years of Experience", value: 10, suffix: "+" },
+const STATS = [
+  { value: 100,   suffix: "+",  label: "Trusted Brands",     desc: "Authorised distributor" },
+  { value: 5000,  suffix: "+",  label: "Products",            desc: "Across all categories" },
+  { value: 1000,  suffix: "+",  label: "Business Clients",    desc: "Retailers & institutions" },
+  { value: 10,    suffix: "+",  label: "Years Experience",    desc: "Serving Chennai" },
 ];
 
-function AnimatedCounter({
-  value,
-  suffix,
-  isActive,
-}: {
-  value: number;
-  suffix: string;
-  isActive: boolean;
-}) {
+function Counter({ value, suffix, active }: { value: number; suffix: string; active: boolean }) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
-    if (!isActive) return;
-
-    const duration = 2000; // ms
-    const steps = 60;
-    const increment = value / steps;
-    const interval = duration / steps;
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [isActive, value]);
-
+    if (!active) return;
+    const steps = 60, duration = 1800;
+    const inc = value / steps;
+    let cur = 0;
+    const t = setInterval(() => {
+      cur += inc;
+      if (cur >= value) { setCount(value); clearInterval(t); }
+      else setCount(Math.floor(cur));
+    }, duration / steps);
+    return () => clearInterval(t);
+  }, [active, value]);
   return (
-    <span className="text-4xl sm:text-5xl font-bold text-[#9EFF00]">
-      {count.toLocaleString("en-IN")}
-      {suffix}
+    <span className="text-4xl font-bold text-[#0F172A] dark:text-white tabular-nums">
+      {count.toLocaleString("en-IN")}{suffix}
     </span>
   );
 }
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
-  }),
-};
-
 export default function StatsSection() {
-  const [ref, isIntersecting] = useIntersectionObserver<HTMLDivElement>({
-    threshold: 0.2,
-  });
-
+  const [ref, visible] = useIntersectionObserver<HTMLDivElement>({ threshold: 0.3 });
   return (
-    <section className="py-16 px-4 bg-[#0F0F0F]">
-      <div className="max-w-6xl mx-auto" ref={ref}>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, i) => (
+    <section className="section-gray">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16" ref={ref}>
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] dark:text-white mb-2">
+            Why Businesses Choose <span className="text-[#2563EB]">Sri Ganesh Enterprises</span>
+          </h2>
+          <p className="text-[#64748B] text-sm max-w-lg mx-auto">
+            Trusted by retailers, institutions and enterprises across Tamil Nadu for reliable supply of genuine technology products.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {STATS.map((s, i) => (
             <motion.div
-              key={stat.label}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="glass-card p-6 flex flex-col items-center text-center gap-2"
+              key={s.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="enterprise-card p-6 text-center"
             >
-              <AnimatedCounter
-                value={stat.value}
-                suffix={stat.suffix}
-                isActive={isIntersecting}
-              />
-              <span className="text-white text-sm font-medium">{stat.label}</span>
+              <Counter value={s.value} suffix={s.suffix} active={visible} />
+              <p className="text-[#0F172A] dark:text-white font-semibold text-sm mt-1">{s.label}</p>
+              <p className="text-[#64748B] text-xs mt-0.5">{s.desc}</p>
             </motion.div>
           ))}
         </div>

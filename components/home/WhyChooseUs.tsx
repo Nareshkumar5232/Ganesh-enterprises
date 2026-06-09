@@ -1,7 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { Shield, Truck, Award, Headset } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ShieldCheck, Truck, Award, HeadphonesIcon, PackageCheck, BadgeCheck
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface Feature {
@@ -10,93 +12,76 @@ interface Feature {
   description: string;
 }
 
-const features: Feature[] = [
+const FEATURES: Feature[] = [
   {
-    icon: Shield,
-    title: "Quality Assurance",
-    description: "All products are genuine and quality-tested",
+    icon: BadgeCheck,
+    title: "100% Genuine Products",
+    description: "Every product comes with manufacturer warranty. We source directly from authorised distributors.",
+  },
+  {
+    icon: PackageCheck,
+    title: "Bulk Order Experts",
+    description: "Competitive pricing for bulk and institutional orders with flexible payment terms.",
   },
   {
     icon: Truck,
-    title: "Fast Delivery",
-    description: "Quick delivery across Chennai and Tamil Nadu",
+    title: "Fast & Reliable Delivery",
+    description: "Prompt delivery across Chennai and Tamil Nadu with real-time order tracking.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "After-Sales Support",
+    description: "Dedicated support team for warranty claims, replacements and technical assistance.",
   },
   {
     icon: Award,
-    title: "Genuine Products",
-    description: "100% authentic products from authorized dealers",
+    title: "Authorised Dealer",
+    description: "Official authorised distributor for 100+ leading technology brands.",
   },
   {
-    icon: Headset,
-    title: "Expert Support",
-    description: "24/7 customer support from our technical team",
+    icon: HeadphonesIcon,
+    title: "Dedicated Account Manager",
+    description: "Every business client gets a dedicated account manager for seamless procurement.",
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
-
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 px-4 bg-[#0F0F0F]">
-      <div className="max-w-6xl mx-auto">
-        {/* Section heading */}
+    <section className="section-gray">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Why Choose{" "}
-            <span className="text-[#9EFF00] underline decoration-[#9EFF00]/40 underline-offset-4">
-              Us
-            </span>
+          <p className="text-[#2563EB] text-xs font-semibold uppercase tracking-wider mb-2">Why Choose Us</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] dark:text-white mb-3">
+            The Preferred Distributor for Businesses
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
-            We are committed to delivering the best experience for every
-            customer.
+          <p className="text-[#64748B] max-w-xl mx-auto text-sm leading-relaxed">
+            From small retailers to large enterprises, Sri Ganesh Enterprises delivers genuine technology products with unmatched service.
           </p>
         </div>
 
-        {/* Feature cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {features.map((feature) => {
-            const Icon = feature.icon;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {FEATURES.map((f, i) => {
+            const Icon = f.icon;
             return (
               <motion.div
-                key={feature.title}
-                variants={cardVariants}
-                className="glass-card p-6 flex flex-col items-center text-center gap-4"
+                key={f.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="enterprise-card p-6 flex gap-4"
               >
-                <div className="w-14 h-14 rounded-full bg-[#9EFF00]/10 flex items-center justify-center">
-                  <Icon
-                    className="w-7 h-7 text-[#9EFF00]"
-                    aria-hidden="true"
-                  />
+                <div className="w-10 h-10 rounded-md bg-blue-50 dark:bg-blue-950 flex items-center justify-center shrink-0 mt-0.5">
+                  <Icon className="w-5 h-5 text-[#2563EB]" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold text-base mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
+                  <h3 className="font-semibold text-[#0F172A] dark:text-white text-sm mb-1">{f.title}</h3>
+                  <p className="text-[#64748B] text-xs leading-relaxed">{f.description}</p>
                 </div>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

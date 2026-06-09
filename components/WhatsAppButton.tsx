@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   const whatsappLink = `https://wa.me/919342798344?text=${encodeURIComponent(
-    "Hello AL HIKMATH ENTERPRISES, I would like to know more about your products."
+    "Hello Sri Ganesh Enterprises ENTERPRISES, I would like to know more about your products."
   )}`;
 
   return (

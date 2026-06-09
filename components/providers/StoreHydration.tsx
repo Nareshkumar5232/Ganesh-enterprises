@@ -1,5 +1,5 @@
 "use client";
-// AL HIKMATH ENTERPRISES PVT LTD — Store Hydration Provider
+// Sri Ganesh Enterprises ENTERPRISES PVT LTD — Store Hydration Provider
 // Validates: Requirements 1.8, 12.1, 12.2
 
 import { useEffect } from "react";

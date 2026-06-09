@@ -47,7 +47,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Zap className="w-6 h-6 text-[#9EFF00]" aria-hidden="true" />
               <div className="flex flex-col leading-none">
                 <span className="font-bold text-[#9EFF00] tracking-wide text-base">
-                  AL HIKMATH
+                  Sri Ganesh Enterprises
                 </span>
                 <span className="text-gray-900 dark:text-white text-xs tracking-widest uppercase transition-colors duration-300">
                   ENTERPRISES

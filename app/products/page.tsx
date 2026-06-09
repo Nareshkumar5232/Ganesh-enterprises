@@ -2,7 +2,7 @@ import ProductsClient from "@/components/products/ProductsClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products | AL HIKMATH ENTERPRISES",
+  title: "Products | Sri Ganesh Enterprises ENTERPRISES",
   description: "Browse our premium selection of electronics, computers, IT accessories, networking products, chargers, earphones, smart devices, and technology solutions.",
 };
 

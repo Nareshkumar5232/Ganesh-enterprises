@@ -1,0 +1,3 @@
+module.exports=[96373,a=>{"use strict";var b=a.i(25368);a.s(["default",0,function(){return(0,b.jsx)("div",{className:"min-h-screen flex items-center justify-center",children:(0,b.jsxs)("div",{className:"text-center",children:[(0,b.jsx)("div",{className:"loader mb-4"}),(0,b.jsx)("p",{className:"text-gray-400",children:"Loading…"})]})})}])},69226,a=>{a.n(a.i(96373))}];
+
+//# sourceMappingURL=OneDrive_Desktop_Sri%20Ganesh%20Enterprises_app_loading_tsx_0mjgvm3._.js.map

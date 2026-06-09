@@ -44,7 +44,7 @@ export default function RegisterPage() {
         className="w-full max-w-md bg-white dark:bg-[#121212] p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-white/6 backdrop-blur-md"
       >
         <div className="flex justify-center mb-6">
-          <Image src="/images/logo.png" alt="AL HIKMATH ENTERPRISES" width={200} height={85} className="h-auto" />
+          <Image src="/images/logo.png" alt="Sri Ganesh Enterprises ENTERPRISES" width={200} height={85} className="h-auto" />
         </div>
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Create an account</h2>
         <div className="mb-4">

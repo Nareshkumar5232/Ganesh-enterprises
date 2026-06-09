@@ -20,11 +20,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "AL HIKMATH ENTERPRISES PVT LTD | Electronics, Computers & IT Products",
-    template: "%s | AL HIKMATH ENTERPRISES",
+    default: "Sri Ganesh Enterprises ENTERPRISES PVT LTD | Electronics, Computers & IT Products",
+    template: "%s | Sri Ganesh Enterprises ENTERPRISES",
   },
   description:
-    "Shop electronics, computers, IT accessories, networking products, and technology solutions at AL HIKMATH ENTERPRISES PVT LTD. Quality products, genuine brands, fast delivery across Chennai.",
+    "Shop electronics, computers, IT accessories, networking products, and technology solutions at Sri Ganesh Enterprises ENTERPRISES PVT LTD. Quality products, genuine brands, fast delivery across Chennai.",
   keywords: [
     "electronics products",
     "computer products",
@@ -33,30 +33,30 @@ export const metadata: Metadata = {
     "it accessories",
     "networking products",
     "Chennai",
-    "AL HIKMATH",
+    "Sri Ganesh Enterprises",
   ],
-  authors: [{ name: "AL HIKMATH ENTERPRISES PVT LTD" }],
-  creator: "AL HIKMATH ENTERPRISES PVT LTD",
+  authors: [{ name: "Sri Ganesh Enterprises ENTERPRISES PVT LTD" }],
+  creator: "Sri Ganesh Enterprises ENTERPRISES PVT LTD",
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://alhikmath.com",
-    siteName: "AL HIKMATH ENTERPRISES",
-    title: "AL HIKMATH ENTERPRISES PVT LTD | Electronics, Computers & IT Products",
+    siteName: "Sri Ganesh Enterprises ENTERPRISES",
+    title: "Sri Ganesh Enterprises ENTERPRISES PVT LTD | Electronics, Computers & IT Products",
     description:
-      "Shop electronics, computers, IT accessories, networking products, and technology solutions at AL HIKMATH ENTERPRISES PVT LTD.",
+      "Shop electronics, computers, IT accessories, networking products, and technology solutions at Sri Ganesh Enterprises ENTERPRISES PVT LTD.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "AL HIKMATH ENTERPRISES PVT LTD",
+        alt: "Sri Ganesh Enterprises ENTERPRISES PVT LTD",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AL HIKMATH ENTERPRISES PVT LTD",
+    title: "Sri Ganesh Enterprises ENTERPRISES PVT LTD",
     description: "Electronics, Computers & IT Products",
   },
   alternates: {
@@ -78,7 +78,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-foreground antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >

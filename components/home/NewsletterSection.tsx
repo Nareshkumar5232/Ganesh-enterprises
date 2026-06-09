@@ -2,7 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { Mail } from "lucide-react";
 import { newsletterSchema, type NewsletterFormData } from "@/lib/validations";
@@ -13,82 +12,48 @@ export default function NewsletterSection() {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<NewsletterFormData>({
-    resolver: zodResolver(newsletterSchema),
-  });
+  } = useForm<NewsletterFormData>({ resolver: zodResolver(newsletterSchema) });
 
-  function onSubmit(_data: NewsletterFormData) {
-    toast.success("Successfully subscribed to our newsletter!");
+  function onSubmit() {
+    toast.success("Subscribed! We'll keep you updated on new arrivals and offers.");
     reset();
   }
 
   return (
-    <section className="py-20 px-4 bg-[#0F0F0F]">
-      <div className="max-w-2xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="glass-card p-8 sm:p-12 flex flex-col items-center text-center gap-6"
-        >
-          {/* Icon */}
-          <div className="w-14 h-14 rounded-full bg-[#9EFF00]/10 flex items-center justify-center">
-            <Mail className="w-7 h-7 text-[#9EFF00]" aria-hidden="true" />
+    <section className="section-gray">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-14">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="w-10 h-10 bg-blue-50 dark:bg-blue-950 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Mail className="w-5 h-5 text-[#2563EB]" />
           </div>
-
-          {/* Heading */}
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              Stay in the Loop
-            </h2>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Subscribe to our newsletter for the latest deals, new arrivals,
-              and exclusive offers from AL HIKMATH ENTERPRISES PVT LTD.
-            </p>
-          </div>
-
-          {/* Form */}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="w-full flex flex-col gap-3"
-            noValidate
-          >
-            <div className="flex flex-col sm:flex-row gap-3">
-              <div className="flex-1 flex flex-col gap-1">
-                <input
-                  {...register("email")}
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-[#9EFF00]/60 focus:ring-1 focus:ring-[#9EFF00]/40 transition-colors duration-200"
-                  aria-label="Email address"
-                  aria-describedby={errors.email ? "newsletter-email-error" : undefined}
-                />
-                {errors.email && (
-                  <p
-                    id="newsletter-email-error"
-                    className="text-red-400 text-xs text-left"
-                    role="alert"
-                  >
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="flex-shrink-0 px-6 py-3 rounded-lg bg-[#9EFF00] text-black font-semibold text-sm hover:bg-[#9EFF00]/90 disabled:opacity-60 disabled:cursor-not-allowed transition-colors duration-200"
-              >
-                {isSubmitting ? "Subscribing…" : "Subscribe"}
-              </button>
-            </div>
-          </form>
-
-          <p className="text-gray-600 text-xs">
-            No spam, ever. Unsubscribe at any time.
+          <h2 className="text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-white mb-2">
+            Stay Updated on New Arrivals
+          </h2>
+          <p className="text-[#64748B] text-sm mb-6">
+            Subscribe for product launches, exclusive offers and industry news.
           </p>
-        </motion.div>
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col gap-1 flex-1 max-w-sm">
+              <input
+                {...register("email")}
+                type="email"
+                placeholder="Enter your business email"
+                className="w-full px-4 py-2.5 border border-[#E2E8F0] dark:border-slate-700 rounded-md text-sm text-[#111827] dark:text-white bg-white dark:bg-[#1E293B] placeholder-[#94A3B8] focus:outline-none focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] transition-colors"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-xs text-left" role="alert">{errors.email.message}</p>
+              )}
+            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="shrink-0 px-5 py-2.5 bg-[#2563EB] text-white text-sm font-semibold rounded-md hover:bg-[#1D4ED8] disabled:opacity-60 transition-colors"
+            >
+              {isSubmitting ? "Subscribing…" : "Subscribe"}
+            </button>
+          </form>
+          <p className="text-[#94A3B8] text-xs mt-3">No spam. Unsubscribe at any time.</p>
+        </div>
       </div>
     </section>
   );

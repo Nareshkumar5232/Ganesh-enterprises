@@ -2,35 +2,42 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 
 export default function CTABanner() {
   return (
-    <section className="py-16 px-4 bg-[#0F0F0F]">
-      <div className="max-w-5xl mx-auto">
+    <section className="section-white">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="rounded-2xl border border-[#9EFF00]/30 bg-gradient-to-r from-[#9EFF00]/20 via-[#00BFFF]/10 to-[#9EFF00]/20 p-10 sm:p-14 flex flex-col sm:flex-row items-center justify-between gap-8 text-center sm:text-left"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-[#0F172A] rounded-2xl p-10 lg:p-14 flex flex-col lg:flex-row items-center justify-between gap-8"
         >
-          <div className="flex flex-col gap-3">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              Ready to Upgrade Your Electronics?
+          <div className="text-center lg:text-left">
+            <p className="text-[#93C5FD] text-xs font-semibold uppercase tracking-wider mb-3">Ready to Partner With Us?</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              Bulk Orders, Competitive Pricing, Fast Delivery
             </h2>
-            <p className="text-gray-300 text-base max-w-lg">
-              Shop from 500+ premium products at the best prices in Chennai.
+            <p className="text-slate-400 text-sm max-w-lg leading-relaxed">
+              Whether you are a retailer, institution or enterprise — we supply genuine technology products at the best wholesale prices across Chennai.
             </p>
           </div>
-
-          <Link
-            href="/products"
-            className="flex-shrink-0 inline-flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-black bg-[#9EFF00] hover:bg-[#9EFF00]/90 transition-colors duration-200 shadow-neon-green"
-          >
-            Shop Now
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#2563EB] text-white text-sm font-semibold rounded-md hover:bg-[#1D4ED8] transition-colors shadow-sm"
+            >
+              Get a Quote <ArrowRight className="w-4 h-4" />
+            </Link>
+            <a
+              href="tel:+919342698344"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-slate-600 text-white text-sm font-semibold rounded-md hover:border-slate-400 hover:bg-white/5 transition-colors"
+            >
+              <Phone className="w-4 h-4" /> Call Now
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

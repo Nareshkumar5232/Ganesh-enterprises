@@ -1,0 +1,21 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/register/route": "/api/auth/register",
+  "/api/payment/process/route": "/api/payment/process",
+  "/api/payment/verify/route": "/api/payment/verify",
+  "/api/payment/webhook/route": "/api/payment/webhook",
+  "/cart/page": "/cart",
+  "/checkout/page": "/checkout",
+  "/contact/page": "/contact",
+  "/favicon.ico/route": "/favicon.ico",
+  "/login/page": "/login",
+  "/order-confirmation/page": "/order-confirmation",
+  "/page": "/",
+  "/products/[slug]/page": "/products/[slug]",
+  "/products/page": "/products",
+  "/register/page": "/register",
+  "/wishlist/page": "/wishlist"
+}
