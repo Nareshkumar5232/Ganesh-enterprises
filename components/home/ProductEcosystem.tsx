@@ -1,0 +1,153 @@
+"use client";
+
+import Link from "next/link";
+
+const ECO_ITEMS = [
+  {
+    name: "Mobiles",
+    href: "/products?category=mobile",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="13" y="3" width="22" height="42" rx="4" />
+        <circle cx="24" cy="39" r="1.5" fill="#B91C1C" />
+        <line x1="20" y1="8" x2="28" y2="8" />
+      </svg>
+    ),
+  },
+  {
+    name: "Laptops",
+    href: "/products?category=computers",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="6" y="8" width="36" height="24" rx="2" />
+        <path d="M2 36h44l-3-4H5z" />
+        <line x1="20" y1="36" x2="28" y2="36" />
+      </svg>
+    ),
+  },
+  {
+    name: "Smart TVs",
+    href: "/products?category=tv",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="6" width="44" height="30" rx="3" />
+        <polyline points="14,42 24,36 34,42" />
+        <line x1="14" y1="42" x2="34" y2="42" />
+      </svg>
+    ),
+  },
+  {
+    name: "Printers",
+    href: "/products?category=printers",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="8" y="16" width="32" height="20" rx="3" />
+        <path d="M12 16V8h24v8" />
+        <rect x="14" y="28" width="20" height="12" />
+        <line x1="18" y1="24" x2="22" y2="24" />
+        <circle cx="38" cy="24" r="1.5" fill="#B91C1C" />
+      </svg>
+    ),
+  },
+  {
+    name: "CCTV",
+    href: "/products?category=security",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 22l26-8v16L6 22z" />
+        <rect x="30" y="16" width="12" height="12" rx="2" />
+        <line x1="6" y1="22" x2="2" y2="22" />
+        <line x1="2" y1="16" x2="2" y2="38" />
+        <circle cx="42" cy="18" r="2" fill="#B91C1C" />
+      </svg>
+    ),
+  },
+  {
+    name: "Networking",
+    href: "/products?category=networking",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="28" width="40" height="12" rx="3" />
+        <circle cx="10" cy="34" r="1.5" fill="#B91C1C" />
+        <circle cx="16" cy="34" r="1.5" fill="#B91C1C" />
+        <line x1="24" y1="28" x2="24" y2="20" />
+        <path d="M17 20 Q24 14 31 20" />
+        <path d="M12 16 Q24 8 36 16" />
+      </svg>
+    ),
+  },
+  {
+    name: "Appliances",
+    href: "/products?category=appliances",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="14" y="4" width="20" height="40" rx="3" />
+        <line x1="14" y1="22" x2="34" y2="22" />
+        <circle cx="30" cy="13" r="2" />
+        <line x1="18" y1="28" x2="30" y2="28" />
+        <line x1="18" y1="33" x2="30" y2="33" />
+      </svg>
+    ),
+  },
+];
+
+export default function ProductEcosystem() {
+  return (
+    <section className="relative py-20 px-4 bg-white border-t border-b border-[#E5E7EB]/50 overflow-hidden flex flex-col items-center">
+      <div className="max-w-7xl mx-auto w-full text-center mb-12">
+        <div className="section-divider" />
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight">
+          Our Product Ecosystem
+        </h2>
+        <p className="text-sm md:text-base text-[#6B7280] mt-3 font-outfit max-w-2xl mx-auto">
+          Explore our vast distribution catalog spanning premium consumer electronics, commercial IT systems, and wholesale smart appliances.
+        </p>
+      </div>
+
+      {/* Orbit Container */}
+      <div className="relative w-[300px] h-[300px] sm:w-[480px] sm:h-[480px] md:w-[560px] md:h-[560px] flex items-center justify-center">
+        
+        {/* Center Circle */}
+        <div className="absolute w-[120px] h-[120px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] rounded-full bg-[#F7F7F7] shadow-xl border border-[#D4AF37]/60 flex flex-col items-center justify-center text-center p-3 sm:p-5 z-20">
+          <span className="text-[10px] sm:text-xs font-bold text-[#6B7280] uppercase tracking-wider">Sri Ganesh</span>
+          <span className="text-sm sm:text-lg md:text-xl font-black text-[#B91C1C] leading-none mt-0.5 font-heading">Enterprises</span>
+          <div className="h-[2px] w-8 bg-[#D4AF37] my-2 sm:my-3 rounded-full" />
+          <span className="text-[11px] sm:text-sm md:text-base font-extrabold text-[#0F172A] font-outfit leading-none">5000+ Products</span>
+          <span className="text-[9px] sm:text-xs text-[#6B7280] font-medium mt-1">100+ Brands</span>
+        </div>
+
+        {/* Dashed Orbit Ring */}
+        <div className="absolute w-[190px] h-[190px] sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] rounded-full border border-dashed border-[#D4AF37]/40 pointer-events-none" />
+
+        {/* Orbit Rotating Plane */}
+        <div className="absolute inset-0 animate-[orbit_50s_linear_infinite] pointer-events-none">
+          {ECO_ITEMS.map((item, idx) => {
+            const angle = idx * (360 / ECO_ITEMS.length);
+            return (
+              <div
+                key={item.name}
+                className="absolute top-1/2 left-1/2 w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24 -mt-6 -ml-6 sm:-mt-10 sm:-ml-10 md:-mt-12 md:-ml-12 pointer-events-auto"
+                style={{
+                  transform: `rotate(${angle}deg) translate(var(--orbit-radius)) rotate(-${angle}deg)`,
+                }}
+              >
+                {/* Product Node counter-rotated to stay upright */}
+                <Link
+                  href={item.href}
+                  className="w-full h-full rounded-full bg-white border border-[#E5E7EB] shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_24px_rgba(185,28,28,0.15)] flex flex-col items-center justify-center p-1 sm:p-3 hover:border-[#B91C1C] hover:scale-105 transition-all duration-300 group animate-[counter-orbit_50s_linear_infinite] text-center"
+                >
+                  <div className="text-[#B91C1C] group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
+                  </div>
+                  <span className="hidden sm:block text-[8px] sm:text-[10px] md:text-[11px] font-bold text-[#0F172A] mt-1.5 leading-tight font-outfit px-0.5 truncate max-w-full group-hover:text-[#B91C1C]">
+                    {item.name}
+                  </span>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

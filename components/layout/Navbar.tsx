@@ -86,8 +86,10 @@ export default function Navbar() {
   return (
     <header
       className={[
-        "fixed top-0 left-0 right-0 z-50 w-full bg-white transition-shadow duration-200",
-        scrolled ? "shadow-[0_2px_16px_rgba(0,0,0,0.08)]" : "border-b border-[#E5E7EB]",
+        "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b",
+        scrolled
+          ? "bg-white/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.05)] border-[#E5E7EB]/40"
+          : "bg-white border-[#E5E7EB]",
       ].join(" ")}
       onMouseLeave={closeAll}
     >
@@ -108,17 +110,17 @@ export default function Navbar() {
           </Link>
 
           {/* ── Desktop nav ── */}
-          <nav className="hidden lg:flex items-center flex-1 justify-center gap-0.5" aria-label="Main">
+          <nav className="hidden lg:flex items-center flex-nowrap flex-1 justify-center gap-3 xl:gap-5" aria-label="Main">
 
             <Link href="/"
-              className={`relative px-3 py-1.5 text-[13.5px] font-semibold transition-colors ${isHome ? "text-[#B91C1C]" : "text-[#374151] hover:text-[#B91C1C]"}`}>
+              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${isHome ? "text-[#B91C1C]" : "text-[#374151] hover:text-[#B91C1C]"}`}>
               Home
-              {isHome && <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#B91C1C] rounded-full" />}
+              {isHome && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#B91C1C] rounded-full" />}
             </Link>
 
             {/* Products */}
             <div className="relative" onMouseEnter={() => { setProductsOpen(true); setCatsOpen(false); }}>
-              <button className="flex items-center gap-1 px-3 py-1.5 text-[13.5px] font-semibold text-[#374151] hover:text-[#B91C1C] transition-colors">
+              <button className="flex items-center gap-1 px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
                 Products <ChevronDown className={`w-3.5 h-3.5 transition-transform ${productsOpen ? "rotate-180 text-[#B91C1C]" : ""}`} />
               </button>
               {productsOpen && (
@@ -129,13 +131,13 @@ export default function Navbar() {
             </div>
 
             <Link href="/products"
-              className="px-3 py-1.5 text-[13.5px] font-semibold text-[#374151] hover:text-[#B91C1C] transition-colors">
+              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
               Brands
             </Link>
 
             {/* Categories */}
             <div className="relative" onMouseEnter={() => { setCatsOpen(true); setProductsOpen(false); }}>
-              <button className="flex items-center gap-1 px-3 py-1.5 text-[13.5px] font-semibold text-[#374151] hover:text-[#B91C1C] transition-colors">
+              <button className="flex items-center gap-1 px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
                 Categories <ChevronDown className={`w-3.5 h-3.5 transition-transform ${catsOpen ? "rotate-180 text-[#B91C1C]" : ""}`} />
               </button>
               {catsOpen && (
@@ -146,12 +148,12 @@ export default function Navbar() {
             </div>
 
             <Link href="/about"
-              className="px-3 py-1.5 text-[13.5px] font-semibold text-[#374151] hover:text-[#B91C1C] transition-colors">
+              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
               About Us
             </Link>
 
             <Link href="/contact"
-              className="px-3 py-1.5 text-[13.5px] font-semibold text-[#374151] hover:text-[#B91C1C] transition-colors">
+              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
               Contact Us
             </Link>
           </nav>
@@ -166,8 +168,8 @@ export default function Navbar() {
             </form>
 
             {/* Icon buttons */}
-            <Link href="/login"   aria-label="Account"  className="hidden md:flex p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors"><User className="w-5 h-5" /></Link>
-            <Link href="/wishlist" aria-label="Wishlist" className="hidden md:flex p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors"><Heart className="w-5 h-5" /></Link>
+            <Link href="/login"   aria-label="Account"  className="hidden xl:flex p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors"><User className="w-5 h-5" /></Link>
+            <Link href="/wishlist" aria-label="Wishlist" className="hidden xl:flex p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors"><Heart className="w-5 h-5" /></Link>
             <Link href="/cart" aria-label={`Cart (${totalItems})`} className="relative p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors">
               <ShoppingCart className="w-5 h-5" />
               <span className="absolute -top-0.5 -right-0.5 min-w-[17px] h-[17px] flex items-center justify-center rounded-full bg-[#B91C1C] text-white text-[9px] font-bold px-1">
@@ -177,13 +179,13 @@ export default function Navbar() {
 
             {/* Phone */}
             <a href="tel:+919150310876"
-              className="hidden lg:flex items-center gap-1.5 text-[13px] font-semibold text-[#0F172A] hover:text-[#B91C1C] transition-colors">
+              className="hidden xl:flex items-center gap-1.5 text-[13px] font-semibold font-outfit text-[#0F172A] hover:text-[#B91C1C] transition-colors">
               <Phone className="w-3.5 h-3.5" />
               9150310876
             </a>
 
             {/* CTA */}
-            <Link href="/contact" className="btn-red ml-1 text-[13px] px-4 py-2">
+            <Link href="/contact" className="hidden sm:inline-flex btn-red ml-1 text-[13.5px] px-4 py-2 font-outfit whitespace-nowrap">
               Get Wholesale Quote
             </Link>
 

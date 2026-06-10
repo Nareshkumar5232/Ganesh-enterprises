@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import HeroSection     from "@/components/home/HeroSection";
-import CategorySection from "@/components/home/CategorySection";
-import TrustedBrands   from "@/components/home/TrustedBrands";
-import AboutSection    from "@/components/home/AboutSection";
-import WhoServeSection from "@/components/home/WhoServeSection";
+import HeroSection       from "@/components/home/HeroSection";
+import ProductEcosystem  from "@/components/home/ProductEcosystem";
+import CategorySection   from "@/components/home/CategorySection";
+import TrustedBrands     from "@/components/home/TrustedBrands";
+import AboutSection      from "@/components/home/AboutSection";
+import WhoServeSection   from "@/components/home/WhoServeSection";
 
 export const metadata: Metadata = {
   title: "Sri Ganesh Enterprises | Wholesale Electronics Distributor Chennai",
@@ -25,6 +26,9 @@ export default function HomePage() {
     <>
       {/* 1. Hero — full screen */}
       <HeroSection />
+
+      {/* 1.5. Product Ecosystem Showcase */}
+      <ProductEcosystem />
 
       {/* 2. Shop by Category */}
       <CategorySection />

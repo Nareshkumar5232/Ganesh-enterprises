@@ -290,31 +290,31 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
+    <div className="min-h-screen bg-[#F7F7F7] text-[#0F172A] pt-24 pb-20">
       {/* ── TOP HERO HEADER ── */}
       <div className="max-w-7xl mx-auto px-4 mb-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#E5E7EB]">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-[#DC2626]" />
-              <span className="text-xs uppercase tracking-widest text-[#DC2626] font-bold">Premium Showroom</span>
+              <Sparkles className="w-5 h-5 text-[#B91C1C]" />
+              <span className="text-xs uppercase tracking-widest text-[#B91C1C] font-extrabold font-outfit">Premium Showroom</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-              Enterprise <span className="text-[#DC2626] font-light">Products</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#0F172A] tracking-tight font-heading">
+              Enterprise <span className="text-[#B91C1C]">Products</span>
             </h1>
-            <p className="text-gray-400 mt-2 text-sm md:text-base">
+            <p className="text-[#6B7280] mt-2 text-sm md:text-base font-sans">
               Explore our carefully curated premium components and appliances built to the highest specifications.
             </p>
           </div>
           <div className="text-right flex items-center md:flex-col gap-2 md:gap-0 justify-between">
-            <span className="text-2xl font-mono font-black text-white">{filteredAndSortedProducts.length}</span>
-            <span className="text-xs text-gray-500 uppercase tracking-wider">Products Available</span>
+            <span className="text-2xl font-black text-[#0F172A] font-mono">{filteredAndSortedProducts.length}</span>
+            <span className="text-xs text-[#6B7280] uppercase tracking-wider font-semibold font-outfit">Products Available</span>
           </div>
         </div>
       </div>
 
       {/* ── STICKY CATEGORY TABS ── */}
-      <div className="sticky top-20 z-40 bg-background/95 backdrop-blur-md border-b border-white/5 py-4 mb-8">
+      <div className="sticky top-16 z-40 bg-[#F7F7F7]/95 backdrop-blur-md border-b border-[#E5E7EB]/50 py-4 mb-8">
         <div className="max-w-7xl mx-auto px-4">
           <div
             ref={navContainerRef}
@@ -326,10 +326,10 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 <button
                   key={cat.id}
                   onClick={() => scrollToSection(cat.id)}
-                  className={`flex-shrink-0 px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 select-none ${
+                  className={`flex-shrink-0 px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 select-none font-outfit ${
                     isActive
-                      ? "bg-[#DC2626] text-white border-[#DC2626] shadow-[0_0_12px_rgba(220, 38, 38, 0.3)] font-bold"
-                      : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30 hover:text-white"
+                      ? "bg-[#B91C1C] text-white border-[#B91C1C] shadow-md font-bold"
+                      : "bg-white text-[#374151] border-[#E5E7EB] hover:border-[#B91C1C] hover:text-[#B91C1C]"
                   }`}
                 >
                   {cat.label}
@@ -344,18 +344,18 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* ── SIDEBAR FILTERS (DESKTOP) ── */}
-          <aside className="hidden lg:block lg:col-span-1 space-y-6 self-start sticky top-40">
-            <div className="glass-card p-6 border border-white/10 space-y-6">
+          <aside className="hidden lg:block lg:col-span-1 space-y-6 self-start sticky top-36">
+            <div className="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-sm space-y-6">
               {/* Header */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-4">
                 <div className="flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[#DC2626]" />
-                  <h2 className="text-sm uppercase tracking-wider font-bold text-white">Filters</h2>
+                  <SlidersHorizontal className="w-4 h-4 text-[#B91C1C]" />
+                  <h2 className="text-sm uppercase tracking-wider font-bold text-[#0F172A] font-heading">Filters</h2>
                 </div>
                 {activeFiltersCount > 0 && (
                   <button
                     onClick={resetFilters}
-                    className="flex items-center gap-1 text-[11px] font-semibold text-[#DC2626] hover:underline"
+                    className="flex items-center gap-1 text-[11px] font-semibold text-[#B91C1C] hover:underline font-outfit"
                   >
                     <RotateCcw className="w-3 h-3" />
                     Reset
@@ -365,20 +365,20 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
 
               {/* Categories Filter */}
               <div className="space-y-2">
-                <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Category</label>
-                <div className="flex flex-col gap-1.5 mt-2">
+                <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Category</label>
+                <div className="flex flex-col gap-1 mt-2">
                   {CATEGORIES_LIST.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setCategory(cat.id)}
-                      className={`text-left text-sm py-1 px-2 rounded-md transition-all duration-200 flex items-center justify-between ${
+                      className={`text-left text-sm py-1.5 px-2.5 rounded-lg transition-all duration-200 flex items-center justify-between font-sans ${
                         category === cat.id
-                          ? "bg-white/10 text-[#DC2626] font-semibold"
-                          : "text-gray-400 hover:bg-white/5 hover:text-white"
+                          ? "bg-[#FEF2F2] text-[#B91C1C] font-semibold"
+                          : "text-[#4B5563] hover:bg-[#F7F7F7] hover:text-[#B91C1C]"
                       }`}
                     >
                       <span>{cat.label}</span>
-                      {category === cat.id && <Check className="w-3.5 h-3.5 text-[#DC2626]" />}
+                      {category === cat.id && <Check className="w-3.5 h-3.5 text-[#B91C1C]" />}
                     </button>
                   ))}
                 </div>
@@ -387,8 +387,8 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               {/* Price Filter */}
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Max Price</label>
-                  <span className="font-mono text-xs text-[#DC2626]">{formatCurrency(priceInput)}</span>
+                  <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Max Price</label>
+                  <span className="font-mono text-xs text-[#B91C1C] font-bold">{formatCurrency(priceInput)}</span>
                 </div>
                 <input
                   type="range"
@@ -397,9 +397,9 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   step="500"
                   value={priceInput}
                   onChange={handlePriceChange}
-                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#DC2626]"
+                  className="w-full h-1 bg-[#E5E7EB] rounded-lg appearance-none cursor-pointer accent-[#B91C1C]"
                 />
-                <div className="flex justify-between text-[10px] text-gray-500 font-mono">
+                <div className="flex justify-between text-[10px] text-[#6B7280] font-mono">
                   <span>₹0</span>
                   <span>₹20,000+</span>
                 </div>
@@ -407,7 +407,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
 
               {/* Ratings Filter */}
               <div className="space-y-2">
-                <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Minimum Rating</label>
+                <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Minimum Rating</label>
                 <div className="flex items-center gap-1.5 mt-1.5">
                   {[1, 2, 3, 4, 5].map((stars) => {
                     const isActive = minRating === stars;
@@ -415,13 +415,13 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       <button
                         key={stars}
                         onClick={() => setMinRating(isActive ? 0 : stars)}
-                        className={`flex items-center justify-center flex-1 py-1.5 rounded-md border text-xs font-semibold transition-all duration-200 ${
+                        className={`flex items-center justify-center flex-1 py-1.5 rounded-lg border text-xs font-semibold transition-all duration-200 font-outfit ${
                           isActive
-                            ? "bg-[#DC2626] text-white border-[#DC2626] font-bold shadow-[0_0_8px_rgba(220, 38, 38, 0.25)]"
-                            : "bg-white/5 border-white/10 text-gray-300 hover:border-white/20 hover:text-white"
+                            ? "bg-[#B91C1C] text-white border-[#B91C1C] font-bold shadow-sm"
+                            : "bg-white border-[#E5E7EB] text-[#374151] hover:border-[#B91C1C] hover:text-[#B91C1C]"
                         }`}
                       >
-                        {stars} <Star className={`w-3 h-3 ml-0.5 ${isActive ? "fill-black" : "fill-none"}`} />
+                        {stars} <Star className={`w-3 h-3 ml-0.5 ${isActive ? "fill-white text-white" : "fill-none text-[#6B7280]"}`} />
                       </button>
                     );
                   })}
@@ -429,10 +429,10 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               </div>
 
               {/* Toggle Switches */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-3 pt-2 border-t border-[#E5E7EB]">
                 {/* Availability */}
                 <label className="flex items-center justify-between cursor-pointer group select-none">
-                  <span className="text-xs uppercase tracking-wider text-gray-400 font-semibold group-hover:text-white transition-colors">
+                  <span className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit group-hover:text-[#0F172A] transition-colors">
                     In Stock Only
                   </span>
                   <input
@@ -441,12 +441,12 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                     onChange={(e) => setAvailability(e.target.checked ? "in-stock" : "all")}
                     className="sr-only peer"
                   />
-                  <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
+                  <div className="relative w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-[#6B7280] peer-checked:after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#B91C1C]" />
                 </label>
 
                 {/* New Arrivals */}
                 <label className="flex items-center justify-between cursor-pointer group select-none">
-                  <span className="text-xs uppercase tracking-wider text-gray-400 font-semibold group-hover:text-white transition-colors">
+                  <span className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit group-hover:text-[#0F172A] transition-colors">
                     New Arrivals
                   </span>
                   <input
@@ -455,7 +455,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                     onChange={(e) => setNewArrivalsOnly(e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
+                  <div className="relative w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-[#6B7280] peer-checked:after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#B91C1C]" />
                 </label>
               </div>
             </div>
@@ -464,46 +464,46 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
           {/* ── MAIN PRODUCTS DISPLAY ── */}
           <main className="col-span-1 lg:col-span-3 space-y-10">
             {/* ── TOPBAR TOOLBAR ── */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-white/5 border border-white/10 p-4 rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-white border border-[#E5E7EB] p-4 rounded-xl shadow-sm">
               {/* Search input */}
               <div className="relative w-full sm:max-w-md">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
                 <input
                   type="text"
                   placeholder="Search products, brands, tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 text-sm bg-black/40 border border-white/15 rounded-lg outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626]/30 transition-all duration-300 text-white placeholder-gray-500"
+                  className="w-full pl-10 pr-4 py-2 text-sm bg-[#F7F7F7] border border-[#E5E7EB] rounded-lg outline-none focus:border-[#B91C1C] focus:ring-1 focus:ring-[#B91C1C]/20 transition-all duration-300 text-[#0F172A] placeholder-[#9CA3AF] font-sans"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-white/15"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-full hover:bg-gray-200"
                   >
-                    <X className="w-3.5 h-3.5 text-gray-400" />
+                    <X className="w-3.5 h-3.5 text-[#6B7280]" />
                   </button>
                 )}
               </div>
 
               {/* Sort by */}
               <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-                <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  <ArrowUpDown className="w-3.5 h-3.5 text-[#DC2626]" />
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#6B7280] uppercase tracking-wider font-outfit">
+                  <ArrowUpDown className="w-3.5 h-3.5 text-[#B91C1C]" />
                   <span>Sort By</span>
                 </div>
                 <div className="relative">
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortOption)}
-                    className="appearance-none bg-black/60 border border-white/15 rounded-lg px-4 pr-10 py-2 text-sm text-white font-medium outline-none focus:border-[#DC2626] transition-colors cursor-pointer select-none"
+                    className="appearance-none bg-white border border-[#E5E7EB] rounded-lg px-4 pr-10 py-2 text-sm text-[#0F172A] font-medium outline-none focus:border-[#B91C1C] transition-colors cursor-pointer select-none font-outfit"
                   >
                     {SORT_OPTIONS.map((opt) => (
-                      <option key={opt.value} value={opt.value} className="bg-[#0F0F0F] text-white">
+                      <option key={opt.value} value={opt.value} className="bg-white text-[#0F172A]">
                         {opt.label}
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280] pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -511,58 +511,58 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
             {/* Active filters display */}
             {activeFiltersCount > 0 && (
               <div className="flex flex-wrap items-center gap-2 mt-2">
-                <span className="text-xs text-gray-500 uppercase tracking-wider font-semibold mr-1">Active filters:</span>
+                <span className="text-xs text-[#6B7280] uppercase tracking-wider font-semibold mr-1 font-outfit">Active filters:</span>
                 {searchQuery && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
+                  <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#0F172A] font-sans">
                     Search: "{searchQuery}"
-                    <button onClick={() => setSearchQuery("")} className="hover:text-[#DC2626] ml-1">
+                    <button onClick={() => setSearchQuery("")} className="hover:text-[#B91C1C] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 {category !== "all" && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-[#DC2626]">
+                  <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#B91C1C] font-semibold font-sans">
                     Category: {CATEGORY_MAP[category]?.title || category}
-                    <button onClick={() => setCategory("all")} className="hover:text-white ml-1">
+                    <button onClick={() => setCategory("all")} className="hover:text-[#0F172A] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 {(priceRange[0] !== 0 || priceRange[1] !== 20000) && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
+                  <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#0F172A] font-sans">
                     Max Price: {formatCurrency(priceRange[1])}
-                    <button onClick={() => setPriceRange([0, 20000])} className="hover:text-[#DC2626] ml-1">
+                    <button onClick={() => setPriceRange([0, 20000])} className="hover:text-[#B91C1C] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 {minRating > 0 && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
+                  <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#0F172A] font-sans">
                     Rating: {minRating}+ ★
-                    <button onClick={() => setMinRating(0)} className="hover:text-[#DC2626] ml-1">
+                    <button onClick={() => setMinRating(0)} className="hover:text-[#B91C1C] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 {availability === "in-stock" && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
+                  <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#0F172A] font-sans">
                     In Stock Only
-                    <button onClick={() => setAvailability("all")} className="hover:text-[#DC2626] ml-1">
+                    <button onClick={() => setAvailability("all")} className="hover:text-[#B91C1C] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 {newArrivalsOnly && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
-                    New Arrivals Only
-                    <button onClick={() => setNewArrivalsOnly(false)} className="hover:text-[#DC2626] ml-1">
+                  <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#0F172A] font-sans">
+                    New Arrivals
+                    <button onClick={() => setNewArrivalsOnly(false)} className="hover:text-[#B91C1C] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 <button
                   onClick={resetFilters}
-                  className="text-xs text-[#DC2626] hover:underline flex items-center gap-1 ml-1"
+                  className="text-xs text-[#B91C1C] font-semibold hover:underline flex items-center gap-1 ml-1 font-outfit"
                 >
                   Clear All
                 </button>
@@ -572,37 +572,37 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
             {/* ── DYNAMIC SECTIONS GRID ── */}
             <div className="space-y-16">
               {isLoading ? (
-                <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-                  <div className="mx-auto mb-4 h-12 w-12 rounded-full border-2 border-[#DC2626] border-t-transparent animate-spin" />
-                  <h3 className="text-xl font-bold text-white mb-2">Loading products...</h3>
-                  <p className="text-gray-400 text-sm max-w-sm mx-auto">
-                    Fetching the latest catalog from the backend.
+                <div className="text-center py-20 bg-white border border-[#E5E7EB] rounded-2xl shadow-sm">
+                  <div className="mx-auto mb-4 h-12 w-12 rounded-full border-2 border-[#B91C1C] border-t-transparent animate-spin" />
+                  <h3 className="text-xl font-bold text-[#0F172A] mb-2 font-heading">Loading products...</h3>
+                  <p className="text-[#6B7280] text-sm max-w-sm mx-auto font-sans">
+                    Fetching the latest catalog from the distribution hub.
                   </p>
                 </div>
               ) : isError ? (
-                <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-                  <SlidersHorizontal className="w-12 h-12 text-[#DC2626] mx-auto mb-4 opacity-40 animate-pulse" />
-                  <h3 className="text-xl font-bold text-white mb-2">Unable to load products. Please try again later.</h3>
-                  <p className="text-gray-400 text-sm max-w-sm mx-auto mb-6">
-                    The backend is unavailable right now.
+                <div className="text-center py-20 bg-white border border-[#E5E7EB] rounded-2xl shadow-sm">
+                  <SlidersHorizontal className="w-12 h-12 text-[#B91C1C] mx-auto mb-4 opacity-40 animate-pulse" />
+                  <h3 className="text-xl font-bold text-[#0F172A] mb-2 font-heading">Unable to load products.</h3>
+                  <p className="text-[#6B7280] text-sm max-w-sm mx-auto mb-6 font-sans">
+                    The database is unavailable right now. Please try again later.
                   </p>
                   <button
                     onClick={() => refetch()}
-                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#DC2626] text-white hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(220, 38, 38, 0.3)]"
+                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#B91C1C] text-white hover:scale-105 active:scale-95 transition-all shadow-sm font-outfit"
                   >
                     Retry
                   </button>
                 </div>
               ) : filteredAndSortedProducts.length === 0 ? (
-                <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-                  <SlidersHorizontal className="w-12 h-12 text-[#DC2626] mx-auto mb-4 opacity-40 animate-pulse" />
-                  <h3 className="text-xl font-bold text-white mb-2">No matching products found</h3>
-                  <p className="text-gray-400 text-sm max-w-sm mx-auto mb-6">
+                <div className="text-center py-20 bg-white border border-[#E5E7EB] rounded-2xl shadow-sm">
+                  <SlidersHorizontal className="w-12 h-12 text-[#B91C1C] mx-auto mb-4 opacity-40" />
+                  <h3 className="text-xl font-bold text-[#0F172A] mb-2 font-heading">No matching products found</h3>
+                  <p className="text-[#6B7280] text-sm max-w-sm mx-auto mb-6 font-sans">
                     We couldn't find any products matching your filters. Try resetting the filters or tweaking your search terms.
                   </p>
                   <button
                     onClick={resetFilters}
-                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#DC2626] text-white hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(220, 38, 38, 0.3)]"
+                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#B91C1C] text-white hover:scale-105 active:scale-95 transition-all shadow-sm font-outfit"
                   >
                     Reset Filters
                   </button>
@@ -625,19 +625,19 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       data-section-id={catId}
                       className="space-y-6 scroll-mt-36"
                     >
-                      {/* Section Title, Description, and Separation Glow */}
+                      {/* Section Title, Description, and Separation Divider */}
                       <div className="relative pb-4">
                         <div className="flex items-center gap-2.5">
-                          <span className="w-1.5 h-6 bg-[#DC2626] rounded-full shadow-[0_0_8px_rgba(220,38,38,0.4)]" />
-                          <h2 className="text-2xl font-extrabold text-white tracking-tight">
+                          <span className="w-1.5 h-6 bg-[#B91C1C] rounded-full" />
+                          <h2 className="text-2xl font-extrabold text-[#0F172A] tracking-tight font-heading">
                             {catData.title}
                           </h2>
-                          <span className="text-xs text-gray-500 font-mono">({products.length} products)</span>
+                          <span className="text-xs text-[#6B7280] font-mono">({products.length} products)</span>
                         </div>
-                        <p className="text-gray-400 text-xs mt-1 md:text-sm">{catData.desc}</p>
-                        {/* Elegant divider with visual glow center */}
-                        <div className="w-full h-[1px] bg-gradient-to-r from-white/10 via-[#DC2626]/30 to-white/10 mt-3 relative">
-                          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-20 h-[3px] bg-gradient-to-r from-transparent via-[#DC2626] to-transparent shadow-[0_0_10px_#DC2626]" />
+                        <p className="text-[#6B7280] text-xs mt-1 md:text-sm font-sans">{catData.desc}</p>
+                        {/* Elegant divider */}
+                        <div className="w-full h-[1px] bg-gradient-to-r from-[#E5E7EB]/10 via-[#B91C1C]/20 to-[#E5E7EB]/10 mt-3 relative">
+                          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-20 h-[2.5px] bg-gradient-to-r from-transparent via-[#B91C1C] to-transparent" />
                         </div>
                       </div>
 
@@ -678,10 +678,10 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
 
       {/* ── MOBILE BAR BUTTONS (STICKY BOTTOM) ── */}
       <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-full max-w-[280px]">
-        <div className="flex items-center justify-center gap-3 bg-black/80 backdrop-blur-md border border-white/10 p-2.5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center justify-center gap-3 bg-[#0F172A]/95 backdrop-blur-md border border-[#E5E7EB]/10 p-2.5 rounded-full shadow-lg">
           <button
             onClick={() => setMobileFilterOpen(true)}
-            className="flex items-center justify-center gap-2 flex-1 py-2 rounded-full bg-[#DC2626] text-white text-xs font-bold uppercase tracking-wider"
+            className="flex items-center justify-center gap-2 flex-1 py-2 rounded-full bg-[#B91C1C] text-white text-xs font-bold uppercase tracking-wider font-outfit"
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
             Filter {activeFiltersCount > 0 ? `(${activeFiltersCount})` : ""}
@@ -689,12 +689,11 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
           <div className="w-[1px] h-6 bg-white/20" />
           <button
             onClick={() => {
-              // Open quick sorting menu
               const order = sortBy === "price-asc" ? "price-desc" : "price-asc";
               setSortBy(order);
               toast.success(`Sorting toggled: ${order === "price-asc" ? "Low to High" : "High to Low"}`);
             }}
-            className="flex items-center justify-center gap-1.5 flex-1 py-2 text-white hover:text-[#DC2626] text-xs font-bold uppercase tracking-wider transition-colors"
+            className="flex items-center justify-center gap-1.5 flex-1 py-2 text-white hover:text-[#B91C1C] text-xs font-bold uppercase tracking-wider transition-colors font-outfit"
           >
             <ArrowUpDown className="w-3.5 h-3.5" />
             Sort
@@ -709,10 +708,10 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
+              animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileFilterOpen(false)}
-              className="fixed inset-0 bg-black z-50 lg:hidden"
+              className="fixed inset-0 bg-black/40 z-50 lg:hidden"
             />
             {/* Drawer */}
             <motion.div
@@ -720,16 +719,16 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-[#0F0F0F] border-l border-white/10 z-50 p-6 overflow-y-auto lg:hidden"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white border-l border-[#E5E7EB] z-50 p-6 overflow-y-auto lg:hidden"
             >
-              <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+              <div className="flex items-center justify-between pb-4 border-b border-[#E5E7EB] mb-6">
                 <div className="flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[#DC2626]" />
-                  <h3 className="text-sm uppercase tracking-wider font-bold text-white">Filters</h3>
+                  <SlidersHorizontal className="w-4 h-4 text-[#B91C1C]" />
+                  <h3 className="text-sm uppercase tracking-wider font-bold text-[#0F172A] font-heading">Filters</h3>
                 </div>
                 <button
                   onClick={() => setMobileFilterOpen(false)}
-                  className="p-1 rounded-full hover:bg-white/10 text-white"
+                  className="p-1 rounded-full hover:bg-gray-100 text-[#6B7280]"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -743,7 +742,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       resetFilters();
                       toast.success("Filters cleared");
                     }}
-                    className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-white/15 hover:border-[#DC2626] hover:text-[#DC2626] transition-colors text-xs font-bold uppercase tracking-wider text-gray-300"
+                    className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-[#E5E7EB] hover:border-[#B91C1C] hover:text-[#B91C1C] transition-colors text-xs font-bold uppercase tracking-wider text-[#374151] font-outfit bg-[#F7F7F7]"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     Reset All Filters
@@ -752,8 +751,8 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
 
                 {/* Categories */}
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Category</label>
-                  <div className="flex flex-col gap-1.5 mt-2">
+                  <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Category</label>
+                  <div className="flex flex-col gap-1 mt-2">
                     {CATEGORIES_LIST.map((cat) => (
                       <button
                         key={cat.id}
@@ -762,14 +761,14 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                           setMobileFilterOpen(false);
                           scrollToSection(cat.id);
                         }}
-                        className={`text-left text-sm py-2 px-3 rounded-md transition-all flex items-center justify-between ${
+                        className={`text-left text-sm py-2 px-3 rounded-lg transition-all flex items-center justify-between font-sans ${
                           category === cat.id
-                            ? "bg-white/10 text-[#DC2626] font-semibold"
-                            : "text-gray-400 hover:bg-white/5 hover:text-white"
+                            ? "bg-[#FEF2F2] text-[#B91C1C] font-semibold"
+                            : "text-[#4B5563] hover:bg-[#F7F7F7] hover:text-[#B91C1C]"
                         }`}
                       >
                         <span>{cat.label}</span>
-                        {category === cat.id && <Check className="w-3.5 h-3.5 text-[#DC2626]" />}
+                        {category === cat.id && <Check className="w-3.5 h-3.5 text-[#B91C1C]" />}
                       </button>
                     ))}
                   </div>
@@ -778,8 +777,8 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 {/* Price Range */}
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
-                    <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Max Price</label>
-                    <span className="font-mono text-xs text-[#DC2626]">{formatCurrency(priceInput)}</span>
+                    <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Max Price</label>
+                    <span className="font-mono text-xs text-[#B91C1C] font-bold">{formatCurrency(priceInput)}</span>
                   </div>
                   <input
                     type="range"
@@ -788,9 +787,9 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                     step="500"
                     value={priceInput}
                     onChange={handlePriceChange}
-                    className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#DC2626]"
+                    className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#B91C1C]"
                   />
-                  <div className="flex justify-between text-[10px] text-gray-500 font-mono">
+                  <div className="flex justify-between text-[10px] text-[#6B7280] font-mono">
                     <span>₹0</span>
                     <span>₹20,000+</span>
                   </div>
@@ -798,7 +797,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
 
                 {/* Ratings */}
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Minimum Rating</label>
+                  <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Minimum Rating</label>
                   <div className="flex items-center gap-1.5 mt-1.5">
                     {[1, 2, 3, 4, 5].map((stars) => {
                       const isActive = minRating === stars;
@@ -806,13 +805,13 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                         <button
                           key={stars}
                           onClick={() => setMinRating(isActive ? 0 : stars)}
-                          className={`flex items-center justify-center flex-1 py-2 rounded-md border text-xs font-semibold transition-all ${
+                          className={`flex items-center justify-center flex-1 py-2 rounded-lg border text-xs font-semibold transition-all font-outfit ${
                             isActive
-                              ? "bg-[#DC2626] text-white border-[#DC2626] font-bold"
-                              : "bg-white/5 border-white/10 text-gray-300"
+                              ? "bg-[#B91C1C] text-white border-[#B91C1C] font-bold"
+                              : "bg-white border-[#E5E7EB] text-[#374151]"
                           }`}
                         >
-                          {stars} <Star className={`w-3 h-3 ml-0.5 ${isActive ? "fill-black" : "fill-none"}`} />
+                          {stars} <Star className={`w-3 h-3 ml-0.5 ${isActive ? "fill-white text-white" : "fill-none text-[#6B7280]"}`} />
                         </button>
                       );
                     })}
@@ -820,27 +819,27 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 </div>
 
                 {/* Toggles */}
-                <div className="space-y-4 pt-2 border-t border-white/10">
+                <div className="space-y-4 pt-4 border-t border-[#E5E7EB]">
                   <label className="flex items-center justify-between cursor-pointer group select-none">
-                    <span className="text-xs uppercase tracking-wider text-gray-400 font-semibold">In Stock Only</span>
+                    <span className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">In Stock Only</span>
                     <input
                       type="checkbox"
                       checked={availability === "in-stock"}
                       onChange={(e) => setAvailability(e.target.checked ? "in-stock" : "all")}
                       className="sr-only peer"
                     />
-                    <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
+                    <div className="relative w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-[#6B7280] peer-checked:after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#B91C1C]" />
                   </label>
 
                   <label className="flex items-center justify-between cursor-pointer group select-none">
-                    <span className="text-xs uppercase tracking-wider text-gray-400 font-semibold">New Arrivals</span>
+                    <span className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">New Arrivals</span>
                     <input
                       type="checkbox"
                       checked={newArrivalsOnly}
                       onChange={(e) => setNewArrivalsOnly(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
+                    <div className="relative w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-[#6B7280] peer-checked:after:bg-white after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#B91C1C]" />
                   </label>
                 </div>
               </div>
@@ -856,30 +855,30 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.75 }}
+              animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setQuickViewProduct(null)}
-              className="fixed inset-0 bg-black z-50 backdrop-blur-md"
+              className="fixed inset-0 bg-black/45 z-55 backdrop-blur-sm"
             />
             {/* Modal */}
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-55 flex items-center justify-center p-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="w-full max-w-4xl bg-[#121212]/95 border border-[#DC2626]/30 rounded-2xl shadow-[0_0_50px_rgba(220, 38, 38, 0.15)] overflow-hidden flex flex-col md:flex-row relative"
+                className="w-full max-w-4xl bg-white border border-[#E5E7EB] rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row relative"
               >
                 {/* Close Button */}
                 <button
                   onClick={() => setQuickViewProduct(null)}
-                  className="absolute right-4 top-4 p-1.5 rounded-full bg-black/60 border border-white/10 hover:border-white/30 text-white z-10 transition-colors"
+                  className="absolute right-4 top-4 p-1.5 rounded-full bg-white border border-[#E5E7EB] text-[#6B7280] hover:text-[#B91C1C] z-10 transition-colors shadow-sm"
                 >
                   <X className="w-5 h-5" />
                 </button>
 
                 {/* Left: Product Images */}
-                <div className="w-full md:w-1/2 h-[300px] md:h-auto bg-[#1A1A1A] relative flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-white/10">
+                <div className="w-full md:w-1/2 h-[300px] md:h-auto bg-[#F7F7F7] relative flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-[#E5E7EB]">
                   <div className="relative w-full h-full max-h-[350px] aspect-square">
                     <Image
                       src={quickViewProduct.images[0] || PLACEHOLDER}
@@ -891,76 +890,76 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   </div>
 
                   {hasDiscount(quickViewProduct) && (
-                    <span className="absolute top-4 left-4 bg-[#DC2626] text-white text-xs font-extrabold px-3 py-1 rounded-full">
+                    <span className="absolute top-4 left-4 bg-[#B91C1C] text-white text-xs font-extrabold px-3 py-1 rounded-full font-outfit shadow-sm">
                       {getDiscountPercentage(quickViewProduct.originalPrice!, quickViewProduct.price)}% OFF
                     </span>
                   )}
                 </div>
 
                 {/* Right: Product Details */}
-                <div className="w-full md:w-1/2 p-8 flex flex-col justify-between">
+                <div className="w-full md:w-1/2 p-8 flex flex-col justify-between bg-white">
                   <div>
                     {/* Category Tag */}
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#DC2626] font-extrabold px-2 py-0.5 bg-[#DC2626]/10 border border-[#DC2626]/30 rounded">
+                    <div className="flex items-center gap-2 mb-2 font-outfit">
+                      <span className="text-[10px] uppercase tracking-widest text-[#B91C1C] font-extrabold px-2 py-0.5 bg-[#FEF2F2] border border-[#B91C1C]/25 rounded">
                         {CATEGORY_MAP[quickViewProduct.category]?.title || quickViewProduct.category.replace("-", " ")}
                       </span>
-                      <span className="text-xs text-gray-500 font-semibold">• {quickViewProduct.brand}</span>
+                      <span className="text-xs text-[#6B7280] font-semibold">• {quickViewProduct.brand}</span>
                     </div>
 
                     {/* Product Name */}
-                    <h2 className="text-xl md:text-2xl font-black text-white leading-tight mb-2 hover:text-[#DC2626] transition-colors">
+                    <h2 className="text-xl md:text-2xl font-bold text-[#0F172A] leading-tight mb-2 hover:text-[#B91C1C] transition-colors font-heading">
                       {quickViewProduct.name}
                     </h2>
 
                     {/* Ratings */}
                     <div className="flex items-center gap-1.5 mb-4">
-                      <div className="flex items-center text-yellow-400">
+                      <div className="flex items-center text-[#D4AF37]">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
                             className={`w-3.5 h-3.5 ${
-                              i < Math.floor(quickViewProduct.rating) ? "fill-yellow-400" : "fill-none text-gray-600"
+                              i < Math.floor(quickViewProduct.rating) ? "fill-[#D4AF37]" : "fill-none text-gray-200"
                             }`}
                           />
                         ))}
                       </div>
-                      <span className="text-xs text-gray-400">({quickViewProduct.reviewCount} reviews)</span>
+                      <span className="text-xs text-[#6B7280] font-mono">({quickViewProduct.reviewCount} reviews)</span>
                     </div>
 
                     {/* Pricing */}
-                    <div className="flex items-baseline gap-3 mb-6 bg-white/5 p-3 rounded-lg border border-white/5 inline-flex">
-                      <span className="text-2xl font-mono font-black text-[#DC2626]">
+                    <div className="flex items-baseline gap-3 mb-6 bg-[#F7F7F7] px-4 py-2.5 rounded-lg border border-[#E5E7EB] inline-flex">
+                      <span className="text-2xl font-extrabold text-[#B91C1C] font-outfit">
                         {formatCurrency(quickViewProduct.price)}
                       </span>
                       {hasDiscount(quickViewProduct) && (
-                        <span className="text-sm font-mono text-gray-500 line-through">
+                        <span className="text-sm text-[#6B7280] line-through font-outfit">
                           {formatCurrency(quickViewProduct.originalPrice!)}
                         </span>
                       )}
                     </div>
 
                     {/* Short Description */}
-                    <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-6">
+                    <p className="text-[#374151] text-xs md:text-sm leading-relaxed mb-6 font-sans">
                       {quickViewProduct.description}
                     </p>
                   </div>
 
                   {/* Add to Cart, Wishlist, Quantity */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 border-t border-[#E5E7EB] pt-6">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Quantity</span>
-                      <div className="flex items-center bg-black/60 border border-white/10 rounded-lg overflow-hidden">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#6B7280] font-outfit">Quantity</span>
+                      <div className="flex items-center bg-[#F7F7F7] border border-[#E5E7EB] rounded-lg overflow-hidden">
                         <button
                           onClick={() => setQuickViewQty(Math.max(1, quickViewQty - 1))}
-                          className="px-3 py-1.5 text-white hover:bg-white/5 active:bg-white/10 font-bold"
+                          className="px-3 py-1.5 text-[#0F172A] hover:bg-gray-100 active:bg-gray-200 font-bold transition-colors"
                         >
                           -
                         </button>
-                        <span className="px-4 font-mono font-bold text-sm">{quickViewQty}</span>
+                        <span className="px-4 font-mono font-bold text-sm text-[#0F172A]">{quickViewQty}</span>
                         <button
                           onClick={() => setQuickViewQty(Math.min(quickViewProduct.stock, quickViewQty + 1))}
-                          className="px-3 py-1.5 text-white hover:bg-white/5 active:bg-white/10 font-bold"
+                          className="px-3 py-1.5 text-[#0F172A] hover:bg-gray-100 active:bg-gray-200 font-bold transition-colors"
                         >
                           +
                         </button>
@@ -974,7 +973,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                           toast.success(`${quickViewProduct.name} added to cart!`);
                           setQuickViewProduct(null);
                         }}
-                        className="flex-1 py-3 bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-extrabold uppercase tracking-widest rounded-xl transition-all shadow-[0_0_15px_rgba(220, 38, 38, 0.3)] flex items-center justify-center gap-2"
+                        className="flex-1 py-3 bg-[#B91C1C] hover:bg-[#991B1B] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 font-outfit"
                       >
                         <ShoppingBag className="w-4 h-4" />
                         Add To Cart
@@ -991,11 +990,11 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                             toast.success(`${quickViewProduct.name} added to wishlist!`);
                           }
                         }}
-                        className="p-3 bg-white/5 border border-white/10 hover:border-white/30 text-white hover:text-red-500 rounded-xl transition-all"
+                        className="p-3 bg-white border border-[#E5E7EB] hover:border-[#B91C1C]/40 text-[#6B7280] hover:text-[#B91C1C] rounded-xl transition-all shadow-sm"
                       >
                         <Heart
                           className={`w-5 h-5 ${
-                            isInWishlist(quickViewProduct.id) ? "fill-red-500 text-red-500" : ""
+                            isInWishlist(quickViewProduct.id) ? "fill-[#B91C1C] text-[#B91C1C]" : ""
                           }`}
                         />
                       </button>

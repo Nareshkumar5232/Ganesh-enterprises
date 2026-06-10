@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Heart, ShoppingCart, Eye, Star } from "lucide-react";
 import { toast } from "sonner";
 import { useCartStore } from "@/store/cartStore";
@@ -52,30 +51,26 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
     onQuickView?.(product);
   }
 
-  // Render filled stars based on rating (0–5)
   const fullStars = Math.floor(product.rating);
 
   return (
-    <Link href={`/products/${product.slug}`} passHref>
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.2 }}
-        className="glass-card neon-hover flex flex-col overflow-hidden group relative cursor-pointer"
-      >
-        {/* Image area */}
-        <div className="relative w-full h-[200px] bg-gray-100 dark:bg-[#1A1A1A] overflow-hidden transition-colors duration-300">
+    <Link href={`/products/${product.slug}`} passHref className="h-full block">
+      <div className="bg-white border border-[#E5E7EB] rounded-xl flex flex-col overflow-hidden group relative cursor-pointer shadow-sm hover:shadow-lg hover:border-[#B91C1C]/40 transition-all duration-300 h-full">
+        
+        {/* Aspect Ratio Boxed Product Image Container */}
+        <div className="relative w-full aspect-square bg-[#F7F7F7] flex items-center justify-center p-4 overflow-hidden border-b border-[#E5E7EB]/50">
           {!imgLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center animate-pulse bg-gray-100 dark:bg-gray-800">
-              <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-md" />
+            <div className="absolute inset-0 flex items-center justify-center animate-pulse bg-gray-100">
+              <div className="w-16 h-16 bg-gray-200 rounded-md" />
             </div>
           )}
           <Image
             src={product.images[0] ?? "/file.svg"}
             alt={product.name}
-            width={280}
-            height={280}
+            width={240}
+            height={240}
             loading="eager"
-            className={`object-cover w-full h-full transition-transform duration-300 group-hover:scale-105 ${imgLoaded ? '' : 'opacity-0'}`}
+            className={`object-contain max-w-full max-h-full transition-transform duration-300 group-hover:scale-[1.03] ${imgLoaded ? '' : 'opacity-0'}`}
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).src = "/file.svg";
             }}
@@ -84,7 +79,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
 
           {/* Discount badge */}
           {hasDiscount && (
-            <span className="absolute top-2 left-2 bg-[#DC2626] text-white text-xs font-bold px-2 py-0.5 rounded-full z-10">
+            <span className="absolute top-3 left-3 bg-[#B91C1C] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full z-10 font-outfit shadow-sm">
               {discountPct}% OFF
             </span>
           )}
@@ -93,11 +88,11 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
           <button
             onClick={handleWishlistToggle}
             aria-label={inWishlist ? "Remove from wishlist" : "Add to wishlist"}
-            className="absolute top-2 right-2 z-10 p-1.5 rounded-full bg-black/50 backdrop-blur-sm transition-colors hover:bg-black/70"
+            className="absolute top-3 right-3 z-10 p-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-[#E5E7EB] transition-colors hover:bg-white text-[#6B7280] hover:text-[#B91C1C] shadow-sm"
           >
             <Heart
-              className={`w-4 h-4 transition-colors ${
-                inWishlist ? "fill-red-500 text-red-500" : "text-white"
+              className={`w-3.5 h-3.5 transition-colors ${
+                inWishlist ? "fill-[#B91C1C] text-[#B91C1C]" : ""
               }`}
             />
           </button>
@@ -107,10 +102,10 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             <button
               onClick={handleQuickView}
               aria-label="Quick view"
-              className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="absolute inset-0 flex items-center justify-center bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
             >
-              <span className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium px-4 py-2 rounded-lg">
-                <Eye className="w-4 h-4" />
+              <span className="flex items-center gap-1.5 bg-white/95 backdrop-blur-sm border border-[#E5E7EB] text-[#0F172A] text-xs font-semibold px-3.5 py-2 rounded-lg font-outfit shadow-md hover:bg-white transition-colors">
+                <Eye className="w-3.5 h-3.5 text-[#B91C1C]" />
                 Quick View
               </span>
             </button>
@@ -119,40 +114,41 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
 
         {/* Content area */}
         <div className="p-4 flex flex-col flex-grow">
-          <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+          <p className="text-[10px] text-[#6B7280] uppercase tracking-wider font-semibold font-outfit">
             {product.category.replace(/-/g, " ")}
           </p>
-          <h3 className="mt-1 font-semibold text-base text-gray-900 dark:text-white leading-tight truncate group-hover:text-[#DC2626]">
+          
+          <h3 className="mt-1 font-bold text-sm sm:text-base text-[#0F172A] font-heading leading-snug group-hover:text-[#B91C1C] transition-colors line-clamp-2 min-h-[40px]">
             {product.name}
           </h3>
 
           {/* Rating */}
-          <div className="mt-2 flex items-center gap-1">
+          <div className="mt-2.5 flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`w-3.5 h-3.5 ${
+                className={`w-3 h-3 ${
                   i < fullStars
-                    ? "text-yellow-400 fill-yellow-400"
-                    : "text-gray-300 dark:text-gray-600"
+                    ? "text-[#D4AF37] fill-[#D4AF37]"
+                    : "text-gray-200"
                 }`}
               />
             ))}
-            <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">
+            <span className="text-[11px] text-[#6B7280] font-mono ml-1">
               ({product.reviewCount})
             </span>
           </div>
 
-          <div className="flex-grow" />
+          <div className="flex-grow mt-3" />
 
           {/* Price and Add to Cart */}
-          <div className="mt-4 flex items-end justify-between">
-            <div className="flex flex-col">
-              <span className="text-lg font-bold text-gray-900 dark:text-white">
+          <div className="flex items-end justify-between pt-2">
+            <div className="flex flex-col font-outfit">
+              <span className="text-base sm:text-lg font-extrabold text-[#0F172A] tracking-tight leading-none">
                 {formatCurrency(product.price)}
               </span>
               {hasDiscount && (
-                <span className="text-xs text-gray-400 dark:text-gray-500 line-through">
+                <span className="text-xs text-[#6B7280] line-through mt-0.5 leading-none">
                   {formatCurrency(product.originalPrice!)}
                 </span>
               )}
@@ -160,13 +156,14 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             <button
               onClick={handleAddToCart}
               aria-label="Add to cart"
-              className="p-2 rounded-full bg-[#DC2626] text-white transition-transform hover:scale-110"
+              className="p-2.5 rounded-full bg-[#B91C1C] hover:bg-[#991B1B] text-white transition-all duration-200 hover:scale-105 shadow-sm"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-4 h-4" />
             </button>
           </div>
         </div>
-      </motion.div>
+
+      </div>
     </Link>
   );
 }
