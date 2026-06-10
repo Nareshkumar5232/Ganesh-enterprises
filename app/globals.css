@@ -116,12 +116,6 @@
   }
 }
 
-/* ══════════════════════════
-   SCROLLBAR – thin red
-══════════════════════════ */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #F7F7F7; }
-::-webkit-scrollbar-thumb { background: #B91C1C; border-radius: 2px; }
 
 /* ══════════════════════════
    BUTTONS

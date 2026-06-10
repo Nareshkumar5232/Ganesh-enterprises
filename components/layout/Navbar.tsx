@@ -37,23 +37,12 @@ function ShieldLogo({ size = 40 }: { size?: number }) {
   );
 }
 
-const PRODUCTS_MENU = [
-  { label: "Televisions",          href: "/products?category=tv" },
-  { label: "Laptops & Desktops",   href: "/products?category=computers" },
-  { label: "Smartphones",          href: "/products?category=mobile" },
-  { label: "Printers",             href: "/products?category=printers" },
-  { label: "Networking Equipment", href: "/products?category=networking" },
-  { label: "CCTV & Security",      href: "/products?category=security" },
-  { label: "Home Appliances",      href: "/products?category=appliances" },
-  { label: "Computer Accessories", href: "/products?category=accessories" },
-];
-
 const CATEGORIES_MENU = [
-  { label: "TV Zone",              href: "/products?category=tv" },
-  { label: "Computer Zone",        href: "/products?category=computers" },
-  { label: "Mobile Zone",          href: "/products?category=mobile" },
-  { label: "Security Zone",        href: "/products?category=security" },
-  { label: "Home Appliance Zone",  href: "/products?category=appliances" },
+  { label: "Mobile Accessories",   href: "/products?category=mobile-accessories" },
+  { label: "Computer Accessories", href: "/products?category=computer-accessories" },
+  { label: "Electronics & TVs",    href: "/products?category=electronics" },
+  { label: "Smart Devices & CCTV", href: "/products?category=smart-devices" },
+  { label: "Technology Solutions", href: "/products?category=electrical-appliances" },
 ];
 
 export default function Navbar() {
@@ -64,7 +53,6 @@ export default function Navbar() {
   const [scrolled,      setScrolled]      = useState(false);
   const [mobileOpen,    setMobileOpen]    = useState(false);
   const [searchQuery,   setSearchQuery]   = useState("");
-  const [productsOpen,  setProductsOpen]  = useState(false);
   const [catsOpen,      setCatsOpen]      = useState(false);
 
   useEffect(() => {
@@ -79,7 +67,7 @@ export default function Navbar() {
     if (q) { router.push(`/products?q=${encodeURIComponent(q)}`); setSearchQuery(""); }
   }
 
-  function closeAll() { setProductsOpen(false); setCatsOpen(false); }
+  function closeAll() { setCatsOpen(false); }
 
   const isHome = pathname === "/";
 
@@ -118,17 +106,12 @@ export default function Navbar() {
               {isHome && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#B91C1C] rounded-full" />}
             </Link>
 
-            {/* Products */}
-            <div className="relative" onMouseEnter={() => { setProductsOpen(true); setCatsOpen(false); }}>
-              <button className="flex items-center gap-1 px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
-                Products <ChevronDown className={`w-3.5 h-3.5 transition-transform ${productsOpen ? "rotate-180 text-[#B91C1C]" : ""}`} />
-              </button>
-              {productsOpen && (
-                <div className="nav-dropdown">
-                  {PRODUCTS_MENU.map((d) => <Link key={d.href} href={d.href} onClick={closeAll}>{d.label}</Link>)}
-                </div>
-              )}
-            </div>
+            {/* Products direct link */}
+            <Link href="/products"
+              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${pathname === "/products" ? "text-[#B91C1C]" : "text-[#374151] hover:text-[#B91C1C]"}`}>
+              Products
+              {pathname === "/products" && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#B91C1C] rounded-full" />}
+            </Link>
 
             <Link href="/products"
               className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
@@ -136,7 +119,7 @@ export default function Navbar() {
             </Link>
 
             {/* Categories */}
-            <div className="relative" onMouseEnter={() => { setCatsOpen(true); setProductsOpen(false); }}>
+            <div className="relative" onMouseEnter={() => { setCatsOpen(true); }}>
               <button className="flex items-center gap-1 px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
                 Categories <ChevronDown className={`w-3.5 h-3.5 transition-transform ${catsOpen ? "rotate-180 text-[#B91C1C]" : ""}`} />
               </button>
@@ -146,6 +129,7 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
 
             <Link href="/about"
               className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">

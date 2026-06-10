@@ -31,6 +31,7 @@ const PLACEHOLDER = "/images/placeholder-product.svg";
 
 interface ProductsClientProps {
   initialSearchQuery?: string;
+  initialCategory?: string;
 }
 
 const CATEGORY_MAP: Record<ProductCategory, { title: string; desc: string }> = {
@@ -84,7 +85,7 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "az", label: "Alphabetical: A-Z" },
 ];
 
-export default function ProductsClient({ initialSearchQuery = "" }: ProductsClientProps) {
+export default function ProductsClient({ initialSearchQuery = "", initialCategory = "" }: ProductsClientProps) {
   // Store states
   const {
     searchQuery,
@@ -127,6 +128,15 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
       setSearchQuery(initialSearchQuery);
     }
   }, [initialSearchQuery]);
+
+  // Sync initial category from URL search parameters if any
+  useEffect(() => {
+    if (initialCategory) {
+      if (initialCategory === "all" || CATEGORIES_LIST.some((c) => c.id === initialCategory)) {
+        setCategory(initialCategory as ProductCategory | "all");
+      }
+    }
+  }, [initialCategory, setCategory]);
 
   // Sync price range slide input
   useEffect(() => {

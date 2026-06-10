@@ -36,14 +36,13 @@ const QUICK_LINKS = [
 ];
 
 const CATEGORIES = [
-  { label: "Televisions",          href: "/products?category=tv" },
-  { label: "Laptops",              href: "/products?category=computers" },
-  { label: "Mobiles",              href: "/products?category=mobile" },
-  { label: "Printers",             href: "/products?category=printers" },
-  { label: "Networking",           href: "/products?category=networking" },
-  { label: "CCTV Systems",         href: "/products?category=security" },
-  { label: "Computer Accessories", href: "/products?category=accessories" },
-  { label: "Home Appliances",      href: "/products?category=appliances" },
+  { label: "Mobile Accessories",   href: "/products?category=mobile-accessories" },
+  { label: "Computer Accessories", href: "/products?category=computer-accessories" },
+  { label: "Electronics & TVs",    href: "/products?category=electronics" },
+  { label: "Smart Devices & CCTV", href: "/products?category=smart-devices" },
+  { label: "Technology Solutions", href: "/products?category=electrical-appliances" },
+  { label: "Chargers & Adapters",  href: "/products?category=chargers" },
+  { label: "Earphones & Audio",    href: "/products?category=earphones" },
 ];
 
 export default function Footer() {

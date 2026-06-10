@@ -1,14 +1,14 @@
 const BRANDS = [
-  { name: "SAMSUNG",  color: "#1428A0", size: "20px", weight: "800" },
-  { name: "LG",       color: "#A50034", size: "26px", weight: "900", serif: true },
-  { name: "DELL",     color: "#007DB8", size: "20px", weight: "800" },
-  { name: "HP",       color: "#0096D6", size: "24px", weight: "900" },
-  { name: "Lenovo",   color: "#E2231A", size: "19px", weight: "700" },
-  { name: "ASUS",     color: "#00539B", size: "20px", weight: "800" },
-  { name: "acer",     color: "#83B81A", size: "21px", weight: "800" },
-  { name: "Mi",       color: "#FF6900", size: "24px", weight: "900" },
-  { name: "Canon",    color: "#B91C1C", size: "19px", weight: "700", serif: true },
-  { name: "EPSON",    color: "#003087", size: "19px", weight: "800" },
+  { name: "Samsung", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" },
+  { name: "LG", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg" },
+  { name: "Dell", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg" },
+  { name: "HP", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" },
+  { name: "Lenovo", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo.svg" },
+  { name: "Asus", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" },
+  { name: "Acer", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Acer_2011.svg" },
+  { name: "Mi", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Xiaomi_logo_%282021%29.svg" },
+  { name: "Canon", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Canon_logo.svg" },
+  { name: "Epson", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Epson_logo.svg" },
 ];
 
 export default function TrustedBrands() {
@@ -22,32 +22,22 @@ export default function TrustedBrands() {
           <h2 className="text-[26px] font-bold text-[#0F172A]">Trusted by Leading Brands</h2>
         </div>
 
-        {/* Brand logos grid — single row */}
-        <div
-          className="grid border border-[#E5E7EB] rounded-xl overflow-hidden"
-          style={{ gridTemplateColumns: `repeat(${BRANDS.length}, 1fr)` }}
-        >
+        {/* Brand logos grid — responsive grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 border border-[#E5E7EB] rounded-xl overflow-hidden bg-white">
           {BRANDS.map((brand, i) => (
             <div
               key={brand.name}
               className={[
                 "brand-cell",
-                i < BRANDS.length - 1 ? "border-r border-[#E5E7EB]" : "",
+                i < BRANDS.length - 1 ? "lg:border-r border-[#E5E7EB]" : "",
+                "border-b border-[#E5E7EB] lg:border-b-0",
               ].join(" ")}
             >
-              <span
-                className="select-none transition-transform duration-150 hover:scale-105"
-                style={{
-                  color: brand.color,
-                  fontSize: brand.size,
-                  fontWeight: brand.weight,
-                  fontFamily: brand.serif ? "Georgia, serif" : "'Poppins', sans-serif",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1,
-                }}
-              >
-                {brand.name}
-              </span>
+              <img
+                src={brand.logoUrl}
+                alt={`${brand.name} Logo`}
+                className="h-7 max-w-[80%] object-contain select-none transition-transform duration-150 hover:scale-105"
+              />
             </div>
           ))}
         </div>

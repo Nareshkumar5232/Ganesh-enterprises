@@ -4,30 +4,37 @@ import Link from "next/link";
 
 const ECO_ITEMS = [
   {
-    name: "Mobiles",
-    href: "/products?category=mobile",
+    name: "Mobile Accessories",
+    href: "/products?category=mobile-accessories",
     icon: (
       <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="13" y="3" width="22" height="42" rx="4" />
         <circle cx="24" cy="39" r="1.5" fill="#B91C1C" />
         <line x1="20" y1="8" x2="28" y2="8" />
+        <path d="M16 18h16M16 24h16" opacity="0.5" />
       </svg>
     ),
   },
   {
-    name: "Laptops",
-    href: "/products?category=computers",
+    name: "Computer Accessories",
+    href: "/products?category=computer-accessories",
     icon: (
       <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="6" y="8" width="36" height="24" rx="2" />
-        <path d="M2 36h44l-3-4H5z" />
-        <line x1="20" y1="36" x2="28" y2="36" />
+        <rect x="4" y="14" width="40" height="26" rx="3" />
+        <rect x="8" y="18" width="6" height="5" rx="1" />
+        <rect x="16" y="18" width="6" height="5" rx="1" />
+        <rect x="24" y="18" width="6" height="5" rx="1" />
+        <rect x="32" y="18" width="8" height="5" rx="1" />
+        <rect x="8" y="26" width="10" height="5" rx="1" />
+        <rect x="20" y="26" width="6" height="5" rx="1" />
+        <rect x="28" y="26" width="6" height="5" rx="1" />
+        <rect x="36" y="26" width="4" height="5" rx="1" />
       </svg>
     ),
   },
   {
-    name: "Smart TVs",
-    href: "/products?category=tv",
+    name: "Electronics & TVs",
+    href: "/products?category=electronics",
     icon: (
       <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="44" height="30" rx="3" />
@@ -37,21 +44,8 @@ const ECO_ITEMS = [
     ),
   },
   {
-    name: "Printers",
-    href: "/products?category=printers",
-    icon: (
-      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="8" y="16" width="32" height="20" rx="3" />
-        <path d="M12 16V8h24v8" />
-        <rect x="14" y="28" width="20" height="12" />
-        <line x1="18" y1="24" x2="22" y2="24" />
-        <circle cx="38" cy="24" r="1.5" fill="#B91C1C" />
-      </svg>
-    ),
-  },
-  {
-    name: "CCTV",
-    href: "/products?category=security",
+    name: "Smart Devices & CCTV",
+    href: "/products?category=smart-devices",
     icon: (
       <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M6 22l26-8v16L6 22z" />
@@ -63,8 +57,28 @@ const ECO_ITEMS = [
     ),
   },
   {
-    name: "Networking",
-    href: "/products?category=networking",
+    name: "Chargers & Adapters",
+    href: "/products?category=chargers",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M26 4 L14 26 h10 L22 44 l12 -22 H24 Z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Earphones & Audio",
+    href: "/products?category=earphones",
+    icon: (
+      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M8 22 L8 34 A6 6 0 0 0 14 40 L18 40 L18 24 L14 24" />
+        <path d="M40 22 L40 34 A6 6 0 0 1 34 40 L30 40 L30 24 L34 24" />
+        <path d="M8 22 A16 16 0 0 1 40 22" />
+      </svg>
+    ),
+  },
+  {
+    name: "Tech Solutions",
+    href: "/products?category=electrical-appliances",
     icon: (
       <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="28" width="40" height="12" rx="3" />
@@ -73,19 +87,6 @@ const ECO_ITEMS = [
         <line x1="24" y1="28" x2="24" y2="20" />
         <path d="M17 20 Q24 14 31 20" />
         <path d="M12 16 Q24 8 36 16" />
-      </svg>
-    ),
-  },
-  {
-    name: "Appliances",
-    href: "/products?category=appliances",
-    icon: (
-      <svg viewBox="0 0 48 48" className="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="#B91C1C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="14" y="4" width="20" height="40" rx="3" />
-        <line x1="14" y1="22" x2="34" y2="22" />
-        <circle cx="30" cy="13" r="2" />
-        <line x1="18" y1="28" x2="30" y2="28" />
-        <line x1="18" y1="33" x2="30" y2="33" />
       </svg>
     ),
   },
