@@ -1,19 +1,19 @@
 const BRANDS = [
-  { name: "Samsung", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" },
-  { name: "LG", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg" },
-  { name: "Dell", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg" },
-  { name: "HP", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg" },
-  { name: "Lenovo", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo.svg" },
-  { name: "Asus", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg" },
-  { name: "Acer", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/8/8b/Acer_2011.svg" },
-  { name: "Mi", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Xiaomi_logo_%282021%29.svg" },
-  { name: "Canon", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Canon_logo.svg" },
-  { name: "Epson", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Epson_logo.svg" },
+  { name: "Samsung", logoUrl: "/images/brands/samsung.svg" },
+  { name: "LG", logoUrl: "/images/brands/lg.svg" },
+  { name: "Dell", logoUrl: "/images/brands/dell.svg" },
+  { name: "HP", logoUrl: "/images/brands/hp.svg" },
+  { name: "Lenovo", logoUrl: "/images/brands/lenovo.svg" },
+  { name: "Asus", logoUrl: "/images/brands/asus.svg" },
+  { name: "Acer", logoUrl: "/images/brands/acer.svg" },
+  { name: "Mi", logoUrl: "/images/brands/mi.svg" },
+  { name: "Canon", logoUrl: "/images/brands/canon.svg" },
+  { name: "Epson", logoUrl: "/images/brands/epson.svg" },
 ];
 
 export default function TrustedBrands() {
   return (
-    <section className="section-white py-14 px-4" aria-label="Trusted brands">
+    <section className="section-white py-14 px-4 scroll-mt-20" aria-label="Trusted brands" id="brands">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
@@ -23,7 +23,7 @@ export default function TrustedBrands() {
         </div>
 
         {/* Brand logos grid — responsive grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 border border-[#E5E7EB] rounded-xl overflow-hidden bg-white">
+        <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 border border-[#E5E7EB] rounded-xl overflow-hidden bg-white shadow-sm">
           {BRANDS.map((brand, i) => (
             <div
               key={brand.name}

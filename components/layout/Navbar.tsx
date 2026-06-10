@@ -76,8 +76,8 @@ export default function Navbar() {
       className={[
         "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b",
         scrolled
-          ? "bg-white/80 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.05)] border-[#E5E7EB]/40"
-          : "bg-white border-[#E5E7EB]",
+          ? "bg-[#0F172A]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.25)] border-[#1E293B]/60"
+          : "bg-[#0F172A] border-[#1E293B]",
       ].join(" ")}
       onMouseLeave={closeAll}
     >
@@ -88,10 +88,10 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <ShieldLogo size={44} />
             <div className="flex flex-col leading-tight">
-              <span className="font-bold text-[#0F172A] text-[15px] tracking-tight leading-none">
+              <span className="font-bold text-white text-[15px] tracking-tight leading-none">
                 Sri Ganesh Enterprises
               </span>
-              <span className="text-[#6B7280] text-[10px] font-medium mt-0.5 leading-none">
+              <span className="text-[#D4AF37] text-[10px] font-medium mt-0.5 leading-none">
                 Wholesale: TV, Laptop, Mobiles &amp; Home Appliances
               </span>
             </div>
@@ -101,60 +101,71 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center flex-nowrap flex-1 justify-center gap-3 xl:gap-5" aria-label="Main">
 
             <Link href="/"
-              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${isHome ? "text-[#B91C1C]" : "text-[#374151] hover:text-[#B91C1C]"}`}>
+              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${isHome ? "text-[#D4AF37]" : "text-slate-300 hover:text-[#D4AF37]"}`}>
               Home
-              {isHome && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#B91C1C] rounded-full" />}
+              {isHome && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#D4AF37] rounded-full" />}
             </Link>
 
             {/* Products direct link */}
             <Link href="/products"
-              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${pathname === "/products" ? "text-[#B91C1C]" : "text-[#374151] hover:text-[#B91C1C]"}`}>
+              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${pathname === "/products" ? "text-[#D4AF37]" : "text-slate-300 hover:text-[#D4AF37]"}`}>
               Products
-              {pathname === "/products" && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#B91C1C] rounded-full" />}
+              {pathname === "/products" && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#D4AF37] rounded-full" />}
             </Link>
 
-            <Link href="/products"
-              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
+            {/* Brands Section Link */}
+            <Link href="/#brands"
+              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-slate-300 hover:text-[#D4AF37] transition-colors">
               Brands
             </Link>
 
             {/* Categories */}
             <div className="relative" onMouseEnter={() => { setCatsOpen(true); }}>
-              <button className="flex items-center gap-1 px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
-                Categories <ChevronDown className={`w-3.5 h-3.5 transition-transform ${catsOpen ? "rotate-180 text-[#B91C1C]" : ""}`} />
+              <button className="flex items-center gap-1 px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-slate-300 hover:text-[#D4AF37] transition-colors">
+                Categories <ChevronDown className={`w-3.5 h-3.5 transition-transform ${catsOpen ? "rotate-180 text-[#D4AF37]" : ""}`} />
               </button>
               {catsOpen && (
-                <div className="nav-dropdown">
-                  {CATEGORIES_MENU.map((d) => <Link key={d.href} href={d.href} onClick={closeAll}>{d.label}</Link>)}
+                <div className="nav-dropdown bg-[#1E293B] border border-[#2D3748] shadow-2xl rounded-lg">
+                  {CATEGORIES_MENU.map((d) => (
+                    <Link
+                      key={d.href}
+                      href={d.href}
+                      onClick={closeAll}
+                      className="block px-4 py-2.5 text-[13px] font-semibold font-outfit text-slate-300 hover:bg-[#2D3748] hover:text-[#D4AF37] transition-colors"
+                    >
+                      {d.label}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
 
-
             <Link href="/about"
-              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
+              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${pathname === "/about" ? "text-[#D4AF37]" : "text-slate-300 hover:text-[#D4AF37]"}`}>
               About Us
+              {pathname === "/about" && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#D4AF37] rounded-full" />}
             </Link>
 
             <Link href="/contact"
-              className="px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap text-[#374151] hover:text-[#B91C1C] transition-colors">
+              className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${pathname === "/contact" ? "text-[#D4AF37]" : "text-slate-300 hover:text-[#D4AF37]"}`}>
               Contact Us
+              {pathname === "/contact" && <span className="absolute bottom-0 left-2.5 right-2.5 h-0.5 bg-[#D4AF37] rounded-full" />}
             </Link>
           </nav>
 
           {/* ── Right side ── */}
           <div className="flex items-center gap-2 ml-auto shrink-0">
             {/* Search */}
-            <form onSubmit={handleSearch} className="hidden xl:flex items-center border border-[#E5E7EB] rounded-lg px-3 py-1.5 gap-2 focus-within:border-[#B91C1C] bg-white transition-colors">
-              <Search className="w-3.5 h-3.5 text-[#9CA3AF]" />
+            <form onSubmit={handleSearch} className="hidden xl:flex items-center border border-[#1E293B] rounded-lg px-3 py-1.5 gap-2 focus-within:border-[#D4AF37] bg-[#1E293B]/50 transition-colors">
+              <Search className="w-3.5 h-3.5 text-slate-400" />
               <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search…" className="bg-transparent text-[13px] text-[#0F172A] placeholder-[#9CA3AF] outline-none w-28 focus:w-36 transition-all duration-200" />
+                placeholder="Search…" className="bg-transparent text-[13px] text-white placeholder-slate-400 outline-none w-28 focus:w-36 transition-all duration-200" />
             </form>
 
             {/* Icon buttons */}
-            <Link href="/login"   aria-label="Account"  className="hidden xl:flex p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors"><User className="w-5 h-5" /></Link>
-            <Link href="/wishlist" aria-label="Wishlist" className="hidden xl:flex p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors"><Heart className="w-5 h-5" /></Link>
-            <Link href="/cart" aria-label={`Cart (${totalItems})`} className="relative p-2 text-[#6B7280] hover:text-[#B91C1C] rounded-lg hover:bg-red-50 transition-colors">
+            <Link href="/login"   aria-label="Account"  className="hidden xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><User className="w-5 h-5" /></Link>
+            <Link href="/wishlist" aria-label="Wishlist" className="hidden xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><Heart className="w-5 h-5" /></Link>
+            <Link href="/cart" aria-label={`Cart (${totalItems})`} className="relative p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors">
               <ShoppingCart className="w-5 h-5" />
               <span className="absolute -top-0.5 -right-0.5 min-w-[17px] h-[17px] flex items-center justify-center rounded-full bg-[#B91C1C] text-white text-[9px] font-bold px-1">
                 {totalItems > 99 ? "99+" : totalItems}
@@ -163,19 +174,19 @@ export default function Navbar() {
 
             {/* Phone */}
             <a href="tel:+919150310876"
-              className="hidden xl:flex items-center gap-1.5 text-[13px] font-semibold font-outfit text-[#0F172A] hover:text-[#B91C1C] transition-colors">
+              className="hidden xl:flex items-center gap-1.5 text-[13px] font-semibold font-outfit text-slate-200 hover:text-[#D4AF37] transition-colors">
               <Phone className="w-3.5 h-3.5" />
               9150310876
             </a>
 
             {/* CTA */}
-            <Link href="/contact" className="hidden sm:inline-flex btn-red ml-1 text-[13.5px] px-4 py-2 font-outfit whitespace-nowrap">
+            <Link href="/contact" className="hidden sm:inline-flex btn-red ml-1 text-[13.5px] px-4 py-2 font-outfit whitespace-nowrap !bg-[#B91C1C] !border-[#B91C1C] hover:!bg-[#991B1B] hover:!border-[#991B1B] shadow-[0_4px_14px_rgba(185,28,28,0.3)]">
               Get Wholesale Quote
             </Link>
 
             {/* Hamburger */}
             <button onClick={() => setMobileOpen(true)} aria-label="Open menu"
-              className="lg:hidden p-2 text-[#374151]">
+              className="lg:hidden p-2 text-slate-300 hover:text-[#D4AF37]">
               <Menu className="w-5 h-5" />
             </button>
           </div>
@@ -184,32 +195,32 @@ export default function Navbar() {
 
       {/* ── Mobile drawer ── */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[60] bg-white flex flex-col overflow-y-auto">
-          <div className="flex items-center justify-between px-4 h-16 border-b border-[#E5E7EB]">
+        <div className="fixed inset-0 z-[60] bg-[#0F172A] flex flex-col overflow-y-auto">
+          <div className="flex items-center justify-between px-4 h-16 border-b border-[#1E293B]">
             <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
               <ShieldLogo size={36} />
-              <span className="font-bold text-[#0F172A] text-sm">Sri Ganesh Enterprises</span>
+              <span className="font-bold text-white text-sm">Sri Ganesh Enterprises</span>
             </Link>
-            <button onClick={() => setMobileOpen(false)} aria-label="Close"><X className="w-5 h-5 text-[#374151]" /></button>
+            <button onClick={() => setMobileOpen(false)} aria-label="Close"><X className="w-5 h-5 text-slate-300" /></button>
           </div>
           <nav className="flex-1 px-4 py-4 flex flex-col gap-0.5">
             {[
               { label: "Home",       href: "/" },
               { label: "Products",   href: "/products" },
-              { label: "Brands",     href: "/products" },
+              { label: "Brands",     href: "/#brands" },
               { label: "Categories", href: "/products" },
               { label: "About Us",   href: "/about" },
               { label: "Contact Us", href: "/contact" },
             ].map((n) => (
               <Link key={n.label} href={n.href} onClick={() => setMobileOpen(false)}
-                className="px-3 py-3 rounded-lg text-sm font-semibold text-[#374151] hover:text-[#B91C1C] hover:bg-red-50 transition-colors">
+                className="px-3 py-3 rounded-lg text-sm font-semibold text-slate-300 hover:text-[#D4AF37] hover:bg-slate-800/50 transition-colors">
                 {n.label}
               </Link>
             ))}
           </nav>
-          <div className="px-4 py-4 border-t border-[#E5E7EB] space-y-2">
-            <a href="tel:+919150310876" className="flex items-center justify-center gap-2 py-2.5 border border-[#E5E7EB] rounded-lg text-sm font-semibold text-[#0F172A]">
-              <Phone className="w-4 h-4" /> 9150310876
+          <div className="px-4 py-4 border-t border-[#1E293B] space-y-2">
+            <a href="tel:+919150310876" className="flex items-center justify-center gap-2 py-2.5 border border-[#1E293B] rounded-lg text-sm font-semibold text-slate-200">
+              <Phone className="w-4 h-4 text-[#D4AF37]" /> 9150310876
             </a>
             <Link href="/contact" onClick={() => setMobileOpen(false)}
               className="flex items-center justify-center w-full btn-red py-3 text-sm">
