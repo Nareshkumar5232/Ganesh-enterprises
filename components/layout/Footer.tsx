@@ -1,190 +1,159 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, MapPin, Mail, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 
-const DEPARTMENTS = [
-  { label: "Televisions", href: "/products?category=tv" },
-  { label: "Laptops & Desktops", href: "/products?category=computers" },
-  { label: "Smartphones & Tablets", href: "/products?category=mobile" },
-  { label: "Printers & Scanners", href: "/products?category=printers" },
-  { label: "Networking Equipment", href: "/products?category=networking" },
-  { label: "CCTV & Security Systems", href: "/products?category=security" },
-  { label: "Home Appliances", href: "/products?category=appliances" },
-];
-
-const QUICK_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Get Wholesale Quote", href: "/contact" },
-];
-
-const SOCIALS = [
-  {
-    label: "Facebook",
-    href: "https://facebook.com",
-    path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-  },
-  {
-    label: "Instagram",
-    href: "https://instagram.com",
-    path: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zm1.5-4.87h.01",
-    extra: true,
-  },
-  {
-    label: "WhatsApp",
-    href: "https://wa.me/919150310876",
-    path: "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z",
-  },
-];
-
-function LogoMark() {
+function FooterLogo() {
   return (
-    <svg viewBox="0 0 80 80" className="w-10 h-10" aria-hidden>
-      <g fill="#B8860B" opacity="0.8">
-        <ellipse cx="10" cy="38" rx="3" ry="5" transform="rotate(-20 10 38)" />
-        <ellipse cx="14" cy="30" rx="3" ry="5" transform="rotate(-10 14 30)" />
-        <ellipse cx="10" cy="22" rx="3" ry="5" transform="rotate(10 10 22)" />
-        <ellipse cx="14" cy="46" rx="3" ry="5" transform="rotate(-30 14 46)" />
+    <svg viewBox="0 0 80 80" width={52} height={52} aria-hidden>
+      <g fill="#D4AF37" opacity="0.8">
+        <ellipse cx="9" cy="40" rx="2.5" ry="5" transform="rotate(-25 9 40)" />
+        <ellipse cx="12" cy="31" rx="2.5" ry="5" transform="rotate(-12 12 31)" />
+        <ellipse cx="9"  cy="22" rx="2.5" ry="5" transform="rotate(8  9  22)" />
+        <ellipse cx="12" cy="49" rx="2.5" ry="5" transform="rotate(-35 12 49)" />
       </g>
-      <path d="M17 20 Q12 40 17 60" stroke="#B8860B" strokeWidth="1.5" fill="none" opacity="0.8" />
-      <g fill="#B8860B" opacity="0.8">
-        <ellipse cx="70" cy="38" rx="3" ry="5" transform="rotate(20 70 38)" />
-        <ellipse cx="66" cy="30" rx="3" ry="5" transform="rotate(10 66 30)" />
-        <ellipse cx="70" cy="22" rx="3" ry="5" transform="rotate(-10 70 22)" />
-        <ellipse cx="66" cy="46" rx="3" ry="5" transform="rotate(30 66 46)" />
+      <path d="M16 18 Q10 40 16 62" stroke="#D4AF37" strokeWidth="1.5" fill="none" opacity="0.6" />
+      <g fill="#D4AF37" opacity="0.8">
+        <ellipse cx="71" cy="40" rx="2.5" ry="5" transform="rotate(25 71 40)" />
+        <ellipse cx="68" cy="31" rx="2.5" ry="5" transform="rotate(12 68 31)" />
+        <ellipse cx="71" cy="22" rx="2.5" ry="5" transform="rotate(-8 71 22)" />
+        <ellipse cx="68" cy="49" rx="2.5" ry="5" transform="rotate(35 68 49)" />
       </g>
-      <path d="M63 20 Q68 40 63 60" stroke="#B8860B" strokeWidth="1.5" fill="none" opacity="0.8" />
-      <path d="M40 8 L60 16 L60 42 C60 56 40 68 40 68 C40 68 20 56 20 42 L20 16 Z" fill="#CC0000" />
-      <text x="40" y="46" textAnchor="middle" fill="#FFFFFF" fontSize="26" fontWeight="900" fontFamily="Georgia, serif">M</text>
+      <path d="M64 18 Q70 40 64 62" stroke="#D4AF37" strokeWidth="1.5" fill="none" opacity="0.6" />
+      <path d="M40 7 L62 17 L62 43 C62 57 40 69 40 69 C40 69 18 57 18 43 L18 17 Z" fill="#B91C1C" />
+      <text x="40" y="47" textAnchor="middle" fill="#FFFFFF" fontSize="25" fontWeight="900" fontFamily="Georgia,serif" letterSpacing="-1">M</text>
     </svg>
   );
 }
 
+const QUICK_LINKS = [
+  { label: "Home",       href: "/" },
+  { label: "Products",   href: "/products" },
+  { label: "Brands",     href: "/products" },
+  { label: "Categories", href: "/products" },
+  { label: "About Us",   href: "/about" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+const CATEGORIES = [
+  { label: "Televisions",          href: "/products?category=tv" },
+  { label: "Laptops",              href: "/products?category=computers" },
+  { label: "Mobiles",              href: "/products?category=mobile" },
+  { label: "Printers",             href: "/products?category=printers" },
+  { label: "Networking",           href: "/products?category=networking" },
+  { label: "CCTV Systems",         href: "/products?category=security" },
+  { label: "Computer Accessories", href: "/products?category=accessories" },
+  { label: "Home Appliances",      href: "/products?category=appliances" },
+];
+
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="bg-[#111111] text-[#9CA3AF]">
+    <footer className="bg-[#0F172A] text-[#94A3B8]" aria-label="Footer">
 
-      {/* Top red strip */}
-      <div className="h-1 bg-[#CC0000]" />
+      {/* Top accent line */}
+      <div className="h-[3px] bg-gradient-to-r from-[#B91C1C] to-[#D4AF37]" />
 
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      {/* Main grid */}
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
-        {/* Brand column */}
-        <div className="flex flex-col gap-5">
+        {/* Col 1 — Brand */}
+        <div className="lg:col-span-1 flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <LogoMark />
-            <div className="flex flex-col leading-none">
-              <span className="font-black text-white text-[14px] tracking-tight">Sri Ganesh Enterprises</span>
-              <span className="text-[#CC0000] text-[10px] tracking-wider uppercase font-bold mt-0.5">Wholesale Electronics</span>
+            <FooterLogo />
+            <div className="flex flex-col leading-tight">
+              <span className="font-bold text-white text-[15px] tracking-tight">Sri Ganesh Enterprises</span>
+              <span className="text-[#D4AF37] text-[10px] font-medium mt-0.5 tracking-wide leading-none">
+                Wholesale: TV, Laptop, Mobiles &amp; Home Appliances
+              </span>
             </div>
           </div>
-          <p className="text-[#6B7280] text-[13px] leading-relaxed">
-            Chennai&apos;s trusted wholesale electronics distributor. Supplying genuine
-            products to retailers, corporates, schools and government offices since 2010.
+          <p className="text-[13px] leading-relaxed">
+            No.18/19 Meeran Sahib Street,<br />
+            1st Floor, UNO Arcade Complex,<br />
+            Shop No F49, Chennai – 600002
           </p>
-          {/* Socials */}
-          <div className="flex gap-2">
-            {SOCIALS.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                aria-label={s.label}
-                className="w-8 h-8 flex items-center justify-center rounded border border-[#2D2D2D] text-[#6B7280] hover:text-white hover:border-[#CC0000] hover:bg-[#CC0000]/10 transition-all">
-                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-                  <path d={s.path} />
-                </svg>
-              </a>
-            ))}
-          </div>
-          {/* Badges */}
-          <div className="flex gap-2 flex-wrap">
-            <span className="text-[10px] font-bold px-2.5 py-1 rounded bg-[#CC0000]/10 text-[#CC0000] border border-[#CC0000]/20 uppercase tracking-wider">
-              GST Registered
-            </span>
-            <span className="text-[10px] font-bold px-2.5 py-1 rounded bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 uppercase tracking-wider">
-              Authorised Dealer
-            </span>
-          </div>
         </div>
 
-        {/* Product categories */}
+        {/* Col 2 — Quick Links */}
         <div>
-          <h4 className="text-white text-xs font-black uppercase tracking-[0.18em] mb-5">Product Categories</h4>
-          <ul className="flex flex-col gap-2.5">
-            {DEPARTMENTS.map((d) => (
-              <li key={d.href}>
-                <Link href={d.href}
-                  className="text-[#6B7280] text-[13px] hover:text-white hover:pl-1 transition-all duration-150 flex items-center gap-1.5">
-                  <span className="w-1 h-1 bg-[#CC0000] rounded-full shrink-0" />
-                  {d.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Quick links */}
-        <div>
-          <h4 className="text-white text-xs font-black uppercase tracking-[0.18em] mb-5">Quick Links</h4>
-          <ul className="flex flex-col gap-2.5">
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">Quick Links</h4>
+          <ul className="space-y-2.5">
             {QUICK_LINKS.map((l) => (
               <li key={l.label}>
                 <Link href={l.href}
-                  className="text-[#6B7280] text-[13px] hover:text-white hover:pl-1 transition-all duration-150 flex items-center gap-1.5">
-                  <span className="w-1 h-1 bg-[#D4AF37] rounded-full shrink-0" />
+                  className="text-[13px] text-[#94A3B8] hover:text-white transition-colors">
                   {l.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="mt-6 pt-5 border-t border-[#1F2937]">
-            <Link href="/contact"
-              className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#CC0000] hover:text-[#FF2222] transition-colors">
-              Request Bulk Quote <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
         </div>
 
-        {/* Contact */}
+        {/* Col 3 — Categories */}
         <div>
-          <h4 className="text-white text-xs font-black uppercase tracking-[0.18em] mb-5">Contact Us</h4>
-          <ul className="flex flex-col gap-4">
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">Categories</h4>
+          <ul className="space-y-2.5">
+            {CATEGORIES.map((c) => (
+              <li key={c.label}>
+                <Link href={c.href}
+                  className="text-[13px] text-[#94A3B8] hover:text-white transition-colors">
+                  {c.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Col 4 — Contact Us */}
+        <div>
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">Contact Us</h4>
+          <ul className="space-y-3.5">
+            <li className="flex items-center gap-2.5">
+              <Phone className="w-4 h-4 text-[#B91C1C] shrink-0" />
+              <a href="tel:+919150310876"
+                className="text-[13px] text-[#94A3B8] hover:text-white transition-colors">
+                9150310876
+              </a>
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Mail className="w-4 h-4 text-[#B91C1C] shrink-0" />
+              <a href="mailto:info@sriganeshenterprises.in"
+                className="text-[13px] text-[#94A3B8] hover:text-white transition-colors break-all">
+                info@sriganeshenterprises.in
+              </a>
+            </li>
             <li className="flex items-start gap-2.5">
-              <MapPin className="w-4 h-4 text-[#CC0000] shrink-0 mt-0.5" />
-              <span className="text-[#6B7280] text-[13px] leading-relaxed">
+              <MapPin className="w-4 h-4 text-[#B91C1C] shrink-0 mt-0.5" />
+              <span className="text-[13px] leading-relaxed">
                 No.18/19 Meeran Sahib Street,<br />
                 1st Floor, UNO Arcade Complex,<br />
-                Shop No: F49, Chennai – 600002
+                Shop No F49, Chennai – 600002
               </span>
             </li>
-            <li className="flex items-center gap-2.5">
-              <Phone className="w-4 h-4 text-[#CC0000] shrink-0" />
-              <div>
-                <p className="text-white text-[13px] font-bold">+91 91503 10876</p>
-                <p className="text-[#6B7280] text-[11px]">Mon–Sat · 9:30 AM – 7:00 PM</p>
-              </div>
-            </li>
-            <li className="flex items-center gap-2.5">
-              <Mail className="w-4 h-4 text-[#CC0000] shrink-0" />
-              <span className="text-[#6B7280] text-[13px]">info@sriganeshenterprises.in</span>
-            </li>
           </ul>
-          {/* Owner name callout */}
-          <div className="mt-5 p-3 rounded-lg bg-[#1A1A1A] border border-[#2D2D2D]">
-            <p className="text-[10px] text-[#6B7280] uppercase tracking-widest mb-1">Proprietor</p>
-            <p className="text-[#CC0000] font-black text-[15px]">K. Ganesh Rao</p>
-          </div>
+        </div>
+
+        {/* Col 5 — Get Wholesale Quote */}
+        <div>
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">
+            Get Wholesale Quote
+          </h4>
+          <p className="text-[13px] leading-relaxed mb-5">
+            For bulk orders and special pricing for businesses, dealers and institutions.
+          </p>
+          <Link href="/contact"
+            className="btn-red inline-flex items-center gap-2 text-[13px] px-5 py-2.5">
+            Request a Quote <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#1F2937]">
-        <div className="max-w-7xl mx-auto px-4 lg:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[#4B5563]">
-          <p>© {year} Sri Ganesh Enterprises · All rights reserved.</p>
-          <p>Wholesale Electronics Distributor · Chennai, Tamil Nadu, India</p>
+      <div className="border-t border-[#1E293B]">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6 py-4 text-center">
+          <p className="text-[12px] text-[#64748B]">
+            © {new Date().getFullYear()} Sri Ganesh Enterprises. All Rights Reserved.
+          </p>
         </div>
       </div>
     </footer>

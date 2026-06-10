@@ -4,78 +4,67 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section
-      className="section-white py-12 px-4 overflow-hidden"
-      aria-label="Wholesale electronics hero"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center">
+    <section className="hero-section pt-16 px-4 section-white" aria-label="Hero">
+      <div className="max-w-7xl mx-auto w-full py-10 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[calc(100vh-64px)]">
 
-          {/* ── Left content ── */}
-          <div className="flex flex-col gap-5 max-w-lg">
+          {/* ── Left ── */}
+          <div className="flex flex-col gap-5 max-w-lg py-10 lg:py-16">
+            {/* Gold tagline */}
+            <p className="text-[#D4AF37] font-semibold text-sm tracking-wide">
+              Your Trusted Wholesale Partner
+            </p>
 
-            {/* Badge */}
-            <div className="inline-flex">
-              <span className="bg-[#FEF2F2] text-[#CC0000] text-xs font-bold px-4 py-1.5 rounded-full border border-[#FECACA]">
-                Your Trusted Wholesale Partner
-              </span>
-            </div>
-
-            {/* Heading */}
+            {/* Main heading */}
             <div>
-              <h1 className="text-[2.6rem] font-black text-[#111111] leading-tight tracking-tight">
+              <h1 className="text-[2.4rem] sm:text-[2.75rem] font-black text-[#0F172A] leading-[1.1] tracking-tight">
                 Wholesale Electronics for
               </h1>
-              <h1 className="text-[2.6rem] font-black text-[#CC0000] leading-tight tracking-tight">
+              <h1 className="text-[2.4rem] sm:text-[2.75rem] font-black text-[#B91C1C] leading-[1.1] tracking-tight">
                 Businesses &amp; Dealers
               </h1>
             </div>
 
-            {/* Description */}
-            <p className="text-[#4B5563] text-[15px] leading-relaxed">
+            {/* Subtext */}
+            <p className="text-[#6B7280] text-[15px] leading-relaxed">
               Supplying genuine electronics, IT products, and home appliances
               from leading brands at the best wholesale prices.
             </p>
 
-            {/* Checkmarks */}
-            <div className="flex items-center gap-6 flex-wrap">
+            {/* Check items */}
+            <div className="flex items-center flex-wrap gap-4">
               {["Bulk Pricing", "Genuine Products", "Fast Delivery"].map((item) => (
                 <div key={item} className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#CC0000]" strokeWidth={2.5} />
-                  <span className="text-[#374151] text-sm font-semibold">{item}</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#B91C1C] shrink-0" strokeWidth={2.5} />
+                  <span className="text-[#0F172A] text-[14px] font-semibold">{item}</span>
                 </div>
               ))}
             </div>
 
-            {/* CTA buttons */}
+            {/* CTAs */}
             <div className="flex items-center gap-3 flex-wrap mt-1">
-              <Link href="/products" className="btn-primary text-sm py-3 px-6">
+              <Link href="/products" className="btn-red">
                 Explore Products <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/contact" className="btn-outline text-sm py-3 px-6">
+              <Link href="/contact" className="btn-outline">
                 Get Wholesale Quote <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
-          {/* ── Right product image ── */}
-          <div className="relative flex items-center justify-center">
-            {/* Warm cream background blob */}
+          {/* ── Right — product image ── */}
+          <div className="relative flex items-center justify-center py-8 lg:py-0">
             <div
-              className="absolute inset-0 rounded-[40px]"
-              style={{
-                background: "linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 50%, #FEF0E0 100%)",
-                margin: "-12px 0",
-              }}
+              className="absolute inset-4 rounded-[40px] opacity-60"
+              style={{ background: "linear-gradient(135deg, #FFF8F0 0%, #FFF0E5 100%)" }}
             />
-            {/* Product image */}
-            <div className="relative z-10 w-full">
+            <div className="relative z-10 w-full max-w-[560px]">
               <Image
                 src="/hero-products.png"
-                alt="Electronics products — TV, Laptop, Mobile, Printer, Router, CCTV"
-                width={680}
-                height={480}
-                className="w-full h-auto object-contain drop-shadow-lg"
+                alt="Electronics products — TV, Laptop, Mobile, Printer, Router, CCTV, Refrigerator"
+                width={640}
+                height={460}
+                className="w-full h-auto object-contain drop-shadow-xl"
                 priority
               />
             </div>

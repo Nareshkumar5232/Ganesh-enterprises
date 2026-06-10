@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
-import HeroSection      from "@/components/home/HeroSection";
-import CategorySection  from "@/components/home/CategorySection";
+import HeroSection     from "@/components/home/HeroSection";
+import CategorySection from "@/components/home/CategorySection";
 import TrustedBrands   from "@/components/home/TrustedBrands";
-import LiveInventory   from "@/components/home/LiveInventory";
-import WholesaleBuyers from "@/components/home/WholesaleBuyers";
-import DealerAdvantage from "@/components/home/DealerAdvantage";
-import BulkQuoteForm   from "@/components/home/BulkQuoteForm";
+import AboutSection    from "@/components/home/AboutSection";
+import WhoServeSection from "@/components/home/WhoServeSection";
 
 export const metadata: Metadata = {
-  title: "Sri Ganesh Enterprises | Chennai's Electronics Wholesale Marketplace",
+  title: "Sri Ganesh Enterprises | Wholesale Electronics Distributor Chennai",
   description:
-    "Chennai's largest wholesale electronics distributor. Genuine computers, laptops, TVs, CCTV, networking, mobile devices and home appliances at bulk pricing. 100+ brands, 5000+ products in stock.",
+    "Chennai's trusted wholesale electronics distributor. Genuine computers, laptops, TVs, CCTV, networking, mobiles and home appliances at bulk pricing for businesses & dealers.",
   keywords: [
     "wholesale electronics Chennai",
     "bulk electronics supplier",
@@ -25,26 +23,20 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* ── Hero (matches image exactly) ── */}
+      {/* 1. Hero — full screen */}
       <HeroSection />
 
-      {/* ── Shop by Category ── */}
+      {/* 2. Shop by Category */}
       <CategorySection />
 
-      {/* ── Trusted by Leading Brands ── */}
+      {/* 3. Trusted by Leading Brands */}
       <TrustedBrands />
 
-      {/* ── Live Inventory Board ── */}
-      <LiveInventory />
+      {/* 4. About Sri Ganesh Enterprises */}
+      <AboutSection />
 
-      {/* ── Who Buys From Us ── */}
-      <WholesaleBuyers />
-
-      {/* ── Dealer Advantage Comparison ── */}
-      <DealerAdvantage />
-
-      {/* ── Bulk Quote RFQ Form ── */}
-      <BulkQuoteForm />
+      {/* 5. Who We Serve */}
+      <WhoServeSection />
     </>
   );
 }
