@@ -1,4 +1,4 @@
-// AL HIKMATH ENTERPRISES PVT LTD — Cart Store
+// Sri Ganesh Enterprises — Cart Store
 // Validates: Requirements 5.9, 6.6, 9.1, 9.2, 9.3, 9.4, 9.5, 9.9
 
 import { create } from 'zustand';

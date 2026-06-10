@@ -49,7 +49,7 @@ export default function LoginPage() {
         className="w-full max-w-md bg-white dark:bg-[#121212] p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-white/6 backdrop-blur-md"
       >
         <div className="flex justify-center mb-6">
-          <Image src="/images/logo.png" alt="Sri Ganesh Enterprises ENTERPRISES" width={200} height={85} className="h-auto" />
+          <Image src="/images/logo.svg" alt="Sri Ganesh Enterprises" width={200} height={100} className="h-auto" />
         </div>
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Login</h2>
         <div className="mb-4">
@@ -68,10 +68,10 @@ export default function LoginPage() {
           <label className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
             <input {...register("remember")} type="checkbox" /> Remember me
           </label>
-          <a href="/register" className="text-sm text-[#0ea5a2]">Register</a>
+          <a href="/register" className="text-sm text-[#DC2626] hover:underline">Register</a>
         </div>
 
-        <button type="submit" className="w-full py-3 bg-[#9EFF00] text-black rounded-lg font-bold">Sign in</button>
+        <button type="submit" className="w-full py-3 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-lg font-bold transition-colors shadow-[0_4px_12px_rgba(220,38,38,0.2)]">Sign in</button>
       </form>
     </div>
   );

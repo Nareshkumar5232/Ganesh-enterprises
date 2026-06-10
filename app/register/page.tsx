@@ -44,7 +44,7 @@ export default function RegisterPage() {
         className="w-full max-w-md bg-white dark:bg-[#121212] p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-white/6 backdrop-blur-md"
       >
         <div className="flex justify-center mb-6">
-          <Image src="/images/logo.png" alt="Sri Ganesh Enterprises ENTERPRISES" width={200} height={85} className="h-auto" />
+          <Image src="/images/logo.svg" alt="Sri Ganesh Enterprises" width={200} height={100} className="h-auto" />
         </div>
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Create an account</h2>
         <div className="mb-4">
@@ -64,10 +64,10 @@ export default function RegisterPage() {
         </div>
 
         <div className="flex items-center justify-between mb-4">
-          <a href="/login" className="text-sm text-[#0ea5a2]">Already have an account?</a>
+          <a href="/login" className="text-sm text-[#DC2626] hover:underline">Already have an account?</a>
         </div>
 
-        <button type="submit" className="w-full py-3 bg-[#9EFF00] text-black rounded-lg font-bold">Create account</button>
+        <button type="submit" className="w-full py-3 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-lg font-bold transition-colors shadow-[0_4px_12px_rgba(220,38,38,0.2)]">Create account</button>
       </form>
     </div>
   );

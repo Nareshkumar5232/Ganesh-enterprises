@@ -54,7 +54,7 @@ export const useProductFilterStore = create<ProductFilterStore>()(
       resetFilters: () => set(initialFilters),
     }),
     {
-      name: "al-hikmath-product-filters",
+      name: "sri-ganesh-enterprises-product-filters",
       skipHydration: true,
     }
   )

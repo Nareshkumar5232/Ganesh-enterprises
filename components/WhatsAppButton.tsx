@@ -6,7 +6,7 @@ import { MessageCircle } from "lucide-react";
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
-  const whatsappLink = `https://wa.me/919342798344?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/919150310876?text=${encodeURIComponent(
     "Hello Sri Ganesh Enterprises ENTERPRISES, I would like to know more about your products."
   )}`;
 

@@ -82,10 +82,10 @@ function ThumbnailButton({ src, alt, isActive, onClick }: ThumbnailButtonProps) 
         }
       }}
       className={cn(
-        "relative w-20 h-20 rounded-lg overflow-hidden bg-[#1A1A1A] border-2 transition-colors duration-200 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9EFF00]",
+        "relative w-20 h-20 rounded-lg overflow-hidden bg-[#1A1A1A] border-2 transition-colors duration-200 flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#DC2626]",
         isActive
-          ? "border-[#9EFF00]"
-          : "border-transparent hover:border-[#9EFF00]/50"
+          ? "border-[#DC2626]"
+          : "border-transparent hover:border-[#DC2626]/50"
       )}
       aria-label={alt}
       aria-current={isActive}

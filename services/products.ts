@@ -82,7 +82,7 @@ export function normalizeProduct(product: ProductApiRecord): Product {
     price: product.price ?? 0,
     originalPrice: product.originalPrice,
     category: product.category,
-    brand: product.brand || "AL HIKMATH",
+    brand: product.brand || "Sri Ganesh Enterprises",
     images: product.images?.length ? product.images : ["/images/placeholder-product.svg"],
     rating: product.rating ?? 0,
     reviewCount: product.reviewCount ?? 0,

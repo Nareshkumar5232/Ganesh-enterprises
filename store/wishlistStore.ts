@@ -1,4 +1,4 @@
-// AL HIKMATH ENTERPRISES PVT LTD — Wishlist Store
+// Sri Ganesh Enterprises — Wishlist Store
 // Validates: Requirements 5.10, 15.1, 15.2, 15.3
 
 import { create } from 'zustand';
@@ -43,7 +43,7 @@ export const useWishlistStore = create<WishlistStore>()(
       },
     }),
     {
-      name: 'al-hikmath-wishlist',
+      name: 'sri-ganesh-enterprises-wishlist',
       skipHydration: true,
     }
   )

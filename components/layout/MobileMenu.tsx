@@ -44,9 +44,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {/* Header */}
           <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200 dark:border-white/10 shrink-0 transition-colors duration-300">
             <Link href="/" onClick={onClose} className="flex items-center gap-2">
-              <Zap className="w-6 h-6 text-[#9EFF00]" aria-hidden="true" />
+              <Zap className="w-6 h-6 text-[#DC2626]" aria-hidden="true" />
               <div className="flex flex-col leading-none">
-                <span className="font-bold text-[#9EFF00] tracking-wide text-base">
+                <span className="font-bold text-[#DC2626] tracking-wide text-base">
                   Sri Ganesh Enterprises
                 </span>
                 <span className="text-gray-900 dark:text-white text-xs tracking-widest uppercase transition-colors duration-300">
@@ -85,7 +85,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <ShoppingCart className="w-5 h-5" aria-hidden="true" />
               <span>Cart</span>
               {totalItems > 0 && (
-                <span className="ml-auto min-w-[22px] h-[22px] flex items-center justify-center rounded-full bg-[#9EFF00] text-black text-xs font-bold px-1">
+                <span className="ml-auto min-w-[22px] h-[22px] flex items-center justify-center rounded-full bg-[#DC2626] text-white text-xs font-bold px-1">
                   {totalItems > 99 ? "99+" : totalItems}
                 </span>
               )}
@@ -100,7 +100,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Zap className="w-5 h-5" aria-hidden="true" />
               <span>Wishlist</span>
               {wishlistCount > 0 && (
-                <span className="ml-auto min-w-[22px] h-[22px] flex items-center justify-center rounded-full bg-[#9EFF00] text-black text-xs font-bold px-1">
+                <span className="ml-auto min-w-[22px] h-[22px] flex items-center justify-center rounded-full bg-[#DC2626] text-white text-xs font-bold px-1">
                   {wishlistCount > 99 ? "99+" : wishlistCount}
                 </span>
               )}

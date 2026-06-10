@@ -1,40 +1,50 @@
 import type { Metadata } from "next";
-import HeroSection       from "@/components/home/HeroSection";
-import StatsSection      from "@/components/home/StatsSection";
-import CategorySection   from "@/components/home/CategorySection";
-import WhyChooseUs       from "@/components/home/WhyChooseUs";
-import FeaturedProducts  from "@/components/home/FeaturedProducts";
-import TrustedBrands     from "@/components/home/TrustedBrands";
-import Testimonials      from "@/components/home/Testimonials";
-import CTABanner         from "@/components/home/CTABanner";
-import NewsletterSection from "@/components/home/NewsletterSection";
+import HeroSection      from "@/components/home/HeroSection";
+import CategorySection  from "@/components/home/CategorySection";
+import TrustedBrands   from "@/components/home/TrustedBrands";
+import LiveInventory   from "@/components/home/LiveInventory";
+import WholesaleBuyers from "@/components/home/WholesaleBuyers";
+import DealerAdvantage from "@/components/home/DealerAdvantage";
+import BulkQuoteForm   from "@/components/home/BulkQuoteForm";
 
 export const metadata: Metadata = {
-  title: "Sri Ganesh Enterprises ENTERPRISES PVT LTD | Wholesale Electronics Distributor Chennai",
+  title: "Sri Ganesh Enterprises | Chennai's Electronics Wholesale Marketplace",
   description:
-    "Wholesale electronics distributor in Chennai supplying genuine computers, laptops, networking equipment, security systems, mobile devices and home appliances to retailers and businesses. 100+ brands, 5000+ products.",
+    "Chennai's largest wholesale electronics distributor. Genuine computers, laptops, TVs, CCTV, networking, mobile devices and home appliances at bulk pricing. 100+ brands, 5000+ products in stock.",
   keywords: [
-    "wholesale electronics distributor Chennai",
-    "bulk electronics supply",
-    "computers networking laptops wholesale",
-    "CCTV security systems Chennai",
-    "Sri Ganesh Enterprises enterprises",
+    "wholesale electronics Chennai",
+    "bulk electronics supplier",
+    "computers laptops wholesale Chennai",
+    "CCTV security systems wholesale",
+    "Samsung LG Sony wholesale dealer",
+    "electronics distributor Tamil Nadu",
+    "Sri Ganesh Enterprises",
   ],
 };
 
 export default function HomePage() {
   return (
     <>
-      {/* White → Gray → White → Gray → White → Gray → White → Gray → White */}
+      {/* ── Hero (matches image exactly) ── */}
       <HeroSection />
-      <StatsSection />
+
+      {/* ── Shop by Category ── */}
       <CategorySection />
-      <WhyChooseUs />
-      <FeaturedProducts />
+
+      {/* ── Trusted by Leading Brands ── */}
       <TrustedBrands />
-      <Testimonials />
-      <CTABanner />
-      <NewsletterSection />
+
+      {/* ── Live Inventory Board ── */}
+      <LiveInventory />
+
+      {/* ── Who Buys From Us ── */}
+      <WholesaleBuyers />
+
+      {/* ── Dealer Advantage Comparison ── */}
+      <DealerAdvantage />
+
+      {/* ── Bulk Quote RFQ Form ── */}
+      <BulkQuoteForm />
     </>
   );
 }

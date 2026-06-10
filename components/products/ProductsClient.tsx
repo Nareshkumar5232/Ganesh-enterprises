@@ -296,11 +296,11 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-[#9EFF00]" />
-              <span className="text-xs uppercase tracking-widest text-[#9EFF00] font-bold">Premium Showroom</span>
+              <Sparkles className="w-5 h-5 text-[#DC2626]" />
+              <span className="text-xs uppercase tracking-widest text-[#DC2626] font-bold">Premium Showroom</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-              Enterprise <span className="text-[#9EFF00] font-light">Products</span>
+              Enterprise <span className="text-[#DC2626] font-light">Products</span>
             </h1>
             <p className="text-gray-400 mt-2 text-sm md:text-base">
               Explore our carefully curated premium components and appliances built to the highest specifications.
@@ -328,7 +328,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   onClick={() => scrollToSection(cat.id)}
                   className={`flex-shrink-0 px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 select-none ${
                     isActive
-                      ? "bg-[#9EFF00] text-black border-[#9EFF00] shadow-[0_0_12px_rgba(158,255,0,0.3)] font-bold"
+                      ? "bg-[#DC2626] text-white border-[#DC2626] shadow-[0_0_12px_rgba(220, 38, 38, 0.3)] font-bold"
                       : "bg-white/5 text-gray-300 border-white/10 hover:border-white/30 hover:text-white"
                   }`}
                 >
@@ -349,13 +349,13 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               {/* Header */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[#9EFF00]" />
+                  <SlidersHorizontal className="w-4 h-4 text-[#DC2626]" />
                   <h2 className="text-sm uppercase tracking-wider font-bold text-white">Filters</h2>
                 </div>
                 {activeFiltersCount > 0 && (
                   <button
                     onClick={resetFilters}
-                    className="flex items-center gap-1 text-[11px] font-semibold text-[#9EFF00] hover:underline"
+                    className="flex items-center gap-1 text-[11px] font-semibold text-[#DC2626] hover:underline"
                   >
                     <RotateCcw className="w-3 h-3" />
                     Reset
@@ -373,12 +373,12 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       onClick={() => setCategory(cat.id)}
                       className={`text-left text-sm py-1 px-2 rounded-md transition-all duration-200 flex items-center justify-between ${
                         category === cat.id
-                          ? "bg-white/10 text-[#9EFF00] font-semibold"
+                          ? "bg-white/10 text-[#DC2626] font-semibold"
                           : "text-gray-400 hover:bg-white/5 hover:text-white"
                       }`}
                     >
                       <span>{cat.label}</span>
-                      {category === cat.id && <Check className="w-3.5 h-3.5 text-[#9EFF00]" />}
+                      {category === cat.id && <Check className="w-3.5 h-3.5 text-[#DC2626]" />}
                     </button>
                   ))}
                 </div>
@@ -388,7 +388,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Max Price</label>
-                  <span className="font-mono text-xs text-[#9EFF00]">{formatCurrency(priceInput)}</span>
+                  <span className="font-mono text-xs text-[#DC2626]">{formatCurrency(priceInput)}</span>
                 </div>
                 <input
                   type="range"
@@ -397,7 +397,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   step="500"
                   value={priceInput}
                   onChange={handlePriceChange}
-                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#9EFF00]"
+                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#DC2626]"
                 />
                 <div className="flex justify-between text-[10px] text-gray-500 font-mono">
                   <span>₹0</span>
@@ -417,7 +417,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                         onClick={() => setMinRating(isActive ? 0 : stars)}
                         className={`flex items-center justify-center flex-1 py-1.5 rounded-md border text-xs font-semibold transition-all duration-200 ${
                           isActive
-                            ? "bg-[#9EFF00] text-black border-[#9EFF00] font-bold shadow-[0_0_8px_rgba(158,255,0,0.25)]"
+                            ? "bg-[#DC2626] text-white border-[#DC2626] font-bold shadow-[0_0_8px_rgba(220, 38, 38, 0.25)]"
                             : "bg-white/5 border-white/10 text-gray-300 hover:border-white/20 hover:text-white"
                         }`}
                       >
@@ -441,7 +441,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                     onChange={(e) => setAvailability(e.target.checked ? "in-stock" : "all")}
                     className="sr-only peer"
                   />
-                  <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#9EFF00]" />
+                  <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
                 </label>
 
                 {/* New Arrivals */}
@@ -455,7 +455,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                     onChange={(e) => setNewArrivalsOnly(e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#9EFF00]" />
+                  <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
                 </label>
               </div>
             </div>
@@ -473,7 +473,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   placeholder="Search products, brands, tags..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 text-sm bg-black/40 border border-white/15 rounded-lg outline-none focus:border-[#9EFF00] focus:ring-1 focus:ring-[#9EFF00]/30 transition-all duration-300 text-white placeholder-gray-500"
+                  className="w-full pl-10 pr-4 py-2 text-sm bg-black/40 border border-white/15 rounded-lg outline-none focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626]/30 transition-all duration-300 text-white placeholder-gray-500"
                 />
                 {searchQuery && (
                   <button
@@ -488,14 +488,14 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               {/* Sort by */}
               <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
                 <div className="flex items-center gap-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                  <ArrowUpDown className="w-3.5 h-3.5 text-[#9EFF00]" />
+                  <ArrowUpDown className="w-3.5 h-3.5 text-[#DC2626]" />
                   <span>Sort By</span>
                 </div>
                 <div className="relative">
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortOption)}
-                    className="appearance-none bg-black/60 border border-white/15 rounded-lg px-4 pr-10 py-2 text-sm text-white font-medium outline-none focus:border-[#9EFF00] transition-colors cursor-pointer select-none"
+                    className="appearance-none bg-black/60 border border-white/15 rounded-lg px-4 pr-10 py-2 text-sm text-white font-medium outline-none focus:border-[#DC2626] transition-colors cursor-pointer select-none"
                   >
                     {SORT_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value} className="bg-[#0F0F0F] text-white">
@@ -515,13 +515,13 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 {searchQuery && (
                   <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
                     Search: "{searchQuery}"
-                    <button onClick={() => setSearchQuery("")} className="hover:text-[#9EFF00] ml-1">
+                    <button onClick={() => setSearchQuery("")} className="hover:text-[#DC2626] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 {category !== "all" && (
-                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-[#9EFF00]">
+                  <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-[#DC2626]">
                     Category: {CATEGORY_MAP[category]?.title || category}
                     <button onClick={() => setCategory("all")} className="hover:text-white ml-1">
                       <X className="w-3 h-3" />
@@ -531,7 +531,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 {(priceRange[0] !== 0 || priceRange[1] !== 20000) && (
                   <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
                     Max Price: {formatCurrency(priceRange[1])}
-                    <button onClick={() => setPriceRange([0, 20000])} className="hover:text-[#9EFF00] ml-1">
+                    <button onClick={() => setPriceRange([0, 20000])} className="hover:text-[#DC2626] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
@@ -539,7 +539,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 {minRating > 0 && (
                   <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
                     Rating: {minRating}+ ★
-                    <button onClick={() => setMinRating(0)} className="hover:text-[#9EFF00] ml-1">
+                    <button onClick={() => setMinRating(0)} className="hover:text-[#DC2626] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
@@ -547,7 +547,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 {availability === "in-stock" && (
                   <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
                     In Stock Only
-                    <button onClick={() => setAvailability("all")} className="hover:text-[#9EFF00] ml-1">
+                    <button onClick={() => setAvailability("all")} className="hover:text-[#DC2626] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
@@ -555,14 +555,14 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 {newArrivalsOnly && (
                   <span className="flex items-center gap-1 bg-white/5 border border-white/10 px-2.5 py-1 rounded-md text-xs text-white">
                     New Arrivals Only
-                    <button onClick={() => setNewArrivalsOnly(false)} className="hover:text-[#9EFF00] ml-1">
+                    <button onClick={() => setNewArrivalsOnly(false)} className="hover:text-[#DC2626] ml-1">
                       <X className="w-3 h-3" />
                     </button>
                   </span>
                 )}
                 <button
                   onClick={resetFilters}
-                  className="text-xs text-[#9EFF00] hover:underline flex items-center gap-1 ml-1"
+                  className="text-xs text-[#DC2626] hover:underline flex items-center gap-1 ml-1"
                 >
                   Clear All
                 </button>
@@ -573,7 +573,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
             <div className="space-y-16">
               {isLoading ? (
                 <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-                  <div className="mx-auto mb-4 h-12 w-12 rounded-full border-2 border-[#9EFF00] border-t-transparent animate-spin" />
+                  <div className="mx-auto mb-4 h-12 w-12 rounded-full border-2 border-[#DC2626] border-t-transparent animate-spin" />
                   <h3 className="text-xl font-bold text-white mb-2">Loading products...</h3>
                   <p className="text-gray-400 text-sm max-w-sm mx-auto">
                     Fetching the latest catalog from the backend.
@@ -581,28 +581,28 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 </div>
               ) : isError ? (
                 <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-                  <SlidersHorizontal className="w-12 h-12 text-[#9EFF00] mx-auto mb-4 opacity-40 animate-pulse" />
+                  <SlidersHorizontal className="w-12 h-12 text-[#DC2626] mx-auto mb-4 opacity-40 animate-pulse" />
                   <h3 className="text-xl font-bold text-white mb-2">Unable to load products. Please try again later.</h3>
                   <p className="text-gray-400 text-sm max-w-sm mx-auto mb-6">
                     The backend is unavailable right now.
                   </p>
                   <button
                     onClick={() => refetch()}
-                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#9EFF00] text-black hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(158,255,0,0.3)]"
+                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#DC2626] text-white hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(220, 38, 38, 0.3)]"
                   >
                     Retry
                   </button>
                 </div>
               ) : filteredAndSortedProducts.length === 0 ? (
                 <div className="text-center py-20 bg-white/5 border border-white/10 rounded-2xl">
-                  <SlidersHorizontal className="w-12 h-12 text-[#9EFF00] mx-auto mb-4 opacity-40 animate-pulse" />
+                  <SlidersHorizontal className="w-12 h-12 text-[#DC2626] mx-auto mb-4 opacity-40 animate-pulse" />
                   <h3 className="text-xl font-bold text-white mb-2">No matching products found</h3>
                   <p className="text-gray-400 text-sm max-w-sm mx-auto mb-6">
                     We couldn't find any products matching your filters. Try resetting the filters or tweaking your search terms.
                   </p>
                   <button
                     onClick={resetFilters}
-                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#9EFF00] text-black hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(158,255,0,0.3)]"
+                    className="px-6 py-2 text-xs font-bold uppercase tracking-wider rounded-lg bg-[#DC2626] text-white hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(220, 38, 38, 0.3)]"
                   >
                     Reset Filters
                   </button>
@@ -628,7 +628,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       {/* Section Title, Description, and Separation Glow */}
                       <div className="relative pb-4">
                         <div className="flex items-center gap-2.5">
-                          <span className="w-1.5 h-6 bg-[#9EFF00] rounded-full shadow-[0_0_8px_#9EFF00]" />
+                          <span className="w-1.5 h-6 bg-[#DC2626] rounded-full shadow-[0_0_8px_rgba(220,38,38,0.4)]" />
                           <h2 className="text-2xl font-extrabold text-white tracking-tight">
                             {catData.title}
                           </h2>
@@ -636,8 +636,8 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                         </div>
                         <p className="text-gray-400 text-xs mt-1 md:text-sm">{catData.desc}</p>
                         {/* Elegant divider with visual glow center */}
-                        <div className="w-full h-[1px] bg-gradient-to-r from-white/10 via-[#9EFF00]/30 to-white/10 mt-3 relative">
-                          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-20 h-[3px] bg-gradient-to-r from-transparent via-[#9EFF00] to-transparent shadow-[0_0_10px_#9EFF00]" />
+                        <div className="w-full h-[1px] bg-gradient-to-r from-white/10 via-[#DC2626]/30 to-white/10 mt-3 relative">
+                          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-20 h-[3px] bg-gradient-to-r from-transparent via-[#DC2626] to-transparent shadow-[0_0_10px_#DC2626]" />
                         </div>
                       </div>
 
@@ -681,7 +681,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
         <div className="flex items-center justify-center gap-3 bg-black/80 backdrop-blur-md border border-white/10 p-2.5 rounded-full shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
           <button
             onClick={() => setMobileFilterOpen(true)}
-            className="flex items-center justify-center gap-2 flex-1 py-2 rounded-full bg-[#9EFF00] text-black text-xs font-bold uppercase tracking-wider"
+            className="flex items-center justify-center gap-2 flex-1 py-2 rounded-full bg-[#DC2626] text-white text-xs font-bold uppercase tracking-wider"
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
             Filter {activeFiltersCount > 0 ? `(${activeFiltersCount})` : ""}
@@ -694,7 +694,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
               setSortBy(order);
               toast.success(`Sorting toggled: ${order === "price-asc" ? "Low to High" : "High to Low"}`);
             }}
-            className="flex items-center justify-center gap-1.5 flex-1 py-2 text-white hover:text-[#9EFF00] text-xs font-bold uppercase tracking-wider transition-colors"
+            className="flex items-center justify-center gap-1.5 flex-1 py-2 text-white hover:text-[#DC2626] text-xs font-bold uppercase tracking-wider transition-colors"
           >
             <ArrowUpDown className="w-3.5 h-3.5" />
             Sort
@@ -724,7 +724,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
             >
               <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
                 <div className="flex items-center gap-2">
-                  <SlidersHorizontal className="w-4 h-4 text-[#9EFF00]" />
+                  <SlidersHorizontal className="w-4 h-4 text-[#DC2626]" />
                   <h3 className="text-sm uppercase tracking-wider font-bold text-white">Filters</h3>
                 </div>
                 <button
@@ -743,7 +743,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       resetFilters();
                       toast.success("Filters cleared");
                     }}
-                    className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-white/15 hover:border-[#9EFF00] hover:text-[#9EFF00] transition-colors text-xs font-bold uppercase tracking-wider text-gray-300"
+                    className="w-full flex items-center justify-center gap-2 py-2 rounded-lg border border-white/15 hover:border-[#DC2626] hover:text-[#DC2626] transition-colors text-xs font-bold uppercase tracking-wider text-gray-300"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     Reset All Filters
@@ -764,12 +764,12 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                         }}
                         className={`text-left text-sm py-2 px-3 rounded-md transition-all flex items-center justify-between ${
                           category === cat.id
-                            ? "bg-white/10 text-[#9EFF00] font-semibold"
+                            ? "bg-white/10 text-[#DC2626] font-semibold"
                             : "text-gray-400 hover:bg-white/5 hover:text-white"
                         }`}
                       >
                         <span>{cat.label}</span>
-                        {category === cat.id && <Check className="w-3.5 h-3.5 text-[#9EFF00]" />}
+                        {category === cat.id && <Check className="w-3.5 h-3.5 text-[#DC2626]" />}
                       </button>
                     ))}
                   </div>
@@ -779,7 +779,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <label className="text-xs uppercase tracking-wider text-gray-400 font-semibold">Max Price</label>
-                    <span className="font-mono text-xs text-[#9EFF00]">{formatCurrency(priceInput)}</span>
+                    <span className="font-mono text-xs text-[#DC2626]">{formatCurrency(priceInput)}</span>
                   </div>
                   <input
                     type="range"
@@ -788,7 +788,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                     step="500"
                     value={priceInput}
                     onChange={handlePriceChange}
-                    className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#9EFF00]"
+                    className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#DC2626]"
                   />
                   <div className="flex justify-between text-[10px] text-gray-500 font-mono">
                     <span>₹0</span>
@@ -808,7 +808,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                           onClick={() => setMinRating(isActive ? 0 : stars)}
                           className={`flex items-center justify-center flex-1 py-2 rounded-md border text-xs font-semibold transition-all ${
                             isActive
-                              ? "bg-[#9EFF00] text-black border-[#9EFF00] font-bold"
+                              ? "bg-[#DC2626] text-white border-[#DC2626] font-bold"
                               : "bg-white/5 border-white/10 text-gray-300"
                           }`}
                         >
@@ -829,7 +829,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       onChange={(e) => setAvailability(e.target.checked ? "in-stock" : "all")}
                       className="sr-only peer"
                     />
-                    <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#9EFF00]" />
+                    <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
                   </label>
 
                   <label className="flex items-center justify-between cursor-pointer group select-none">
@@ -840,7 +840,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                       onChange={(e) => setNewArrivalsOnly(e.target.checked)}
                       className="sr-only peer"
                     />
-                    <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#9EFF00]" />
+                    <div className="relative w-8 h-4 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-gray-400 peer-checked:after:bg-black after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-[#DC2626]" />
                   </label>
                 </div>
               </div>
@@ -868,7 +868,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="w-full max-w-4xl bg-[#121212]/95 border border-[#9EFF00]/30 rounded-2xl shadow-[0_0_50px_rgba(158,255,0,0.15)] overflow-hidden flex flex-col md:flex-row relative"
+                className="w-full max-w-4xl bg-[#121212]/95 border border-[#DC2626]/30 rounded-2xl shadow-[0_0_50px_rgba(220, 38, 38, 0.15)] overflow-hidden flex flex-col md:flex-row relative"
               >
                 {/* Close Button */}
                 <button
@@ -891,7 +891,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   </div>
 
                   {hasDiscount(quickViewProduct) && (
-                    <span className="absolute top-4 left-4 bg-[#9EFF00] text-black text-xs font-extrabold px-3 py-1 rounded-full">
+                    <span className="absolute top-4 left-4 bg-[#DC2626] text-white text-xs font-extrabold px-3 py-1 rounded-full">
                       {getDiscountPercentage(quickViewProduct.originalPrice!, quickViewProduct.price)}% OFF
                     </span>
                   )}
@@ -902,14 +902,14 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                   <div>
                     {/* Category Tag */}
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#9EFF00] font-extrabold px-2 py-0.5 bg-[#9EFF00]/10 border border-[#9EFF00]/30 rounded">
+                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#DC2626] font-extrabold px-2 py-0.5 bg-[#DC2626]/10 border border-[#DC2626]/30 rounded">
                         {CATEGORY_MAP[quickViewProduct.category]?.title || quickViewProduct.category.replace("-", " ")}
                       </span>
                       <span className="text-xs text-gray-500 font-semibold">• {quickViewProduct.brand}</span>
                     </div>
 
                     {/* Product Name */}
-                    <h2 className="text-xl md:text-2xl font-black text-white leading-tight mb-2 hover:text-[#9EFF00] transition-colors">
+                    <h2 className="text-xl md:text-2xl font-black text-white leading-tight mb-2 hover:text-[#DC2626] transition-colors">
                       {quickViewProduct.name}
                     </h2>
 
@@ -930,7 +930,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
 
                     {/* Pricing */}
                     <div className="flex items-baseline gap-3 mb-6 bg-white/5 p-3 rounded-lg border border-white/5 inline-flex">
-                      <span className="text-2xl font-mono font-black text-[#9EFF00]">
+                      <span className="text-2xl font-mono font-black text-[#DC2626]">
                         {formatCurrency(quickViewProduct.price)}
                       </span>
                       {hasDiscount(quickViewProduct) && (
@@ -974,7 +974,7 @@ export default function ProductsClient({ initialSearchQuery = "" }: ProductsClie
                           toast.success(`${quickViewProduct.name} added to cart!`);
                           setQuickViewProduct(null);
                         }}
-                        className="flex-1 py-3 bg-[#9EFF00] hover:bg-[#8ee000] text-black text-xs font-extrabold uppercase tracking-widest rounded-xl transition-all shadow-[0_0_15px_rgba(158,255,0,0.3)] flex items-center justify-center gap-2"
+                        className="flex-1 py-3 bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-extrabold uppercase tracking-widest rounded-xl transition-all shadow-[0_0_15px_rgba(220, 38, 38, 0.3)] flex items-center justify-center gap-2"
                       >
                         <ShoppingBag className="w-4 h-4" />
                         Add To Cart

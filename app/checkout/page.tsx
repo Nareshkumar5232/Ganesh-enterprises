@@ -58,7 +58,7 @@ export default function CheckoutPage() {
           <ShoppingCart className="w-16 h-16 mx-auto text-gray-400 mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Your cart is empty</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">Add some premium products before checking out.</p>
-          <Link href="/products" className="inline-block px-6 py-3 bg-[#9EFF00] text-black font-bold rounded-lg hover:bg-[#8FEE00] transition-colors">
+          <Link href="/products" className="inline-block px-6 py-3 bg-[#DC2626] text-white font-bold rounded-lg hover:bg-[#B91C1C] transition-colors">
             Continue Shopping
           </Link>
         </div>
@@ -129,7 +129,7 @@ export default function CheckoutPage() {
               {/* Delivery Address Section */}
               <div className="bg-white dark:bg-[#121212] rounded-2xl p-8 border border-gray-200 dark:border-white/6 shadow-lg">
                 <div className="flex items-center gap-3 mb-6">
-                  <MapPin className="w-6 h-6 text-[#9EFF00]" />
+                  <MapPin className="w-6 h-6 text-[#DC2626]" />
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Delivery Address</h2>
                 </div>
 
@@ -143,7 +143,7 @@ export default function CheckoutPage() {
                       {...register("fullName")}
                       type="text"
                       placeholder="Enter your full name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                     />
                     {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>}
                   </div>
@@ -157,7 +157,7 @@ export default function CheckoutPage() {
                       {...register("mobileNumber")}
                       type="tel"
                       placeholder="10-digit mobile number"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                     />
                     {errors.mobileNumber && <p className="text-red-500 text-sm mt-1">{errors.mobileNumber.message}</p>}
                   </div>
@@ -171,7 +171,7 @@ export default function CheckoutPage() {
                       {...register("addressLine")}
                       placeholder="House No., Building name, Street name"
                       rows={2}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                     />
                     {errors.addressLine && <p className="text-red-500 text-sm mt-1">{errors.addressLine.message}</p>}
                   </div>
@@ -186,7 +186,7 @@ export default function CheckoutPage() {
                         {...register("landmark")}
                         type="text"
                         placeholder="e.g., Near Hospital"
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                       />
                     </div>
                     <div>
@@ -197,7 +197,7 @@ export default function CheckoutPage() {
                         {...register("city")}
                         type="text"
                         placeholder="e.g., Chennai"
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                       />
                       {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city.message}</p>}
                     </div>
@@ -213,7 +213,7 @@ export default function CheckoutPage() {
                         {...register("state")}
                         type="text"
                         placeholder="e.g., Tamil Nadu"
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                       />
                       {errors.state && <p className="text-red-500 text-sm mt-1">{errors.state.message}</p>}
                     </div>
@@ -225,7 +225,7 @@ export default function CheckoutPage() {
                         {...register("pincode")}
                         type="text"
                         placeholder="6-digit pincode"
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#9EFF00]/50"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                       />
                       {errors.pincode && <p className="text-red-500 text-sm mt-1">{errors.pincode.message}</p>}
                     </div>
@@ -236,20 +236,20 @@ export default function CheckoutPage() {
               {/* Payment Method Section */}
               <div className="bg-white dark:bg-[#121212] rounded-2xl p-8 border border-gray-200 dark:border-white/6 shadow-lg">
                 <div className="flex items-center gap-3 mb-6">
-                  <CreditCard className="w-6 h-6 text-[#9EFF00]" />
+                  <CreditCard className="w-6 h-6 text-[#DC2626]" />
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Payment Method</h2>
                 </div>
 
                 <div className="space-y-3">
                   {/* Online Payment Option */}
-                  <label className="flex items-center p-4 border-2 border-gray-300 dark:border-white/10 rounded-lg cursor-pointer hover:border-[#9EFF00] dark:hover:border-[#9EFF00] transition-colors"
-                    style={{ borderColor: paymentMethod === "online" ? "#9EFF00" : undefined }}
+                  <label className="flex items-center p-4 border-2 border-gray-300 dark:border-white/10 rounded-lg cursor-pointer hover:border-[#DC2626] dark:hover:border-[#DC2626] transition-colors"
+                    style={{ borderColor: paymentMethod === "online" ? "#DC2626" : undefined }}
                   >
                     <input
                       {...register("paymentMethod")}
                       type="radio"
                       value="online"
-                      className="w-5 h-5 text-[#9EFF00] cursor-pointer"
+                      className="w-5 h-5 text-[#DC2626] cursor-pointer"
                     />
                     <span className="ml-3 flex-1 text-gray-900 dark:text-white font-medium">
                       Online Payment (Credit/Debit Card, UPI)
@@ -258,14 +258,14 @@ export default function CheckoutPage() {
                   </label>
 
                   {/* Cash on Delivery Option */}
-                  <label className="flex items-center p-4 border-2 border-gray-300 dark:border-white/10 rounded-lg cursor-pointer hover:border-[#9EFF00] dark:hover:border-[#9EFF00] transition-colors"
-                    style={{ borderColor: paymentMethod === "cod" ? "#9EFF00" : undefined }}
+                  <label className="flex items-center p-4 border-2 border-gray-300 dark:border-white/10 rounded-lg cursor-pointer hover:border-[#DC2626] dark:hover:border-[#DC2626] transition-colors"
+                    style={{ borderColor: paymentMethod === "cod" ? "#DC2626" : undefined }}
                   >
                     <input
                       {...register("paymentMethod")}
                       type="radio"
                       value="cod"
-                      className="w-5 h-5 text-[#9EFF00] cursor-pointer"
+                      className="w-5 h-5 text-[#DC2626] cursor-pointer"
                     />
                     <span className="ml-3 flex-1 text-gray-900 dark:text-white font-medium">
                       Cash on Delivery (COD)
@@ -283,7 +283,7 @@ export default function CheckoutPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-[#9EFF00] text-black font-bold text-lg rounded-lg hover:bg-[#8FEE00] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-[#DC2626] text-white font-bold text-lg rounded-lg hover:bg-[#B91C1C] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Processing..." : `Place Order - ${formatCurrency(total)}`}
               </button>
@@ -309,7 +309,7 @@ export default function CheckoutPage() {
                     <div className="flex-1">
                       <p className="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">{item.product.name}</p>
                       <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">Qty: {item.quantity}</p>
-                      <p className="text-sm font-bold text-[#9EFF00] mt-1">{formatCurrency(item.product.price * item.quantity)}</p>
+                      <p className="text-sm font-bold text-[#DC2626] mt-1">{formatCurrency(item.product.price * item.quantity)}</p>
                     </div>
                   </div>
                 ))}
@@ -331,10 +331,10 @@ export default function CheckoutPage() {
                   </span>
                   <span>{shipping === 0 ? "FREE" : formatCurrency(shipping)}</span>
                 </div>
-                {shipping === 0 && <p className="text-xs text-[#9EFF00] font-medium">Free shipping on orders above ₹5000</p>}
+                {shipping === 0 && <p className="text-xs text-[#DC2626] font-medium">Free shipping on orders above ₹5000</p>}
                 <div className="pt-3 border-t border-gray-200 dark:border-white/10 flex justify-between font-bold text-lg text-gray-900 dark:text-white">
                   <span>Total</span>
-                  <span className="text-[#9EFF00]">{formatCurrency(total)}</span>
+                  <span className="text-[#DC2626]">{formatCurrency(total)}</span>
                 </div>
               </div>
             </div>

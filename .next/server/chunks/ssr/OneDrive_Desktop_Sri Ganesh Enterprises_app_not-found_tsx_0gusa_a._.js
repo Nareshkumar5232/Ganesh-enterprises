@@ -1,3 +1,0 @@
-module.exports=[3203,a=>{"use strict";var b=a.i(25368),c=a.i(59106);a.s(["default",0,function(){return(0,b.jsx)("div",{className:"min-h-screen flex items-center justify-center",children:(0,b.jsxs)("div",{className:"text-center",children:[(0,b.jsx)("h1",{className:"text-4xl font-bold mb-4",children:"Page not found"}),(0,b.jsx)("p",{className:"text-gray-400 mb-6",children:"We couldn’t find the page you’re looking for."}),(0,b.jsx)(c.default,{href:"/",children:(0,b.jsx)("a",{className:"px-4 py-2 rounded bg-[#9EFF00] text-black font-semibold",children:"Go home"})})]})})}])},64748,a=>{a.n(a.i(3203))}];
-
-//# sourceMappingURL=OneDrive_Desktop_Sri%20Ganesh%20Enterprises_app_not-found_tsx_0gusa_a._.js.map

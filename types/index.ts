@@ -1,4 +1,4 @@
-// AL HIKMATH ENTERPRISES PVT LTD — Core TypeScript Types
+// Sri Ganesh Enterprises — Core TypeScript Types
 // Validates: Requirements 1.1
 
 export type ProductCategory =

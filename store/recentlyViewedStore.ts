@@ -1,4 +1,4 @@
-// AL HIKMATH ENTERPRISES PVT LTD — Recently Viewed Store
+// Sri Ganesh Enterprises — Recently Viewed Store
 // Validates: Requirements 6.9, 15.4, 15.5, 15.6
 
 import { create } from 'zustand';
@@ -32,7 +32,7 @@ export const useRecentlyViewedStore = create<RecentlyViewedStore>()(
       },
     }),
     {
-      name: 'al-hikmath-recently-viewed',
+      name: 'sri-ganesh-enterprises-recently-viewed',
       skipHydration: true,
     }
   )

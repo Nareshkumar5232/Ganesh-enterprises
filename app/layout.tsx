@@ -20,47 +20,46 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Sri Ganesh Enterprises ENTERPRISES PVT LTD | Electronics, Computers & IT Products",
-    template: "%s | Sri Ganesh Enterprises ENTERPRISES",
+    default: "Sri Ganesh Enterprises | Chennai's Electronics Wholesale Marketplace",
+    template: "%s | Sri Ganesh Enterprises",
   },
   description:
-    "Shop electronics, computers, IT accessories, networking products, and technology solutions at Sri Ganesh Enterprises ENTERPRISES PVT LTD. Quality products, genuine brands, fast delivery across Chennai.",
+    "Chennai's largest wholesale electronics distributor. Genuine computers, laptops, TVs, CCTV, networking, mobile devices and home appliances at bulk pricing. 100+ brands, 5000+ products.",
   keywords: [
-    "electronics products",
-    "computer products",
-    "it products",
-    "technology solutions",
-    "it accessories",
-    "networking products",
-    "Chennai",
+    "wholesale electronics Chennai",
+    "bulk electronics supplier",
+    "computers laptops wholesale",
+    "CCTV security systems",
+    "Samsung LG Sony wholesale dealer",
+    "electronics distributor Tamil Nadu",
     "Sri Ganesh Enterprises",
   ],
-  authors: [{ name: "Sri Ganesh Enterprises ENTERPRISES PVT LTD" }],
-  creator: "Sri Ganesh Enterprises ENTERPRISES PVT LTD",
+  authors: [{ name: "Sri Ganesh Enterprises" }],
+  creator: "Sri Ganesh Enterprises",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://alhikmath.com",
-    siteName: "Sri Ganesh Enterprises ENTERPRISES",
-    title: "Sri Ganesh Enterprises ENTERPRISES PVT LTD | Electronics, Computers & IT Products",
+    url: "https://sriganeshenterprises.in",
+    siteName: "Sri Ganesh Enterprises",
+    title: "Sri Ganesh Enterprises | Chennai's Electronics Wholesale Marketplace",
     description:
-      "Shop electronics, computers, IT accessories, networking products, and technology solutions at Sri Ganesh Enterprises ENTERPRISES PVT LTD.",
+      "Wholesale electronics distributor — genuine computers, laptops, TVs, CCTV & home appliances at bulk pricing. 100+ brands in stock.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Sri Ganesh Enterprises ENTERPRISES PVT LTD",
+        alt: "Sri Ganesh Enterprises — Wholesale Electronics Chennai",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sri Ganesh Enterprises ENTERPRISES PVT LTD",
-    description: "Electronics, Computers & IT Products",
+    title: "Sri Ganesh Enterprises | Wholesale Electronics",
+    description: "Chennai's Electronics Wholesale Marketplace",
   },
   alternates: {
-    canonical: "https://alhikmath.com",
+    canonical: "https://sriganeshenterprises.in",
   },
 };
 

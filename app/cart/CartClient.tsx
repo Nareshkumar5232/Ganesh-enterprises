@@ -32,7 +32,7 @@ export default function CartClient() {
         </p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 bg-[#9EFF00] text-black px-6 py-3 rounded-lg font-semibold hover:bg-[#9EFF00]/90 transition-colors"
+          className="inline-flex items-center gap-2 bg-[#DC2626] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#B91C1C] transition-colors shadow-[0_4px_12px_rgba(220,38,38,0.2)]"
         >
           Start Shopping <ArrowRight className="w-4 h-4" />
         </Link>
@@ -70,16 +70,16 @@ export default function CartClient() {
                 
                 <div className="flex-grow text-center sm:text-left">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white line-clamp-1">
-                    <Link href={`/products/${item.product.slug}`} className="hover:text-[#9EFF00] transition-colors">
+                    <Link href={`/products/${item.product.slug}`} className="hover:text-[#DC2626] transition-colors">
                       {item.product.name}
                     </Link>
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.product.brand}</p>
-                  <p className="text-[#9EFF00] font-bold mt-2 sm:hidden">{formatCurrency(item.product.price)}</p>
+                  <p className="text-[#DC2626] font-bold mt-2 sm:hidden">{formatCurrency(item.product.price)}</p>
                 </div>
 
                 <div className="flex flex-col sm:items-end gap-3 shrink-0">
-                  <p className="text-[#9EFF00] font-bold text-lg hidden sm:block">
+                  <p className="text-[#DC2626] font-bold text-lg hidden sm:block">
                     {formatCurrency(item.product.price)}
                   </p>
                   <div className="flex items-center gap-4">
@@ -133,7 +133,7 @@ export default function CartClient() {
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping</span>
-                  <span className="text-[#9EFF00]">Free</span>
+                  <span className="text-green-600 dark:text-green-400">Free</span>
                 </div>
                 
                 <div className="border-t border-gray-200 dark:border-white/10 pt-3 mt-3">
@@ -156,7 +156,7 @@ export default function CartClient() {
                   // proceed to checkout (placeholder)
                   toast.success("Checkout implementation coming soon");
                 }}
-                className="w-full bg-[#9EFF00] text-black font-bold py-3 px-4 rounded-lg mt-6 hover:bg-[#9EFF00]/90 transition-colors"
+                className="w-full bg-[#DC2626] text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-[#B91C1C] transition-colors shadow-[0_4px_12px_rgba(220,38,38,0.2)]"
               >
                 Proceed to Checkout
               </button>

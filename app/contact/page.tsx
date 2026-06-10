@@ -56,8 +56,9 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-semibold text-lg mb-1">Our Location</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  123 Business Avenue, Suite 400<br />
-                  Tech District, City 10021
+                  No.18/19 Meeran Sahib Street, 1st Floor,<br />
+                  UNO Arcade Complex, Shop No: F49,<br />
+                  Chennai - 600002
                 </p>
               </div>
             </div>
@@ -69,8 +70,7 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-semibold text-lg mb-1">Phone Number</h3>
                 <p className="text-muted-foreground">
-                  +1 (555) 123-4567<br />
-                  +1 (555) 987-6543
+                  +91 91503 10876
                 </p>
               </div>
             </div>
@@ -82,8 +82,8 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-semibold text-lg mb-1">Email Address</h3>
                 <p className="text-muted-foreground">
-                  contact@alhikmath.com<br />
-                  support@alhikmath.com
+                  info@sriganeshenterprises.in<br />
+                  contact@sriganeshenterprises.in
                 </p>
               </div>
             </div>

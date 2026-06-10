@@ -42,7 +42,7 @@ export const useAuthStore = create<AuthStore>()(
       },
     }),
     {
-      name: "al-hikmath-auth",
+      name: "sri-ganesh-enterprises-auth",
     }
   )
 );

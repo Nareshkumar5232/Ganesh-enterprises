@@ -84,7 +84,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
 
           {/* Discount badge */}
           {hasDiscount && (
-            <span className="absolute top-2 left-2 bg-[#9EFF00] text-black text-xs font-bold px-2 py-0.5 rounded-full z-10">
+            <span className="absolute top-2 left-2 bg-[#DC2626] text-white text-xs font-bold px-2 py-0.5 rounded-full z-10">
               {discountPct}% OFF
             </span>
           )}
@@ -122,7 +122,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
           <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
             {product.category.replace(/-/g, " ")}
           </p>
-          <h3 className="mt-1 font-semibold text-base text-gray-900 dark:text-white leading-tight truncate group-hover:text-[#9EFF00]">
+          <h3 className="mt-1 font-semibold text-base text-gray-900 dark:text-white leading-tight truncate group-hover:text-[#DC2626]">
             {product.name}
           </h3>
 
@@ -160,7 +160,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
             <button
               onClick={handleAddToCart}
               aria-label="Add to cart"
-              className="p-2 rounded-full bg-[#9EFF00] text-black transition-transform hover:scale-110"
+              className="p-2 rounded-full bg-[#DC2626] text-white transition-transform hover:scale-110"
             >
               <ShoppingCart className="w-5 h-5" />
             </button>
