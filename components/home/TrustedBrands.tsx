@@ -35,8 +35,8 @@ export default function TrustedBrands() {
   ];
 
   return (
-    <section className="section-white py-14 px-4 lg:px-6 scroll-mt-20" aria-label="Trusted brands" id="brands">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-white py-14 scroll-mt-20" aria-label="Trusted brands" id="brands">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
         {/* Header */}
         <div className="text-center mb-10">
           <div className="section-divider" />

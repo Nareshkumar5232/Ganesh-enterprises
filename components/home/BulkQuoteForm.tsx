@@ -86,7 +86,7 @@ export default function BulkQuoteForm() {
 
   return (
     <section
-      className="section-dark py-20 px-4 relative overflow-hidden"
+      className="section-dark py-20 relative overflow-hidden"
       aria-label="Bulk quote request form"
     >
       {/* Background texture */}
@@ -107,7 +107,7 @@ export default function BulkQuoteForm() {
         }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto px-4 lg:px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em] mb-3">

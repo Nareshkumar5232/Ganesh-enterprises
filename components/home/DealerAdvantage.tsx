@@ -94,8 +94,8 @@ function PartialIcon() {
 
 export default function DealerAdvantage() {
   return (
-    <section className="section-white py-20 px-4" aria-label="Why dealers choose us">
-      <div className="max-w-5xl mx-auto">
+    <section className="section-white py-20" aria-label="Why dealers choose us">
+      <div className="max-w-5xl mx-auto px-4 lg:px-6">
 
         {/* Header */}
         <div className="text-center mb-12">

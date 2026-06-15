@@ -81,8 +81,8 @@ export default function WholesaleBuyers() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <section className="section-dark py-20 px-4" aria-label="Who buys from us">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-dark py-20" aria-label="Who buys from us">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
 
         {/* Header */}
         <div className="text-center mb-14">

@@ -76,8 +76,8 @@ export default function LiveInventory() {
   }, [triggerUpdate]);
 
   return (
-    <section className="section-light py-20 px-4" aria-label="Live inventory board">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-light py-20" aria-label="Live inventory board">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
 
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">

@@ -99,7 +99,7 @@ function ZoneSection({ zone, index }: { zone: typeof ZONES[number]; index: numbe
     >
       {/* Dept divider header */}
       <div
-        className="max-w-7xl mx-auto px-6 pt-12 pb-0"
+        className="max-w-7xl mx-auto px-4 lg:px-6 pt-12 pb-0"
         style={{ borderTop: index === 0 ? "none" : undefined }}
       >
         <div className="dept-divider mb-10" style={{ color: zone.accent }}>
@@ -114,7 +114,7 @@ function ZoneSection({ zone, index }: { zone: typeof ZONES[number]; index: numbe
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pb-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 pb-16">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 !== 0 ? "lg:grid-flow-dense" : ""}`}>
 
           {/* Left — zone info */}

@@ -94,8 +94,8 @@ export default function CategorySection() {
   }, []);
 
   return (
-    <section className="section-bg py-16 px-4 lg:px-6" aria-label="Shop by category">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-bg py-16" aria-label="Shop by category">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="section-divider" />
