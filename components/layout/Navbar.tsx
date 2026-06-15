@@ -118,14 +118,14 @@ export default function Navbar() {
               <span className="font-bold text-white text-[15px] tracking-tight leading-none">
                 Sri Ganesh Enterprises
               </span>
-              <span className="text-[#D4AF37] text-[10px] font-medium mt-0.5 leading-none">
+              <span className="hidden xl:inline text-[#D4AF37] text-[10px] font-medium mt-0.5 leading-none">
                 Wholesale: TV, Laptop, Mobiles &amp; Home Appliances
               </span>
             </div>
           </Link>
 
           {/* ── Desktop nav ── */}
-          <nav className="hidden lg:flex items-center flex-nowrap flex-1 justify-center gap-3 xl:gap-5" aria-label="Main">
+          <nav className="hidden lg:flex items-center flex-nowrap flex-1 justify-center gap-2 xl:gap-3.5" aria-label="Main">
 
             <Link href="/"
               className={`relative px-2.5 py-1.5 text-[13.5px] font-semibold font-outfit whitespace-nowrap transition-colors ${isHome ? "text-[#D4AF37]" : "text-slate-300 hover:text-[#D4AF37]"}`}>
@@ -239,8 +239,8 @@ export default function Navbar() {
             </div>
 
             {/* Icon buttons */}
-            <Link href="/login"   aria-label="Account"  className="hidden xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><User className="w-5 h-5" /></Link>
-            <Link href="/wishlist" aria-label="Wishlist" className="hidden xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><Heart className="w-5 h-5" /></Link>
+            <Link href="/login"   aria-label="Account"  className="hidden 2xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><User className="w-5 h-5" /></Link>
+            <Link href="/wishlist" aria-label="Wishlist" className="hidden 2xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><Heart className="w-5 h-5" /></Link>
             <Link href="/cart" aria-label={`Cart (${totalItems})`} className="relative p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors">
               <ShoppingCart className="w-5 h-5" />
               <span className="absolute -top-0.5 -right-0.5 min-w-[17px] h-[17px] flex items-center justify-center rounded-full bg-[#B91C1C] text-white text-[9px] font-bold px-1">
@@ -250,14 +250,15 @@ export default function Navbar() {
 
             {/* Phone */}
             <a href="tel:+919150310876"
-              className="hidden xl:flex items-center gap-1.5 text-[13px] font-semibold font-outfit text-slate-200 hover:text-[#D4AF37] transition-colors">
+              className="hidden 2xl:flex items-center gap-1.5 text-[13px] font-semibold font-outfit text-slate-200 hover:text-[#D4AF37] transition-colors">
               <Phone className="w-3.5 h-3.5" />
               9150310876
             </a>
 
             {/* CTA */}
             <Link href="/contact" className="hidden sm:inline-flex btn-red ml-1 text-[13.5px] px-4 py-2 font-outfit whitespace-nowrap !bg-[#B91C1C] !border-[#B91C1C] hover:!bg-[#991B1B] hover:!border-[#991B1B] shadow-[0_4px_14px_rgba(185,28,28,0.3)]">
-              Get Wholesale Quote
+              <span className="hidden 2xl:inline">Get Wholesale Quote</span>
+              <span className="2xl:hidden">Get Quote</span>
             </Link>
 
             {/* Hamburger */}
