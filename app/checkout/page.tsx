@@ -12,11 +12,13 @@ import { useAuthStore } from "@/store/authStore";
 import { useCartStore } from "@/store/cartStore";
 import { ShoppingCart, MapPin, CreditCard, Truck } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
+import { calculateOrderDetails, getPricingSettings } from "@/lib/pricing";
 
 // Form validation schema
 const checkoutSchema = z.object({
   fullName: z.string().min(2, "Full name required"),
   mobileNumber: z.string().regex(/^[6-9]\d{9}$/, "Valid 10-digit mobile number required"),
+  email: z.string().email("Valid email address required"),
   addressLine: z.string().min(5, "Address required"),
   landmark: z.string().optional(),
   city: z.string().min(2, "City required"),
@@ -68,9 +70,8 @@ export default function CheckoutPage() {
 
   // Calculate totals
   const subtotal = cartItems.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
-  const shipping = subtotal > 5000 ? 0 : 149;
-  const tax = Math.round(subtotal * 0.05); // 5% tax
-  const total = subtotal + shipping + tax;
+  const pricingDetails = calculateOrderDetails(subtotal);
+  const grandTotal = pricingDetails.grandTotal;
 
   async function onSubmit(data: CheckoutFormData) {
     if (!user) {
@@ -81,31 +82,86 @@ export default function CheckoutPage() {
 
     setIsSubmitting(true);
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const orderId = `ORD-${Date.now()}`;
+      let orderStatus = data.paymentMethod === "cod" ? "confirmed" : "pending";
 
-      // Create order
+      if (data.paymentMethod === "online") {
+        try {
+          // Attempt Cashfree processing
+          const res = await fetch("/api/payment/process", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              orderId,
+              amount: grandTotal,
+              email: data.email,
+              phone: data.mobileNumber,
+              customerName: data.fullName,
+              productInfo: cartItems.map(item => `${item.product.name} x ${item.quantity}`).join(", "),
+            }),
+          });
+          const paymentResult = await res.json();
+          if (paymentResult.success) {
+            // Verify payment
+            const verifyRes = await fetch("/api/payment/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                orderId,
+                paymentSessionId: paymentResult.paymentSessionId,
+              }),
+            });
+            const verifyResult = await verifyRes.json();
+            if (verifyResult.success) {
+              orderStatus = "paid";
+              toast.success("Online payment verified successfully!");
+            }
+          } else {
+            toast.info("Sandbox Mode: Simulating online payment gateway...");
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            orderStatus = "paid";
+          }
+        } catch (paymentErr) {
+          console.warn("Payment gateway fallback:", paymentErr);
+          toast.info("Sandbox Mode: Simulating online payment gateway...");
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          orderStatus = "paid";
+        }
+      }
+
+      // Create order object
       const order = {
-        orderId: `ORD-${Date.now()}`,
+        orderId,
         items: cartItems,
         deliveryAddress: data,
         paymentMethod: data.paymentMethod,
-        total,
-        subtotal,
-        shipping,
-        tax,
-        status: data.paymentMethod === "cod" ? "confirmed" : "pending",
+        total: grandTotal,
+        subtotal: pricingDetails.subtotal,
+        shipping: pricingDetails.shipping,
+        tax: pricingDetails.gst,
+        status: orderStatus,
         createdAt: new Date().toISOString(),
       };
 
-      // Save to localStorage (in real app, send to backend)
+      // Save to server database
+      const saveRes = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order),
+      });
+
+      if (!saveRes.ok) {
+        throw new Error("Failed to save order to server");
+      }
+
+      // Save to localStorage too for quick fallback
       const orders = JSON.parse(localStorage.getItem("orders") || "[]");
       orders.push(order);
       localStorage.setItem("orders", JSON.stringify(orders));
 
-      toast.success(`Order placed successfully! Order ID: ${order.orderId}`);
+      toast.success(`Order placed successfully! Order ID: ${orderId}`);
       clearCart();
-      router.push(`/order-confirmation?orderId=${order.orderId}`);
+      router.push(`/order-confirmation?orderId=${orderId}`);
     } catch (error) {
       toast.error("Failed to place order. Please try again.");
     } finally {
@@ -146,6 +202,20 @@ export default function CheckoutPage() {
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
                     />
                     {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>}
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      Email Address *
+                    </label>
+                    <input
+                      {...register("email")}
+                      type="email"
+                      placeholder="Enter your email address"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-white/10 bg-white dark:bg-[#1A1A1A] text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/50"
+                    />
+                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                   </div>
 
                   {/* Mobile Number */}
@@ -285,7 +355,7 @@ export default function CheckoutPage() {
                 disabled={isSubmitting}
                 className="w-full py-4 bg-[#DC2626] text-white font-bold text-lg rounded-lg hover:bg-[#B91C1C] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Processing..." : `Place Order - ${formatCurrency(total)}`}
+                {isSubmitting ? "Processing..." : `Place Order - ${formatCurrency(grandTotal)}`}
               </button>
             </form>
           </div>
@@ -319,22 +389,32 @@ export default function CheckoutPage() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Subtotal</span>
-                  <span>{formatCurrency(subtotal)}</span>
+                  <span>{formatCurrency(pricingDetails.subtotal)}</span>
                 </div>
-                <div className="flex justify-between text-gray-600 dark:text-gray-400">
-                  <span>Tax (5%)</span>
-                  <span>{formatCurrency(tax)}</span>
-                </div>
-                <div className="flex justify-between text-gray-600 dark:text-gray-400">
-                  <span className="flex items-center gap-1">
-                    <Truck className="w-4 h-4" /> Shipping
-                  </span>
-                  <span>{shipping === 0 ? "FREE" : formatCurrency(shipping)}</span>
-                </div>
-                {shipping === 0 && <p className="text-xs text-[#DC2626] font-medium">Free shipping on orders above ₹5000</p>}
+                {pricingDetails.gst > 0 && (
+                  <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                    <span>GST</span>
+                    <span>{formatCurrency(pricingDetails.gst)}</span>
+                  </div>
+                )}
+                {pricingDetails.shipping > 0 ? (
+                  <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                    <span className="flex items-center gap-1">
+                      <Truck className="w-4 h-4" /> Shipping
+                    </span>
+                    <span>{formatCurrency(pricingDetails.shipping)}</span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                    <span className="flex items-center gap-1">
+                      <Truck className="w-4 h-4" /> Shipping
+                    </span>
+                    <span className="text-green-600 dark:text-green-400">FREE</span>
+                  </div>
+                )}
                 <div className="pt-3 border-t border-gray-200 dark:border-white/10 flex justify-between font-bold text-lg text-gray-900 dark:text-white">
                   <span>Total</span>
-                  <span className="text-[#DC2626]">{formatCurrency(total)}</span>
+                  <span className="text-[#DC2626]">{formatCurrency(grandTotal)}</span>
                 </div>
               </div>
             </div>

@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center pt-24 pb-16 px-4 md:px-8 bg-white overflow-hidden" aria-label="Hero">
+    <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center pt-24 pb-16 px-4 lg:px-6 bg-white overflow-hidden" aria-label="Hero">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
 

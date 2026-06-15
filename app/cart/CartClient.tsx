@@ -10,10 +10,12 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
 import { useEffect, useState } from "react";
+import { calculateOrderDetails } from "@/lib/pricing";
 
 export default function CartClient() {
   const { items, updateQuantity, removeItem, subtotal } = useCartStore();
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // This effect intentionally sets mounted after hydration
@@ -40,8 +42,7 @@ export default function CartClient() {
     );
   }
 
-  const tax = subtotal() * 0.18;
-  const total = subtotal() + tax;
+  const { subtotal: orderSubtotal, gst, shipping, grandTotal } = calculateOrderDetails(subtotal());
 
   return (
     <div className="min-h-screen pt-24 pb-12 bg-gray-50 dark:bg-[#0F0F0F] transition-colors duration-300">
@@ -125,21 +126,30 @@ export default function CartClient() {
               <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="text-gray-900 dark:text-white font-medium">{formatCurrency(subtotal())}</span>
+                  <span className="text-gray-900 dark:text-white font-medium">{formatCurrency(orderSubtotal)}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>Estimated Tax (18%)</span>
-                  <span className="text-gray-900 dark:text-white font-medium">{formatCurrency(tax)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Shipping</span>
-                  <span className="text-green-600 dark:text-green-400">Free</span>
-                </div>
+                {gst > 0 && (
+                  <div className="flex justify-between">
+                    <span>GST</span>
+                    <span className="text-gray-900 dark:text-white font-medium">{formatCurrency(gst)}</span>
+                  </div>
+                )}
+                {shipping > 0 ? (
+                  <div className="flex justify-between">
+                    <span>Shipping</span>
+                    <span className="text-gray-900 dark:text-white font-medium">{formatCurrency(shipping)}</span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between">
+                    <span>Shipping</span>
+                    <span className="text-green-600 dark:text-green-400">Free</span>
+                  </div>
+                )}
                 
                 <div className="border-t border-gray-200 dark:border-white/10 pt-3 mt-3">
                   <div className="flex justify-between text-base font-bold text-gray-900 dark:text-white">
                     <span>Total</span>
-                    <span>{formatCurrency(total)}</span>
+                    <span>{formatCurrency(grandTotal)}</span>
                   </div>
                 </div>
               </div>
@@ -150,11 +160,10 @@ export default function CartClient() {
                   if (!isAuth) {
                     toast.error("Please login to continue your purchase");
                     const redirect = encodeURIComponent('/cart');
-                    window.location.href = `/login?redirect=${redirect}`;
+                    router.push(`/login?redirect=${redirect}`);
                     return;
                   }
-                  // proceed to checkout (placeholder)
-                  toast.success("Checkout implementation coming soon");
+                  router.push("/checkout");
                 }}
                 className="w-full bg-[#DC2626] text-white font-bold py-3 px-4 rounded-lg mt-6 hover:bg-[#B91C1C] transition-colors shadow-[0_4px_12px_rgba(220,38,38,0.2)]"
               >

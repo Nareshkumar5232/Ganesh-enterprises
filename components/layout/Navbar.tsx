@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Search, ShoppingCart, Heart, User, Menu, X, ChevronDown, Phone } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { formatCurrency } from "@/lib/utils";
 
 /* ── Shield Logo SVG ── */
 function ShieldLogo({ size = 40 }: { size?: number }) {
@@ -54,6 +55,32 @@ export default function Navbar() {
   const [mobileOpen,    setMobileOpen]    = useState(false);
   const [searchQuery,   setSearchQuery]   = useState("");
   const [catsOpen,      setCatsOpen]      = useState(false);
+  const [allProducts,   setAllProducts]   = useState<any[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/product?limit=1000")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.products) {
+          setAllProducts(data.products);
+        }
+      })
+      .catch((err) => console.error("Suggestions fetch error:", err));
+  }, []);
+
+  const suggestions = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return [];
+    return allProducts.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(q) ||
+        product.brand.toLowerCase().includes(q) ||
+        product.category.replace("-", " ").toLowerCase().includes(q) ||
+        (product.tags && product.tags.some((t: string) => t.toLowerCase().includes(q)))
+      );
+    }).slice(0, 5);
+  }, [searchQuery, allProducts]);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 2);
@@ -156,11 +183,60 @@ export default function Navbar() {
           {/* ── Right side ── */}
           <div className="flex items-center gap-2 ml-auto shrink-0">
             {/* Search */}
-            <form onSubmit={handleSearch} className="hidden xl:flex items-center border border-[#1E293B] rounded-lg px-3 py-1.5 gap-2 focus-within:border-[#D4AF37] bg-[#1E293B]/50 transition-colors">
-              <Search className="w-3.5 h-3.5 text-slate-400" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search…" className="bg-transparent text-[13px] text-white placeholder-slate-400 outline-none w-28 focus:w-36 transition-all duration-200" />
-            </form>
+            <div className="relative">
+              <form onSubmit={handleSearch} className="hidden xl:flex items-center border border-[#1E293B] rounded-lg px-3 py-1.5 gap-2 focus-within:border-[#D4AF37] bg-[#1E293B]/50 transition-colors">
+                <Search className="w-3.5 h-3.5 text-slate-400" />
+                <input
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setShowSuggestions(true);
+                  }}
+                  onFocus={() => setShowSuggestions(true)}
+                  placeholder="Search…"
+                  className="bg-transparent text-[13px] text-white placeholder-slate-400 outline-none w-28 focus:w-36 transition-all duration-200"
+                />
+              </form>
+
+              {showSuggestions && suggestions.length > 0 && (
+                <div
+                  className="absolute top-full right-0 left-0 mt-1 bg-[#1E293B] border border-[#2D3748] rounded-lg shadow-2xl overflow-hidden z-[100] min-w-[240px]"
+                  onMouseLeave={() => setShowSuggestions(false)}
+                >
+                  <div className="p-2 text-[10px] font-bold text-slate-400 border-b border-[#2D3748] uppercase tracking-wider">
+                    Suggestions
+                  </div>
+                  <div className="divide-y divide-[#2D3748]">
+                    {suggestions.map((p) => {
+                      const productSlug = p.slug || p._id || p.id;
+                      return (
+                        <Link
+                          key={p._id || p.id}
+                          href={`/products/${productSlug}`}
+                          onClick={() => {
+                            setShowSuggestions(false);
+                            setSearchQuery("");
+                          }}
+                          className="flex items-center gap-3 p-2.5 hover:bg-[#2D3748] transition-colors text-left"
+                        >
+                          <div className="w-8 h-8 bg-slate-800 rounded overflow-hidden shrink-0 relative">
+                            <img
+                              src={p.images?.[0]?.url || "/images/placeholder-product.svg"}
+                              alt={p.name}
+                              className="object-cover w-full h-full"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0 font-sans">
+                            <p className="text-xs font-semibold text-white truncate">{p.name}</p>
+                            <p className="text-[10px] text-slate-400">{p.brand} · {formatCurrency(p.price)}</p>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Icon buttons */}
             <Link href="/login"   aria-label="Account"  className="hidden xl:flex p-2 text-slate-400 hover:text-[#D4AF37] rounded-lg hover:bg-slate-800/50 transition-colors"><User className="w-5 h-5" /></Link>

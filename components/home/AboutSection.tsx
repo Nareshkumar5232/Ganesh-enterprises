@@ -66,7 +66,7 @@ const HIGHLIGHTS = [
 
 export default function AboutSection() {
   return (
-    <section className="section-bg py-14 px-4" aria-label="About Sri Ganesh Enterprises">
+    <section className="section-bg py-14 px-4 lg:px-6" aria-label="About Sri Ganesh Enterprises">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

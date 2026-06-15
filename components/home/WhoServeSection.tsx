@@ -89,7 +89,7 @@ const SERVE = [
 
 export default function WhoServeSection() {
   return (
-    <section className="section-white py-14 px-4" aria-label="Who we serve">
+    <section className="section-white py-14 px-4 lg:px-6" aria-label="Who we serve">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

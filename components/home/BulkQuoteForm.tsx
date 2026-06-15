@@ -51,8 +51,25 @@ export default function BulkQuoteForm() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    try {
+      await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companyName: form.company,
+          customerName: form.name,
+          mobileNumber: form.phone,
+          productCategory: form.product,
+          quantity: form.quantity,
+          requirementDetails: form.message,
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to save bulk quote:", err);
+    }
+
     // Build WhatsApp message
     const msg = encodeURIComponent(
       `*Bulk Quote Request — Sri Ganesh Enterprises*\n\n` +

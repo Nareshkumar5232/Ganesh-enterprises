@@ -34,47 +34,7 @@ interface ProductsClientProps {
   initialCategory?: string;
 }
 
-const CATEGORY_MAP: Record<ProductCategory, { title: string; desc: string }> = {
-  "mobile-accessories": {
-    title: "Mobile Accessories",
-    desc: "Premium shields, stands, and mounts for your everyday mobile devices.",
-  },
-  electronics: {
-    title: "Electronics",
-    desc: "Advanced consumer electronics, audio systems, and measurement tools.",
-  },
-  "electrical-appliances": {
-    title: "Technology Solutions",
-    desc: "Computing essentials, IT accessories, networking gear, and practical tech solutions.",
-  },
-  "computer-accessories": {
-    title: "Computer Accessories",
-    desc: "Keyboards, mice, and productivity hubs designed for modern professionals.",
-  },
-  chargers: {
-    title: "Chargers",
-    desc: "High-speed GaN adapters, wireless docks, and high-performance cables.",
-  },
-  earphones: {
-    title: "Earphones",
-    desc: "Immersive acoustics, noise-canceling headphones, and true wireless earbuds.",
-  },
-  "smart-devices": {
-    title: "Smart Devices",
-    desc: "Smart cameras, plugs, and lights to automate and secure your living space.",
-  },
-};
 
-const CATEGORIES_LIST: { id: ProductCategory | "all"; label: string }[] = [
-  { id: "all", label: "All Products" },
-  { id: "mobile-accessories", label: "Mobile Accessories" },
-  { id: "electronics", label: "Electronics" },
-  { id: "electrical-appliances", label: "Technology Solutions" },
-  { id: "computer-accessories", label: "Computer Accessories" },
-  { id: "chargers", label: "Chargers" },
-  { id: "earphones", label: "Earphones" },
-  { id: "smart-devices", label: "Smart Devices" },
-];
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "popular", label: "Most Popular" },
@@ -115,6 +75,43 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
   });
   const backendProducts = data?.products ?? [];
 
+  // Dynamic Categories state
+  const [categoriesList, setCategoriesList] = useState<{ id: ProductCategory | "all"; label: string; description?: string }[]>([
+    { id: "all", label: "All Products" }
+  ]);
+
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          const list = data.categories.map((cat: any) => ({
+            id: cat.id as ProductCategory,
+            label: cat.name,
+            description: cat.description,
+          }));
+          setCategoriesList([
+            { id: "all", label: "All Products" },
+            ...list
+          ]);
+        }
+      })
+      .catch((err) => console.error("Failed to load categories:", err));
+  }, []);
+
+  const categoryMap = useMemo(() => {
+    const map: Record<string, { title: string; desc: string }> = {};
+    categoriesList.forEach((cat) => {
+      if (cat.id !== "all") {
+        map[cat.id] = {
+          title: cat.label,
+          desc: cat.description || "",
+        };
+      }
+    });
+    return map;
+  }, [categoriesList]);
+
   // Local UI states
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
@@ -132,11 +129,11 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
   // Sync initial category from URL search parameters if any
   useEffect(() => {
     if (initialCategory) {
-      if (initialCategory === "all" || CATEGORIES_LIST.some((c) => c.id === initialCategory)) {
+      if (initialCategory === "all" || categoriesList.some((c) => c.id === initialCategory)) {
         setCategory(initialCategory as ProductCategory | "all");
       }
     }
-  }, [initialCategory, setCategory]);
+  }, [initialCategory, setCategory, categoriesList]);
 
   // Sync price range slide input
   useEffect(() => {
@@ -238,15 +235,12 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
 
   // Group products by category
   const groupedProducts = useMemo(() => {
-    const groups: Record<ProductCategory, Product[]> = {
-      "mobile-accessories": [],
-      electronics: [],
-      "electrical-appliances": [],
-      "computer-accessories": [],
-      chargers: [],
-      earphones: [],
-      "smart-devices": [],
-    };
+    const groups: Record<string, Product[]> = {};
+    categoriesList.forEach((cat) => {
+      if (cat.id !== "all") {
+        groups[cat.id] = [];
+      }
+    });
 
     filteredAndSortedProducts.forEach((p) => {
       if (groups[p.category]) {
@@ -255,7 +249,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
     });
 
     return groups;
-  }, [filteredAndSortedProducts]);
+  }, [filteredAndSortedProducts, categoriesList]);
 
   // Detect count of active filters
   const activeFiltersCount = useMemo(() => {
@@ -330,7 +324,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
             ref={navContainerRef}
             className="flex items-center gap-3 overflow-x-auto no-scrollbar scroll-smooth"
           >
-            {CATEGORIES_LIST.map((cat) => {
+            {categoriesList.map((cat) => {
               const isActive = category === cat.id;
               return (
                 <button
@@ -377,7 +371,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Category</label>
                 <div className="flex flex-col gap-1 mt-2">
-                  {CATEGORIES_LIST.map((cat) => (
+                  {categoriesList.map((cat) => (
                     <button
                       key={cat.id}
                       onClick={() => setCategory(cat.id)}
@@ -532,7 +526,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
                 )}
                 {category !== "all" && (
                   <span className="flex items-center gap-1 bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-md text-xs text-[#B91C1C] font-semibold font-sans">
-                    Category: {CATEGORY_MAP[category]?.title || category}
+                    Category: {categoryMap[category]?.title || category}
                     <button onClick={() => setCategory("all")} className="hover:text-[#0F172A] ml-1">
                       <X className="w-3 h-3" />
                     </button>
@@ -620,7 +614,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
               ) : (
                 Object.keys(groupedProducts).map((catKey) => {
                   const catId = catKey as ProductCategory;
-                  const catData = CATEGORY_MAP[catId];
+                  const catData = categoryMap[catId] || { title: catId.replace("-", " "), desc: "" };
                   const products = groupedProducts[catId];
 
                   // Hide sections with no products to clean up UI when filtering
@@ -763,7 +757,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-wider text-[#6B7280] font-semibold font-outfit">Category</label>
                   <div className="flex flex-col gap-1 mt-2">
-                    {CATEGORIES_LIST.map((cat) => (
+                    {categoriesList.map((cat) => (
                       <button
                         key={cat.id}
                         onClick={() => {
@@ -912,7 +906,7 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
                     {/* Category Tag */}
                     <div className="flex items-center gap-2 mb-2 font-outfit">
                       <span className="text-[10px] uppercase tracking-widest text-[#B91C1C] font-extrabold px-2 py-0.5 bg-[#FEF2F2] border border-[#B91C1C]/25 rounded">
-                        {CATEGORY_MAP[quickViewProduct.category]?.title || quickViewProduct.category.replace("-", " ")}
+                        {categoryMap[quickViewProduct.category]?.title || quickViewProduct.category.replace("-", " ")}
                       </span>
                       <span className="text-xs text-[#6B7280] font-semibold">• {quickViewProduct.brand}</span>
                     </div>
