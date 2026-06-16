@@ -248,13 +248,6 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* Phone */}
-            <a href="tel:+919150310876"
-              className="hidden 2xl:flex items-center gap-1.5 text-[13px] font-semibold font-outfit text-slate-200 hover:text-[#D4AF37] transition-colors">
-              <Phone className="w-3.5 h-3.5" />
-              9150310876
-            </a>
-
             {/* CTA */}
             <Link href="/contact" className="hidden sm:inline-flex btn-red ml-1 text-[13.5px] px-4 py-2 font-outfit whitespace-nowrap !bg-[#B91C1C] !border-[#B91C1C] hover:!bg-[#991B1B] hover:!border-[#991B1B] shadow-[0_4px_14px_rgba(185,28,28,0.3)]">
               <span className="hidden 2xl:inline">Get Wholesale Quote</span>
