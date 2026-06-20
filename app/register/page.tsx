@@ -22,7 +22,7 @@ export default function RegisterPage() {
   const router = useRouter();
   const params = useSearchParams();
   const redirect = params?.get("redirect") ?? "/";
-  const login = useAuthStore((s) => s.login);
+  const registerWithCredentials = useAuthStore((s) => s.registerWithCredentials);
   const [showPass, setShowPass] = useState(false);
 
   const { register, handleSubmit } = useForm<FormData>({
@@ -30,11 +30,14 @@ export default function RegisterPage() {
   });
 
   function onSubmit(data: FormData) {
-    // Fake register — replace with API
-    const user = { id: "u-registered", name: data.name, email: data.email };
-    login(user, "demo-token");
-    toast.success("Registration successful");
-    router.push(redirect);
+    registerWithCredentials(data.name, data.email, data.password).then((success) => {
+      if (success) {
+        toast.success("Registration successful");
+        router.push(redirect);
+      } else {
+        toast.error("Registration failed. Please check your details or try another email.");
+      }
+    });
   }
 
   return (

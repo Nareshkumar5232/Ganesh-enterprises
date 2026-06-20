@@ -1,7 +1,7 @@
 import axios, { type AxiosError, type AxiosInstance } from "axios";
 
 export const API_BASE_URL = buildApiBaseUrl(
-  process.env.NEXT_PUBLIC_API_URL ?? "https://al-kimath-backend.onrender.com"
+  process.env.NEXT_PUBLIC_API_URL ?? "https://sri-ganesh-enterprises-backend.onrender.com"
 );
 
 function buildApiBaseUrl(baseUrl: string) {
