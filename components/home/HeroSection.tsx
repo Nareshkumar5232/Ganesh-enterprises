@@ -4,48 +4,48 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center pt-24 pb-16 bg-white overflow-hidden" aria-label="Hero">
+    <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center pt-20 pb-12 sm:pt-24 sm:pb-16 bg-white overflow-hidden" aria-label="Hero">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full">
 
           {/* ── Left Content ── */}
-          <div className="flex flex-col gap-6 max-w-xl text-left">
+          <div className="flex flex-col gap-5 max-w-xl text-center lg:text-left mx-auto lg:mx-0">
             {/* Gold tagline */}
-            <p className="text-[#D4AF37] font-semibold text-sm tracking-widest uppercase font-outfit">
+            <p className="text-[#D4AF37] font-semibold text-xs sm:text-sm tracking-widest uppercase font-outfit">
               Your Trusted Wholesale Partner
             </p>
 
             {/* Main heading */}
             <div className="space-y-1">
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#0F172A] leading-[1.1] tracking-tight font-heading">
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#0F172A] leading-[1.1] tracking-tight font-heading">
                 Wholesale Electronics for
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#B91C1C] leading-[1.1] tracking-tight font-heading">
+              <h1 className="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-[#B91C1C] leading-[1.1] tracking-tight font-heading">
                 Businesses &amp; Dealers
               </h1>
             </div>
 
             {/* Subtext */}
-            <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed font-sans">
+            <p className="text-[#6B7280] text-sm sm:text-lg leading-relaxed font-sans">
               Chennai's premier B2B distributor supplying genuine televisions, laptops, mobiles, printers, CCTV, and smart home appliances at bulk-buy prices.
             </p>
 
             {/* Check items */}
-            <div className="flex items-center flex-wrap gap-x-6 gap-y-2.5 font-outfit">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2.5 font-outfit text-left">
               {["Bulk Pricing", "Genuine Brands", "Chennai Ready Stock"].map((item) => (
                 <div key={item} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-[#B91C1C] shrink-0" strokeWidth={2.5} />
-                  <span className="text-[#0F172A] text-sm font-semibold">{item}</span>
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#B91C1C] shrink-0" strokeWidth={2.5} />
+                  <span className="text-[#0F172A] text-xs sm:text-sm font-semibold">{item}</span>
                 </div>
               ))}
             </div>
 
             {/* CTAs */}
-            <div className="flex items-center gap-4 flex-wrap mt-2">
-              <Link href="/products" className="btn-red text-sm sm:text-base font-outfit">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-2 w-full">
+              <Link href="/products" className="btn-red w-full sm:w-auto text-sm sm:text-base font-outfit">
                 Explore Products <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/contact" className="btn-outline text-sm sm:text-base font-outfit">
+              <Link href="/contact" className="btn-outline w-full sm:w-auto text-sm sm:text-base font-outfit">
                 Get Wholesale Quote <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -64,7 +64,7 @@ export default function HeroSection() {
                 alt="Sri Ganesh Enterprises wholesale catalog - Smart TV, Laptop, Mobile, Printer, Network Router, CCTV Camera, Refrigerator"
                 width={600}
                 height={430}
-                className="w-full max-h-[300px] sm:max-h-[380px] lg:max-h-[440px] h-auto object-contain drop-shadow-2xl hover:scale-[1.01] transition-transform duration-300"
+                className="w-full max-h-[250px] sm:max-h-[380px] lg:max-h-[440px] h-auto object-contain drop-shadow-2xl hover:scale-[1.01] transition-transform duration-300"
                 priority
               />
             </div>

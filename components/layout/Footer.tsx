@@ -53,13 +53,13 @@ export default function Footer() {
       <div className="h-[3px] bg-gradient-to-r from-[#B91C1C] to-[#D4AF37]" />
 
       {/* Main grid */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 text-center sm:text-left">
 
         {/* Col 1 — Brand */}
-        <div className="lg:col-span-1 flex flex-col gap-4">
+        <div className="lg:col-span-1 flex flex-col items-center sm:items-start gap-4">
           <div className="flex items-center gap-3">
             <FooterLogo />
-            <div className="flex flex-col leading-tight">
+            <div className="flex flex-col leading-tight text-left">
               <span className="font-bold text-white text-[15px] tracking-tight">Sri Ganesh Enterprises</span>
               <span className="text-[#D4AF37] text-[10px] font-medium mt-0.5 tracking-wide leading-none">
                 Wholesale: TV, Laptop, Mobiles &amp; Home Appliances
@@ -74,13 +74,13 @@ export default function Footer() {
         </div>
 
         {/* Col 2 — Quick Links */}
-        <div>
-          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">Quick Links</h4>
-          <ul className="space-y-2.5">
+        <div className="flex flex-col items-center sm:items-start">
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4 w-full">Quick Links</h4>
+          <ul className="space-y-2.5 w-full">
             {QUICK_LINKS.map((l) => (
               <li key={l.label}>
                 <Link href={l.href}
-                  className="text-[13px] text-[#94A3B8] hover:text-white transition-colors">
+                  className="text-[13px] text-[#94A3B8] hover:text-white transition-colors block py-1.5 sm:py-0">
                   {l.label}
                 </Link>
               </li>
@@ -89,13 +89,13 @@ export default function Footer() {
         </div>
 
         {/* Col 3 — Categories */}
-        <div>
-          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">Categories</h4>
-          <ul className="space-y-2.5">
+        <div className="flex flex-col items-center sm:items-start">
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4 w-full">Categories</h4>
+          <ul className="space-y-2.5 w-full">
             {CATEGORIES.map((c) => (
               <li key={c.label}>
                 <Link href={c.href}
-                  className="text-[13px] text-[#94A3B8] hover:text-white transition-colors">
+                  className="text-[13px] text-[#94A3B8] hover:text-white transition-colors block py-1.5 sm:py-0">
                   {c.label}
                 </Link>
               </li>
@@ -104,26 +104,26 @@ export default function Footer() {
         </div>
 
         {/* Col 4 — Contact Us */}
-        <div>
-          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">Contact Us</h4>
-          <ul className="space-y-3.5">
-            <li className="flex items-center gap-2.5">
+        <div className="flex flex-col items-center sm:items-start">
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4 w-full">Contact Us</h4>
+          <ul className="space-y-3.5 w-full flex flex-col items-center sm:items-start">
+            <li className="flex items-center gap-2.5 justify-center sm:justify-start py-1 sm:py-0">
               <Phone className="w-4 h-4 text-[#B91C1C] shrink-0" />
               <a href="tel:+919150310876"
                 className="text-[13px] text-[#94A3B8] hover:text-white transition-colors">
                 9150310876
               </a>
             </li>
-            <li className="flex items-center gap-2.5">
+            <li className="flex items-center gap-2.5 justify-center sm:justify-start py-1 sm:py-0 w-full max-w-xs">
               <Mail className="w-4 h-4 text-[#B91C1C] shrink-0" />
               <a href="mailto:info@sriganeshenterprises.in"
                 className="text-[13px] text-[#94A3B8] hover:text-white transition-colors break-all">
                 info@sriganeshenterprises.in
               </a>
             </li>
-            <li className="flex items-start gap-2.5">
+            <li className="flex items-start gap-2.5 justify-center sm:justify-start py-1 sm:py-0">
               <MapPin className="w-4 h-4 text-[#B91C1C] shrink-0 mt-0.5" />
-              <span className="text-[13px] leading-relaxed">
+              <span className="text-[13px] leading-relaxed text-center sm:text-left">
                 No.18/19 Meeran Sahib Street,<br />
                 1st Floor, UNO Arcade Complex,<br />
                 Shop No F49, Chennai – 600002
@@ -133,15 +133,15 @@ export default function Footer() {
         </div>
 
         {/* Col 5 — Get Wholesale Quote */}
-        <div>
-          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4">
+        <div className="flex flex-col items-center sm:items-start">
+          <h4 className="text-white text-[13px] font-bold uppercase tracking-widest mb-4 w-full">
             Get Wholesale Quote
           </h4>
           <p className="text-[13px] leading-relaxed mb-5">
             For bulk orders and special pricing for businesses, dealers and institutions.
           </p>
           <Link href="/contact"
-            className="btn-red inline-flex items-center gap-2 text-[13px] px-5 py-2.5">
+            className="btn-red inline-flex items-center gap-2 text-[13px] px-5 py-2.5 w-full sm:w-auto">
             Request a Quote <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

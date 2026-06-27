@@ -8,9 +8,9 @@ import { useCartStore } from "@/store/cartStore";
 import { formatCurrency } from "@/lib/utils";
 
 /* ── Shield Logo SVG ── */
-function ShieldLogo({ size = 40 }: { size?: number }) {
+function ShieldLogo({ size = 40, className }: { size?: number; className?: string }) {
   return (
-    <svg viewBox="0 0 80 80" width={size} height={size} aria-hidden>
+    <svg viewBox="0 0 80 80" width={size} height={size} className={className} aria-hidden>
       {/* Laurel left */}
       <g fill="#D4AF37" opacity="0.85">
         <ellipse cx="9" cy="40" rx="2.5" ry="5" transform="rotate(-25 9 40)" />
@@ -113,9 +113,9 @@ export default function Navbar() {
 
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
-            <ShieldLogo size={44} />
+            <ShieldLogo size={36} className="sm:w-[44px] sm:h-[44px]" />
             <div className="flex flex-col leading-tight">
-              <span className="font-bold text-white text-[18px] tracking-tight leading-none">
+              <span className="font-bold text-white text-[15px] sm:text-[18px] tracking-tight leading-none whitespace-nowrap">
                 Sri Ganesh Enterprises
               </span>
               <span className="hidden xl:inline text-[#D4AF37] text-[12px] font-medium mt-0.5 leading-none">
@@ -281,6 +281,9 @@ export default function Navbar() {
               { label: "Categories", href: "/products" },
               { label: "About Us",   href: "/about" },
               { label: "Contact Us", href: "/contact" },
+              { label: "Cart",       href: "/cart" },
+              { label: "Wishlist",   href: "/wishlist" },
+              { label: "Login/Profile", href: "/login" },
             ].map((n) => (
               <Link key={n.label} href={n.href} onClick={() => setMobileOpen(false)}
                 className="px-3 py-3 rounded-lg text-sm font-semibold text-slate-300 hover:text-[#D4AF37] hover:bg-slate-800/50 transition-colors">

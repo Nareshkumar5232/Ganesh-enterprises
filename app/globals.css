@@ -133,6 +133,7 @@ body::-webkit-scrollbar {
 .btn-red {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   background: #B91C1C;
   color: #FFFFFF;
@@ -156,6 +157,7 @@ body::-webkit-scrollbar {
 .btn-outline {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   background: transparent;
   color: #B91C1C;
@@ -173,6 +175,13 @@ body::-webkit-scrollbar {
   background: #B91C1C;
   color: #FFFFFF;
   transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .btn-red, .btn-outline {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* ══════════════════════════
