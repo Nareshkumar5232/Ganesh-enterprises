@@ -108,17 +108,17 @@ export default function Navbar() {
       ].join(" ")}
       onMouseLeave={closeAll}
     >
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
-        <div className="flex items-center h-16 gap-4">
+      <div className="max-w-7xl mx-auto px-2 lg:px-4">
+        <div className="flex items-center h-16 gap-4 justify-between">
 
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <ShieldLogo size={44} />
             <div className="flex flex-col leading-tight">
-              <span className="font-bold text-white text-[15px] tracking-tight leading-none">
+              <span className="font-bold text-white text-[18px] tracking-tight leading-none">
                 Sri Ganesh Enterprises
               </span>
-              <span className="hidden xl:inline text-[#D4AF37] text-[10px] font-medium mt-0.5 leading-none">
+              <span className="hidden xl:inline text-[#D4AF37] text-[12px] font-medium mt-0.5 leading-none">
                 Wholesale: TV, Laptop, Mobiles &amp; Home Appliances
               </span>
             </div>

@@ -123,9 +123,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg mb-1">Phone Number</h3>
-                <p className="text-muted-foreground">
-                  +91 91503 10876
-                </p>
+                <p className="text-muted-foreground" style={{ overflowWrap: "break-word" }}><br/>+91 9150310876<br/>+91 9344706463</p>
               </div>
             </div>
 
@@ -135,10 +133,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg mb-1">Email Address</h3>
-                <p className="text-muted-foreground">
-                  info@sriganeshenterprises.in<br />
-                  contact@sriganeshenterprises.in
-                </p>
+                <p className="text-muted-foreground" style={{ overflowWrap: "break-word" }}>Sriganeshenterprises1910@gmail.com<br/>reach2me2026@gmail.com</p>
               </div>
             </div>
           </motion.div>
@@ -182,7 +177,7 @@ export default function ContactPage() {
                         value={form.name}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                        placeholder="John Doe"
+                        placeholder="Name"
                       />
                       {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                     </div>
@@ -194,7 +189,7 @@ export default function ContactPage() {
                         value={form.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                        placeholder="9876543210"
+                        placeholder="Phone Number"
                       />
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
@@ -208,7 +203,7 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                      placeholder="john@example.com"
+                      placeholder="Email Address"
                     />
                     {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                   </div>
@@ -221,7 +216,7 @@ export default function ContactPage() {
                       value={form.subject}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                      placeholder="How can we help?"
+                      placeholder="Subject"
                     />
                   </div>
                   
@@ -233,7 +228,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       rows={5}
                       className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                      placeholder="Write your message here..."
+                      placeholder="Message"
                     ></textarea>
                     {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                   </div>
