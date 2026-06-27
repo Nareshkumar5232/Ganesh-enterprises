@@ -133,7 +133,10 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg mb-1">Email Address</h3>
-                <p className="text-muted-foreground" style={{ overflowWrap: "break-word" }}>Sriganeshenterprises1910@gmail.com<br/>reach2me2026@gmail.com</p>
+                <div className="text-muted-foreground flex flex-col gap-1 text-sm sm:text-base" style={{ overflowWrap: "break-word", wordBreak: "break-all" }}>
+                  <span>Sriganeshenterprises1910@gmail.com</span>
+                  <span>reach2me2026@gmail.com</span>
+                </div>
               </div>
             </div>
           </motion.div>

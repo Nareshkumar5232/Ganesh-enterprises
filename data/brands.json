@@ -2,49 +2,49 @@
   {
     "id": "samsung",
     "name": "Samsung",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Samsung_wordmark.svg",
+    "logoUrl": "/images/brands/samsung.svg",
     "description": "Premium Smart TVs, Commercial Digital Signage Displays, SSDs, and Mobiles."
   },
   {
     "id": "lg",
     "name": "LG",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg",
+    "logoUrl": "/images/brands/lg.svg",
     "description": "Industrial LED TVs, Monitor screens, Smart Home Appliances, and ACs."
   },
   {
     "id": "dell",
     "name": "Dell",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg",
+    "logoUrl": "/images/brands/dell.svg",
     "description": "Enterprise OptiPlex desktops, Latitude laptops, and Server displays."
   },
   {
     "id": "hp",
     "name": "HP",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg",
+    "logoUrl": "/images/brands/hp.svg",
     "description": "ProBook and EliteBook enterprise laptops, and LaserJet workgroup printers."
   },
   {
     "id": "lenovo",
     "name": "Lenovo",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg",
+    "logoUrl": "/images/brands/lenovo.svg",
     "description": "ThinkPad professional notebooks, V-series desktops, and IT accessories."
   },
   {
     "id": "asus",
     "name": "Asus",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",
+    "logoUrl": "/images/brands/asus.svg",
     "description": "Vivobook laptops, Zenbook workstations, and high-performance monitors."
   },
   {
     "id": "canon",
     "name": "Canon",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Canon_logo.svg",
+    "logoUrl": "/images/brands/canon.svg",
     "description": "Enterprise printers, photo copiers, document scanners, and accessories."
   },
   {
     "id": "epson",
     "name": "Epson",
-    "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Epson_logo.svg",
+    "logoUrl": "/images/brands/epson.svg",
     "description": "EcoTank ink-tank office printers, B2B projectors, and scanning hubs."
   },
   {
