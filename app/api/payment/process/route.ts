@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       phone,
       customerName,
       productInfo,
-      redirectUrl = `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/payment/verify`,
+      redirectUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://sri-ganesh-enterprises-backend.onrender.com"}/api/payment/verify`,
     } = body;
 
     // Validate required fields
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       },
       order_meta: {
         return_url: redirectUrl,
-        notify_url: `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/payment/webhook`,
+        notify_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://sri-ganesh-enterprises-backend.onrender.com"}/api/payment/webhook`,
       },
       order_note: productInfo,
     };

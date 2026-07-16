@@ -12,6 +12,7 @@ import type { Product } from '@/types';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
+import { apiClient } from '@/services/api';
 
 export default function ProductDetailsClient({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
@@ -142,10 +143,7 @@ export default function ProductDetailsClient({ product }: { product: Product }) 
 
     setInquiryLoading(true);
     try {
-      const res = await fetch('/api/inquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      const res = await apiClient.post('/inquiries', {
           companyName: inquiryForm.companyName,
           customerName: inquiryForm.customerName,
           mobileNumber: inquiryForm.mobileNumber,
@@ -153,10 +151,9 @@ export default function ProductDetailsClient({ product }: { product: Product }) 
           requirementDetails: inquiryForm.requirementDetails,
           productName: product.name,
           quantity: quantity.toString(),
-        }),
-      });
+        });
 
-      const data = await res.json();
+      const data = res.data;
       if (data.success) {
         setInquirySubmitted(true);
         setInquiryForm({

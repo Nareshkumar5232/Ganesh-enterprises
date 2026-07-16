@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState } from "react";
+import { apiClient } from "@/services/api";
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,18 +48,14 @@ export default function ContactPage() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const res = await apiClient.post("/contact", {
           fullName: form.name,
           email: form.email,
           phone: form.phone,
           subject: form.subject,
           message: form.message,
-        }),
-      });
-      const data = await res.json();
+        });
+      const data = res.data;
       if (data.success) {
         setIsSubmitted(true);
         setForm({ name: "", email: "", phone: "", subject: "", message: "" });

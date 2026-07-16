@@ -2,20 +2,27 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { apiClient } from "@/services/api";
+
+async function fetchBrands() {
+  const res = await apiClient.get("/brands");
+  return res.data;
+}
 
 export default function TrustedBrands() {
   const [brands, setBrands] = useState<any[]>([]);
+  const { data } = useQuery({
+    queryKey: ["brands", "home"],
+    queryFn: fetchBrands,
+    staleTime: 60_000,
+  });
 
   useEffect(() => {
-    fetch("/api/brands")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setBrands(data.brands);
-        }
-      })
-      .catch((err) => console.error("Failed to load brands:", err));
-  }, []);
+    if (data?.success && Array.isArray(data.brands)) {
+      setBrands(data.brands);
+    }
+  }, [data]);
 
   const secondaryBrands = [
     "Xiaomi",

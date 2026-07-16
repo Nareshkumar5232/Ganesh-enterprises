@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Search, ShoppingCart, Heart, User, Menu, X, ChevronDown, Phone } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { formatCurrency } from "@/lib/utils";
+import { apiClient } from "@/services/api";
 
 /* ── Shield Logo SVG ── */
 function ShieldLogo({ size = 40, className }: { size?: number; className?: string }) {
@@ -59,8 +60,8 @@ export default function Navbar() {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
-    fetch("/api/product?limit=1000")
-      .then((res) => res.json())
+    apiClient.get("/product?limit=1000")
+      .then((res) => res.data)
       .then((data) => {
         if (data && data.products) {
           setAllProducts(data.products);
@@ -248,12 +249,6 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* CTA */}
-            <Link href="/contact" className="hidden sm:inline-flex btn-red ml-1 text-[13.5px] px-4 py-2 font-outfit whitespace-nowrap !bg-[#B91C1C] !border-[#B91C1C] hover:!bg-[#991B1B] hover:!border-[#991B1B] shadow-[0_4px_14px_rgba(185,28,28,0.3)]">
-              <span className="hidden 2xl:inline">Get Wholesale Quote</span>
-              <span className="2xl:hidden">Get Quote</span>
-            </Link>
-
             {/* Hamburger */}
             <button onClick={() => setMobileOpen(true)} aria-label="Open menu"
               className="lg:hidden p-2 text-slate-300 hover:text-[#D4AF37]">
@@ -295,10 +290,6 @@ export default function Navbar() {
             <a href="tel:+919150310876" className="flex items-center justify-center gap-2 py-2.5 border border-[#1E293B] rounded-lg text-sm font-semibold text-slate-200">
               <Phone className="w-4 h-4 text-[#D4AF37]" /> 9150310876
             </a>
-            <Link href="/contact" onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center w-full btn-red py-3 text-sm">
-              Get Wholesale Quote
-            </Link>
           </div>
         </div>
       )}

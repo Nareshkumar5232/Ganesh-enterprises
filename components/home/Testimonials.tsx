@@ -3,7 +3,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { apiClient } from "@/services/api";
 import type { Testimonial } from "@/types";
+
+async function fetchTestimonials() {
+  const res = await apiClient.get("/testimonials");
+  return res.data;
+}
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -47,17 +54,17 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const { data } = useQuery({
+    queryKey: ["testimonials", "home"],
+    queryFn: fetchTestimonials,
+    staleTime: 60_000,
+  });
 
   useEffect(() => {
-    fetch("/api/testimonials")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setTestimonials(data.testimonials);
-        }
-      })
-      .catch((err) => console.error("Failed to load testimonials:", err));
-  }, []);
+    if (data?.success && Array.isArray(data.testimonials)) {
+      setTestimonials(data.testimonials);
+    }
+  }, [data]);
 
   return (
     <section className="section-gray">

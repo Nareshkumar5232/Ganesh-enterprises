@@ -4,14 +4,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { apiClient } from "@/services/api";
 
 export default function BrandsPage() {
   const [brands, setBrands] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/brands")
-      .then((res) => res.json())
+    apiClient.get("/brands")
+      .then((res) => res.data)
       .then((data) => {
         if (data.success) {
           setBrands(data.brands);

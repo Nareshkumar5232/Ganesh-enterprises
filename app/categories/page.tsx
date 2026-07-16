@@ -3,14 +3,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { apiClient } from "@/services/api";
 
 export default function CategoriesPage() {
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/categories")
-      .then((res) => res.json())
+    apiClient.get("/categories")
+      .then((res) => res.data)
       .then((data) => {
         if (data.success) {
           setCategories(data.categories);

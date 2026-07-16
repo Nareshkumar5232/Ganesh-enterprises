@@ -4,6 +4,7 @@ import { useEffect, useState, use } from "react";
 import Link from "next/link";
 import { ProductCard } from "@/components/products/ProductCard";
 import { useProductsQuery } from "@/hooks/useProducts";
+import { apiClient } from "@/services/api";
 import { normalizeProduct } from "@/services/products";
 import { Sparkles, ArrowLeft } from "lucide-react";
 
@@ -27,8 +28,8 @@ export default function BrandProductsPage({ params }: BrandPageProps) {
 
   useEffect(() => {
     // Fetch brand name/desc from brands API
-    fetch("/api/brands")
-      .then((res) => res.json())
+    apiClient.get("/brands")
+      .then((res) => res.data)
       .then((data) => {
         if (data.success) {
           const brandObj = data.brands.find((b: any) => b.id.toLowerCase() === brandId.toLowerCase());

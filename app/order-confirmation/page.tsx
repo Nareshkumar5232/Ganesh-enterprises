@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle, Package, Truck, User, MapPin, CreditCard, ShoppingBag } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
+import { apiClient } from "@/services/api";
 
 export default function OrderConfirmationPage() {
   const searchParams = useSearchParams();
@@ -19,8 +20,8 @@ export default function OrderConfirmationPage() {
       return;
     }
 
-    fetch(`/api/orders?orderId=${encodeURIComponent(orderId)}`)
-      .then((res) => res.json())
+    apiClient.get(`/orders?orderId=${encodeURIComponent(orderId)}`)
+      .then((res) => res.data)
       .then((data) => {
         if (data.success) {
           setOrder(data.order);

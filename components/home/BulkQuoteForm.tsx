@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle, Package, Building2, Phone, MessageSquare, Users } from "lucide-react";
+import { apiClient } from "@/services/api";
 
 const BENEFITS = [
   { icon: <Package className="w-4 h-4" />, text: "Bulk order discounts" },
@@ -54,18 +55,14 @@ export default function BulkQuoteForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     try {
-      await fetch("/api/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      await apiClient.post("/inquiries", {
           companyName: form.company,
           customerName: form.name,
           mobileNumber: form.phone,
           productCategory: form.product,
           quantity: form.quantity,
           requirementDetails: form.message,
-        }),
-      });
+        });
     } catch (err) {
       console.error("Failed to save bulk quote:", err);
     }

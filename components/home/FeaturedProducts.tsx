@@ -5,10 +5,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShoppingCart, Heart, ArrowRight, Star } from "lucide-react";
 import { toast } from "sonner";
-import { featuredProducts } from "@/lib/mock-data";
 import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { formatPrice, getDiscountPercentage } from "@/lib/utils";
+import { useProductsQuery } from "@/hooks/useProducts";
 import type { Product } from "@/types";
 
 function ProductCard({ p }: { p: Product }) {
@@ -74,6 +74,9 @@ function ProductCard({ p }: { p: Product }) {
 }
 
 export default function FeaturedProducts() {
+  const { data } = useProductsQuery({ featured: true, limit: 8 });
+  const products = data?.products ?? [];
+
   return (
     <section className="section-gray">
       <div className="max-w-7xl mx-auto px-4 lg:px-6 py-16">
@@ -94,7 +97,7 @@ export default function FeaturedProducts() {
           transition={{ duration: 0.4 }}
           className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide"
         >
-          {featuredProducts.map((p: any) => (
+          {products.map((p: any) => (
             <ProductCard key={p.id} p={p} />
           ))}
         </motion.div>

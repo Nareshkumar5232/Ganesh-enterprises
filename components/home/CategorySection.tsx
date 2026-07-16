@@ -2,6 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { apiClient } from "@/services/api";
+
+async function fetchCategories() {
+  const res = await apiClient.get("/categories");
+  return res.data;
+}
 
 const CATEGORY_ICONS: Record<string, React.ReactNode> = {
   "mobile-accessories": (
@@ -75,23 +82,18 @@ const CATEGORY_ICONS: Record<string, React.ReactNode> = {
 
 export default function CategorySection() {
   const [categories, setCategories] = useState<any[]>([]);
+  const { data } = useQuery({
+    queryKey: ["categories", "home"],
+    queryFn: fetchCategories,
+    staleTime: 60_000,
+  });
 
   useEffect(() => {
-    fetch("/api/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          // Append 'all' category item dynamically
-          const list = [...data.categories];
-          list.push({
-            id: "all",
-            name: "All Showroom",
-          });
-          setCategories(list);
-        }
-      })
-      .catch((err) => console.error("Failed to load categories:", err));
-  }, []);
+    if (data?.success && Array.isArray(data.categories)) {
+      const list = [...data.categories, { id: "all", name: "All Showroom" }];
+      setCategories(list);
+    }
+  }, [data]);
 
   return (
     <section className="section-bg py-16" aria-label="Shop by category">

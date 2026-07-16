@@ -13,6 +13,7 @@ import { useCartStore } from "@/store/cartStore";
 import { ShoppingCart, MapPin, CreditCard, Truck } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { calculateOrderDetails, getPricingSettings } from "@/lib/pricing";
+import { apiClient } from "@/services/api";
 
 // Form validation schema
 const checkoutSchema = z.object({
@@ -88,30 +89,20 @@ export default function CheckoutPage() {
       if (data.paymentMethod === "online") {
         try {
           // Attempt Cashfree processing
-          const res = await fetch("/api/payment/process", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              orderId,
-              amount: grandTotal,
-              email: data.email,
-              phone: data.mobileNumber,
-              customerName: data.fullName,
-              productInfo: cartItems.map(item => `${item.product.name} x ${item.quantity}`).join(", "),
-            }),
+          const { data: paymentResult } = await apiClient.post("/payment/process", {
+            orderId,
+            amount: grandTotal,
+            email: data.email,
+            phone: data.mobileNumber,
+            customerName: data.fullName,
+            productInfo: cartItems.map(item => `${item.product.name} x ${item.quantity}`).join(", "),
           });
-          const paymentResult = await res.json();
           if (paymentResult.success) {
             // Verify payment
-            const verifyRes = await fetch("/api/payment/verify", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                orderId,
-                paymentSessionId: paymentResult.paymentSessionId,
-              }),
+            const { data: verifyResult } = await apiClient.post("/payment/verify", {
+              orderId,
+              paymentSessionId: paymentResult.paymentSessionId,
             });
-            const verifyResult = await verifyRes.json();
             if (verifyResult.success) {
               orderStatus = "paid";
               toast.success("Online payment verified successfully!");
@@ -144,13 +135,9 @@ export default function CheckoutPage() {
       };
 
       // Save to server database
-      const saveRes = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order),
-      });
+      const saveRes = await apiClient.post("/orders", order);
 
-      if (!saveRes.ok) {
+      if (!saveRes.data?.success) {
         throw new Error("Failed to save order to server");
       }
 

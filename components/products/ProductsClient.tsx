@@ -25,6 +25,7 @@ import { ProductCard } from "@/components/products/ProductCard";
 import { formatCurrency, getDiscountPercentage } from "@/lib/utils";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useProductsQuery } from "@/hooks/useProducts";
+import { apiClient } from "@/services/api";
 import type { Product, ProductCategory } from "@/types";
 
 const PLACEHOLDER = "/images/placeholder-product.svg";
@@ -81,8 +82,8 @@ export default function ProductsClient({ initialSearchQuery = "", initialCategor
   ]);
 
   useEffect(() => {
-    fetch("/api/categories")
-      .then((res) => res.json())
+    apiClient.get("/categories")
+      .then((res) => res.data)
       .then((data) => {
         if (data.success) {
           const list = data.categories.map((cat: any) => ({

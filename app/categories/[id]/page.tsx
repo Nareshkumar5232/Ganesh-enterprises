@@ -4,6 +4,7 @@ import { useEffect, useState, use } from "react";
 import Link from "next/link";
 import { ProductCard } from "@/components/products/ProductCard";
 import { useProductsQuery } from "@/hooks/useProducts";
+import { apiClient } from "@/services/api";
 import { Sparkles, ArrowLeft } from "lucide-react";
 
 interface CategoryPageProps {
@@ -24,8 +25,8 @@ export default function CategoryProductsPage({ params }: CategoryPageProps) {
 
   useEffect(() => {
     // Fetch category name/desc from categories API
-    fetch("/api/categories")
-      .then((res) => res.json())
+    apiClient.get("/categories")
+      .then((res) => res.data)
       .then((data) => {
         if (data.success) {
           const catObj = data.categories.find((c: any) => c.id === categoryId);
